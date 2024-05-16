@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subproyectos Vendidos</title>
+</head>
+<body>
+    <h1>Subproyectos Vendidos</h1>
+    <p>Proyecto seleccionado: {{ proyecto_seleccionado }}</p>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>M2</th>
+                <th>Precio Venta</th>
+                <!-- Otros campos que quieras mostrar -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for subproyecto in subproyectos %}
+            <tr>
+                <td>{{ subproyecto.nombre }}</td>
+                <td>{{ subproyecto.direccion }}</td>
+                <td>{{ subproyecto.m2 }}</td>
+                <td>{{ subproyecto.precio_venta }}</td>
+                <!-- Otros campos que quieras mostrar -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

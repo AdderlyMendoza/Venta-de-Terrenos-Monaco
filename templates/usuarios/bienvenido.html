@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/styleabel.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/LinkIco21.ico' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link-P</title>
+</head>
+
+<body>
+<body style="height: 100vh; overflow:hidden ; background-size: cover; background-image: url({% static 'img/welcome.png' %}); ">
+    <nav style="background-color: #18232E; height: 60px;" >
+        <img src="{% static 'img/Linkpblanco.png'%}" alt="logo link" width="110" style="padding: 10px ">
+    </nav>
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-md-4 col-lg-4 mt-4 text-center">
+            <div>
+                <h1 class="mb-3" style="color: #F3EAE5;"><b> ¡Bienvenido a Inmobiliaria MONACO¡</b></h1>
+                <h4 class="mb-3" style="color: #F3EAE5;"> Que bueno es verte de nuevo</h4>
+                <h4 class="mb-3" style="color: #F3EAE5;"> {{request.user.first_name}} {{request.user.last_name}} !</h4>
+
+            </div>
+
+            <div class="mt-4">
+                <a href="home/" class="btn mx-2" style="background-color: #248CEC; color: white" >Ingresar </a>
+                <a href="login/" class="btn mx-2" style="background-color: #DFDDDD44; color: white; border: 1px solid ghostwhite;" >Log out </a>
+            </div>
+            
+            <div class="mt-4"style="color: #F3EAE5; font-size: 12px">
+                <p>Inmobiliaria<b >P</b></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

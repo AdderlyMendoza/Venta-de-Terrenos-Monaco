@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles de Cuotas</title>
+</head>
+<body>
+    <h1>Detalles de Cuotas</h1>
+    <ul>
+        {% for detalle_cuota in detalle_cuotas %}
+        <li>
+            <h2>Cuota {{ detalle_cuota.cuota.cuota_numero }}</h2>
+            <ul>
+                <li>Fecha de Pago: {{ detalle_cuota.fecha_pago }}</li>
+                <li>Monto de la Cuota: {{ detalle_cuota.monto_cuota }}</li>
+                <li>Estado: {{ detalle_cuota.estado }}</li>
+
+                {% if detalle_cuota.estado != 'pagado' %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Marcar como Pagado</button>
+                    </form>
+                {% endif %}
+
+                {% if detalle_cuota.estado != 'no_pagado' %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Marcar como No Pagado</button>
+                    </form>
+                {% endif %}
+
+                {% if detalle_cuota.estado != 'cancelado' %}
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Cancelar</button>
+                    </form>
+                {% endif %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

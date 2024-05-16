@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Nueva Inversión</title>
+</head>
+<body>
+    <h1>Crear Nueva Inversión</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Inversión</button>
+    </form>
+</body>
+</html>

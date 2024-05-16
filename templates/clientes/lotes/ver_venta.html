@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Venta</title>
+</head>
+<body>
+    <h1>Detalles de Venta</h1>
+    <p><strong>ID de Venta:</strong> {{ venta.id }}</p>
+    <p><strong>Cliente:</strong> {{ venta.cliente.nombres }} {{ venta.cliente.ap_paterno }} {{ venta.cliente.ap_materno }}</p>
+    <p><strong>Proyecto:</strong> {{ venta.proyecto.nombre }}</p>
+    <p><strong>Subproyecto:</strong> {{ venta.subproyecto.nombre }}</p>
+    <p><strong>Precio de Venta:</strong> {{ venta.precio_venta }}</p>
+    <p><strong>Adelanto:</strong> {{ venta.adelanto }}</p>
+    <p><strong>Fecha de Creación:</strong> {{ venta.fecha_creacion }}</p>
+
+    <!-- Agregar un botón para visualizar el PDF -->
+    <form action="{% url 'clientes:generar_pdf_venta' venta.id %}" method="get">
+        <button type="submit">Visualizar PDF</button>
+    </form>
+</body>
+</html>

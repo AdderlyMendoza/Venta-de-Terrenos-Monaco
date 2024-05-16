@@ -1,0 +1,63 @@
+{% extends "pages/index.html" %}
+{% load static %}
+{% load tags_extras %}
+
+{% block menu %}
+
+<!-- Hoverable Table rows -->
+<div class="card">
+    <h5 class="card-header">Lista de proyectos</h5>
+    <a href="{% url 'proyectos:crear_proyecto' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
+        <i class='bx bx-plus'></i> Crear
+    </a>
+    <div class="table-responsive text-nowrap">
+      <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Lugar</th>
+                <th>Dirección</th>
+                <th>Tipo</th>
+                <th>Precio de Compra</th>
+                <th>Precio de Venta</th>
+                <th>Observación</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for proyecto in proyectos %}
+            <tr>
+                <td>{{ proyecto.nombre }}</td>
+                <td>{{ proyecto.estado }}</td>
+                <td>{{ proyecto.lugar }}</td>
+                <td>{{ proyecto.direccion }}</td>
+                <td>{{ proyecto.tipo }}</td>
+                <td>{{ proyecto.precio_compra }}</td>
+                <td>{{ proyecto.precio_venta }}</td>
+                <td>{{ proyecto.observacion }}</td>
+                <td>
+                    <a href="{% url 'proyectos:editar_proyecto' proyecto.pk %}" class="btn btn-sm btn-primary">
+                        <i class='bx bx-edit'></i> 
+                    </a>
+                    
+                    <a href="{% url 'proyectos:eliminar_proyecto' proyecto.pk %}" class="btn btn-sm btn-danger">
+                        <i class='bx bx-trash'></i> 
+                    </a>
+                  
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+<!--/ Hoverable Table rows -->
+
+<!-- Agregar el botón de crear proyecto -->
+
+
+{% endblock menu %}
+
+

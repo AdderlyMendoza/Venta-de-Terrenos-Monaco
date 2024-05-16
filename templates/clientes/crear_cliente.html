@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load tags_extras %}
+
+
+    {% block content %}
+
+    
+    <div class="page-wrapper">
+  
+
+  
+
+        <!-- empieza accesos directos -->
+
+        <div class="container-fluid r-aside">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Crear Cliente</h3>
+                </div>
+        
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'usuarios:home' %}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'proyectos:proyectos' %}">Panel</a></li>
+                        <li class="breadcrumb-item">cliente</li>
+                    </ol>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body row">
+                            <div class="col-12 justify-content-center">
+        
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col col-md-12 col-lg-10">
+                                        <div class="row">
+                                            <div class="col bg-light border rounded p-3">
+
+                                                <form role="form" enctype="multipart/form-data" action="" method="POST" id="upload-image-form" class="p-4">
+                                                    {% csrf_token %}
+                                                    <h4 class="mb-3">Panel de creación</h4>
+                                                    <hr>
+
+                                                    
+                                                
+                                                    <div class="row d-flex">
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.nombres.id_for_label }}">
+                                                                <h6>{{ form.nombres.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.nombres }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.ap_paterno.id_for_label }}">
+                                                                <h6>{{ form.ap_paterno.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.ap_paterno }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.ap_materno.id_for_label }}">
+                                                                <h6>{{ form.ap_materno.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.ap_materno }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.direccion.id_for_label }}">
+                                                                <h6>{{ form.direccion.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.direccion }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.documento.id_for_label }}">
+                                                                <h6>{{ form.documento.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.documento }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.celular.id_for_label }}">
+                                                                <h6>{{ form.celular.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.celular }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                
+                                                    <div class="row d-flex justify-content-center mt-3">
+                                                        <div class="col text-center">
+                                                            <button type="submit" class="btn btn-primary" name="crear-cliente">Crear</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                
+        
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- termina accesos directos -->
+
+      
+
+        <a href="" style="text-decoration: none;">
+          <footer class="footer">© Link-P</footer>
+        </a>
+  
+      
+  
+  
+    </div>
+
+
+  
+{% endblock content %}
+
+<script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3100,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+          
+            Toast.fire({
+           
+              imageHeight: 100,
+              title: '{{mensaje}}, 
+          
+            })
+       
+</script>
+
+
+
+

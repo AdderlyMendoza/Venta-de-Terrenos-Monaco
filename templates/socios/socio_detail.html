@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Socio</title>
+</head>
+<body>
+    <h1>Detalle del Socio</h1>
+    <p><strong>Nombre:</strong> {{ object.nombre }}</p>
+    <p><strong>Documento:</strong> {{ object.documento }}</p>
+    <!-- Add other fields as needed -->
+   
+    <a href="{% url 'socios:socio_list' %}">Volver al listado</a>
+</body>
+</html>

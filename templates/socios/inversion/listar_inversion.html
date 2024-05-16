@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Listar Inversiones</title>
+</head>
+<body>
+    <h1>Listar Inversiones</h1>
+    <ul>
+        {% for inversion in inversiones %}
+        <li>
+            <strong>Socio:</strong> {{ inversion.socio }}<br>
+            <strong>Cantidad Invertida:</strong> {{ inversion.cantidad_invertida }}<br>
+            <strong>Porcentaje de Ganancia:</strong> {{ inversion.porcentaje_ganancia }}<br>
+            <!-- Agregar más campos según sea necesario -->
+            <a href="{% url 'socios:detalle_inversion' inversion.id %}">Ver Detalle</a> <!-- Enlace para ver el detalle -->
+            <a href="{% url 'socios:actualizar_inversion' inversion.id %}">Actualizar</a>
+            <a href="{% url 'socios:eliminar_inversion' inversion.id %}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'socios:crear_inversion' %}">Crear Nueva Inversión</a>
+</body>
+</html>
+
+

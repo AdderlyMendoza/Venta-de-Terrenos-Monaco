@@ -1,0 +1,115 @@
+
+{% extends "pages/index.html" %}
+{% load static %}
+{% load tags_extras %}
+
+{% block menu %}
+
+<!-- Hoverable Table rows -->
+<div class="card">
+    <h5 class="card-header">Lista de Subproyectos</h5>
+    <a href="{% url 'proyectos:crear_subproyecto' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
+        <i class='bx bx-plus'></i> Crear
+    </a>
+
+
+    <!-- Bootstrap Toasts with Placement -->
+    <div class="card mb-4">
+       
+        <div class="card-body">
+            <div class="row gx-3 gy-2 align-items-center">
+                <div class="col-md-3">
+                    <form method="get">
+                        <label class="form-label" for="selectPlacement">Proyecto</label>
+                        <select class="form-select placement-dropdown" id="proyecto" name="proyecto_id">
+                            {% for proyecto in proyectos %}
+                                <option value="{{ proyecto.id }}" {% if proyecto_seleccionado and proyecto.id == proyecto_seleccionado.id %}selected{% endif %}>{{ proyecto.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label" for="showToastPlacement">&nbsp;</label>
+                    <button id="showToastPlacement" type="submit" class="btn btn-primary d-block">Filtrar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    
+      <!--/ Bootstrap Toasts with Placement -->
+
+    
+        
+        <div class="card-body">
+
+            {% if subproyectos %}
+            <table id="users" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Proyecto</th>
+                        <th>Nombre</th>
+                        
+                        <th>m2</th>
+                        <th>Precio de Venta</th>
+                        <th>Plano</th>
+                        <th>Observación</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 14px; font-weight: 400;">
+                    {% for subproyecto in subproyectos %}
+                    <tr>
+                    
+                        {% if subproyecto.estado == "DISPONIBLE" %}
+
+                        <td style="text-primary"><b>{{subproyecto.estado}}</b>
+                        </td>
+
+                        {% else %}
+
+                        <td style="color: rgb(237, 30, 11)"><b>{{subproyecto.estado}}</b>
+                        </td>
+
+                        {% endif %}     
+                        <td>{{ subproyecto.proyecto.nombre }}</td>
+                        <td>{{ subproyecto.nombre }}</td>
+                    
+                        <td>{{ subproyecto.m2 }}</td>
+                        <td>{{ subproyecto.precio_venta }}</td>
+                    
+                        <td style="text-align: center;"><a href="{{ subproyecto.plano.url }}" target="_blank">
+                            <i class="bx bxs-file-pdf"></i>
+                        </a></td>
+                        <td>{{ subproyecto.observacion }}</td>
+
+                        <td>
+                                    
+                            <a href="{% url 'proyectos:actualizar_subproyecto' subproyecto.pk %}" class="btn btn-sm btn-primary">
+                                <i class='bx bx-edit'></i> 
+                            </a>
+                            
+                            <a href="{% url 'proyectos:eliminar_subproyecto' subproyecto.pk %}" class="btn btn-sm btn-danger">
+                                <i class='bx bx-trash'></i> 
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+
+                {% else %}
+                <p>No hay subproyectos disponibles.</p>
+                {% endif %}
+            </table>
+        </div>
+
+    
+</div>
+<!--/ Hoverable Table rows -->
+
+<!-- Agregar el botón de crear proyecto -->
+
+
+{% endblock menu %}

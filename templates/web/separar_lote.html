@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Separa tus terreno</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    integrity="sha384-4LISF5TTJX/fLmGSxO53rV4miRxdg84mZsxmO8Rx5jGtp/LbrixFETvWa5a6sESd" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+  <header id="main-header" style="background-color: #004072; padding-top: 1.5rem; padding-bottom: 1.5rem;">
+    <nav style="padding-left: 13.5rem; padding-right: 13.5rem;">
+      <div class="row justify-content-between align-items-center">
+        <div class="col-auto">
+          <a href="#" class="text-white fs-3 nav-link">
+            <img src="{% static 'logos/logoBlanco.png' %}" class="mr-3" style="height: 4.5rem;" alt="Monaco">
+          </a>
+        </div>
+        <div class="col-auto text-white">
+          <span style="font-size: 2rem; line-height: 2rem; font-weight: bold; ">RESIDENCIA TULIPANES</span>
+
+        </div>
+        <div class="col-auto">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="{% url 'web:pag_web' %}" class="nav-link text-white"
+                style="font-weight: bold; font-size: 2rem; line-height: 2rem;">
+                <span>X</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- CUERPO -->
+  <!-- <div>
+    <button onclick="agregarFillNegro()">CAMBIAR ATT PATH</button>
+  </div> -->
+
+
+  <style>
+    .path-hover:hover {
+      fill: #B7E892;
+      stroke: #333;
+      stroke-width: 10;
+      cursor: pointer;
+    }
+
+    .bg-image {
+      background-image: url("{% static 'logos/bg.png' %}");
+      background-size: cover;
+      background-position: center;
+    }
+  
+  </style>
+
+  <form role="form" enctype="multipart/form-data" action="" method="POST" id="upload-image-form" class="p-4">
+    {% csrf_token %}
+    <div class="card" style="width: 75%; margin-left: 12%; margin-top: 2%;">
+      
+      <!-- PASO 1 -->
+      <fieldset id="step1">
+        <div class="card-header p-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-8">
+                <h3>Paso 1: Selecciona tus terrenos</h3>
+              </div>
+              <div class="col-4" style="text-align: end;">
+                <button type="button" class="btn btn-primary">
+                  <a href="#" class="text-white" style="text-decoration: none;">
+                    <h4>Ver plano</h4>
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body flex items-center justify-center position-relative">
+
+          <div class="card position-absolute" style="width: 18rem;">
+            <div class="card-header">
+              <h5>LEYENDA</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <i class="bi bi-circle-fill" style="color:yellow"></i>
+                <span>Separado</span><br>
+
+                <i class="bi bi-circle-fill" style="color:red"></i>
+                <span>Vendido</span><br>
+
+                <i class="bi bi-circle-fill" style="color:green"></i>
+                <span>Seleccionado</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- LOTES EN SVG -->
+          <!-- https://i.pinimg.com/originals/dc/d5/38/dcd538e623b43945e18fa543b8effabe.jpg -->
+          <center class="bg-image">
+
+            <div
+              style="width: 1000px; height: 960px; display: flex; justify-content: center; align-items: center; padding-top: 10px; ">
+
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="1216.000000pt" height="883.000000pt"
+                viewBox="0 0 1216.000000 883.000000" preserveAspectRatio="xMidYMid meet" transform="rotate(62)"
+                id="miSVG">
+                <g transform="translate(0.000000,883.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="white">
+                                      <path
+                                        d="M3277 8815 c-10 -9 -17 -21 -17 -27 0 -22 243 -298 262 -298 6 0 16 -7 23 -16 10 -15 15 -13 46 13 19 16 53 41 77 57 62 42 54 71 -31 112 -20 11 -94 52 -164 92 -141 82 -171 92 -196 67z"
+                                        id="T_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                        data-bs-original-title="PRECIO: 10000 dolares AREA: 95.41 m2" class="path-hover"></path>
+                                      <path
+                                        d="M3147 8701 c-32 -33 -57 -66 -57 -75 0 -28 258 -316 283 -316 14 0 109 60 125 79 6 8 12 29 12 46 0 27 -21 55 -136 178 -77 84 -143 147 -153 147 -10 0 -43 -27 -74 -59z"
+                                        id="T_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                        data-bs-original-title="PRECIO: 10000 dolares AREA: 128,87 m2" class="path-hover"></path>
+                                      <path d="M3000 8536 c-23 -30 -48 -57 -56 -60 -29 -11 -13 -48 54 -120 37 -40
+                                      93 -103 125 -139 67 -77 96 -85 140 -39 46 47 63 62 74 62 7 0 8 12 3 34 -9
+                                      43 -245 309 -277 314 -16 2 -32 -11 -63 -52z" id="T_03" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 123.64 m2" class="path-hover"></path>
+                                        <path d="M2828 8353 c-32 -35 -58 -71 -58 -79 0 -32 232 -284 262 -284 5 0 38
+                                        25 73 56 59 52 63 58 54 84 -13 37 -225 273 -252 281 -18 5 -33 -7 -79 -58z" id="T_04" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 116.47 m2" class="path-hover"></path>
+                                        <path d="M4133 8358 c-18 -22 -83 -161 -83 -178 1 -23 334 -212 368 -208 28 3
+                                          63 54 98 146 17 42 17 42 -7 63 -13 12 -51 35 -84 51 -33 17 -98 52 -145 79
+                                          -99 55 -132 66 -147 47z" id="P_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 146.30 m2" class="path-hover"></path>
+                                        <path d="M2666 8176 c-40 -37 -67 -69 -65 -78 4 -16 82 -108 176 -205 45 -48
+                                          56 -54 85 -51 23 2 36 10 43 26 5 12 16 22 23 22 7 0 25 11 40 25 l27 26 -25
+                                          44 c-33 58 -209 256 -226 255 -5 -1 -40 -29 -78 -64z" id="T_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 109.44 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M3996 8102 c-12 -20 -35 -56 -49 -79 l-27 -42 23 -25 c27 -30 336
+                      -196 364 -196 15 0 29 19 56 71 21 39 37 77 37 83 0 7 -10 22 -22 32 -31 28
+                      -292 174 -329 184 -27 8 -31 6 -53 -28z" id="P_03" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M4562 8123 c-25 -21 -92 -146 -92 -173 0 -20 62 -59 250 -158 103
+                      -55 118 -60 139 -49 22 11 52 50 67 87 3 8 12 30 20 47 24 58 9 75 -127 144
+                      -67 33 -138 71 -158 83 -55 35 -75 39 -99 19z" id="P_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 147.02 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M2487 8017 c-31 -29 -57 -60 -57 -70 0 -11 27 -49 61 -85 33 -36 79
+                      -90 102 -119 65 -81 90 -82 176 -4 l55 48 -20 36 c-31 59 -212 247 -237 247
+                      -12 -1 -48 -24 -80 -53z" id="T_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 109.12 m2" class="path-hover"></path>
+                                        <path d="M3860 7869 c-44 -68 -58 -106 -44 -119 17 -15 225 -132 287 -160 105
+                      -48 102 -48 136 12 42 72 49 115 25 138 -21 19 -305 173 -341 184 -20 6 -28
+                      -1 -63 -55z" id="P_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2305 7850 c-70 -71 -70 -72 28 -176 36 -38 82 -88 102 -111 21 -24
+                      45 -43 55 -43 44 0 150 84 150 118 0 10 -10 30 -22 44 -13 13 -60 67 -106 120
+                      -115 133 -122 134 -207 48z" id="T_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 110.36 m2" class="path-hover"></path>
+                                        <path d="M3359 7863 c-101 -99 -122 -117 -162 -146 -89 -63 -90 -89 -4 -139
+                      92 -53 102 -54 133 -21 14 15 36 51 49 80 13 28 29 54 34 58 6 3 11 15 11 25
+                      0 10 4 20 8 22 16 7 66 104 63 123 -10 63 -66 62 -132 -2z" id="R_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 89.79 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M4391 7836 c-53 -103 -53 -104 135 -207 88 -49 175 -92 192 -95 27
+                      -6 32 -3 47 27 10 19 26 41 36 49 23 18 38 90 19 90 -6 0 -19 9 -28 20 -24 27
+                      -315 180 -344 180 -19 0 -30 -12 -57 -64z" id="P_04" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M2138 7715 c-50 -39 -78 -71 -78 -90 0 -17 219 -240 248 -252 32 -13
+                      35 -12 73 18 74 59 88 103 45 148 -14 14 -54 61 -91 103 -68 80 -110 118 -129
+                      118 -6 0 -37 -20 -68 -45z" id="T_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 111.61 m2" class="path-hover"></path>
+                                        <path d="M3753 7668 c-38 -62 -57 -113 -50 -131 5 -15 357 -197 379 -197 8 0
+                      34 34 57 75 41 72 43 76 27 99 -15 24 -308 189 -356 201 -22 5 -29 0 -57 -47z" id="P_07" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4313 7688 c-32 -42 -82 -149 -77 -163 4 -9 39 -32 78 -52 39 -19
+                      114 -59 166 -88 128 -72 135 -73 170 -38 16 15 30 35 30 44 0 9 7 22 16 29 10
+                      9 14 26 12 49 -3 34 -7 37 -118 96 -63 34 -145 78 -181 98 -72 41 -82 43 -96
+                      25z" id="P_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1966 7568 c-25 -24 -55 -50 -67 -58 -20 -15 -21 -18 -6 -45 19 -37
+                      146 -179 163 -183 7 -2 16 -11 19 -20 3 -9 22 -29 43 -44 l38 -26 32 26 c18
+                      15 32 33 32 40 0 6 8 12 18 12 18 0 42 37 42 65 0 28 -227 275 -252 275 -9 0
+                      -37 -19 -62 -42z" id="T_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 112.85 m2" class="path-hover"></path>
+                                        <path d="M3028 7563 c-19 -21 -52 -52 -72 -70 -20 -17 -36 -38 -36 -46 0 -24
+                      139 -110 223 -137 35 -11 41 -10 63 11 13 12 24 28 24 34 0 7 14 29 30 50 54
+                      67 36 103 -81 163 -82 42 -107 41 -151 -5z" id="R_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 92.29 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M3664 7492 c-6 -4 -19 -23 -29 -42 -9 -19 -24 -42 -32 -52 -8 -9 -13
+                      -29 -11 -44 3 -25 15 -35 93 -74 49 -25 92 -48 95 -51 3 -4 28 -18 55 -33 28
+                      -14 65 -35 83 -45 18 -10 41 -17 50 -14 22 5 80 99 88 142 7 36 3 39 -196 140
+                      -141 71 -178 85 -196 73z" id="P_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4158 7404 c-24 -50 -37 -89 -32 -94 27 -26 360 -201 378 -198 13 2
+                      27 16 35 36 8 17 20 32 26 32 16 0 35 44 35 80 0 23 -8 35 -37 53 -66 41 -334
+                      177 -349 177 -9 0 -32 -35 -56 -86z" id="P_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1767 7397 c-37 -29 -74 -63 -82 -74 -14 -20 -13 -23 7 -38 63 -45
+                      325 -185 346 -185 4 0 23 12 41 28 29 24 31 30 22 53 -9 25 -184 228 -220 256
+                      -27 21 -43 15 -114 -40z" id="T_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 101.93 m2" class="path-hover"></path>
+                                        <path d="M2790 7344 c-38 -37 -68 -70 -65 -74 8 -14 311 -180 327 -180 15 0
+                      68 60 68 76 0 4 7 12 16 18 19 15 22 73 3 91 -20 19 -246 135 -264 135 -8 0
+                      -46 -30 -85 -66z" id="R_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 106.23 m2" class="path-hover"></path>
+                                        <path d="M5125 7318 c-33 -18 -168 -124 -188 -146 -18 -20 -18 -21 50 -60 164
+                      -95 252 -141 287 -150 36 -10 37 -10 63 31 43 68 85 166 79 183 -3 8 -18 22
+                      -33 30 -16 8 -66 37 -113 63 -103 58 -119 64 -145 49z" id="N_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 140.41 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M3542 7288 c-7 -7 -12 -20 -12 -29 0 -9 -6 -19 -14 -22 -8 -3 -22
+                      -29 -31 -58 -17 -50 -17 -52 0 -63 45 -28 284 -159 323 -177 42 -20 44 -20 64
+                      -2 29 26 68 107 68 141 0 25 -9 33 -72 69 -40 22 -118 66 -174 97 -102 57
+                      -131 65 -152 44z" id="P_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4083 7268 c-26 -34 -73 -128 -73 -145 0 -27 4 -30 160 -109 74 -38
+                      137 -71 140 -75 11 -14 50 -29 75 -29 18 0 28 7 35 25 5 14 14 25 19 25 5 0
+                      13 10 17 23 3 12 13 30 22 40 35 40 -9 76 -245 199 -118 61 -135 66 -150 46z" id="P_09" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2602 7178 c-37 -35 -69 -64 -72 -66 -20 -14 385 -235 422 -230 14 2
+                      29 16 40 37 9 19 22 39 27 44 15 15 14 80 -1 98 -24 29 -303 179 -333 179 -9
+                      0 -47 -28 -83 -62z" id="R_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 129.00 m2" class="path-hover"></path>
+                                        <path d="M6315 7118 c-20 -35 -39 -76 -42 -93 -5 -30 -2 -31 169 -126 95 -53
+                      183 -99 195 -103 19 -6 27 2 62 62 24 39 41 81 41 98 0 29 -7 34 -92 79 -51
+                      26 -129 67 -173 90 -122 65 -116 66 -160 -7z" id="L_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M5417 7089 c-44 -78 -67 -132 -67 -156 0 -10 15 -26 33 -37 101 -59
+                      287 -156 309 -161 25 -6 27 -4 33 37 3 23 7 88 8 143 l2 99 -111 63 c-62 35
+                      -125 66 -142 69 -28 6 -32 3 -65 -57z" id="N_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 140.41 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M1432 7112 c-39 -32 -41 -54 -7 -80 14 -11 25 -23 25 -27 0 -10 147
+                      -176 174 -196 41 -31 62 -32 94 -2 16 15 53 47 81 71 72 61 70 78 -21 129
+                      -273 153 -285 156 -346 105z" id="S_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 116.79 m2" class="path-hover"></path>
+                                        <path d="M4865 7089 c-4 -13 -17 -40 -30 -59 -12 -19 -25 -47 -29 -61 -6 -26
+                      2 -31 173 -128 99 -55 188 -101 199 -101 35 0 92 94 92 153 0 32 -3 35 -157
+                      121 -177 99 -235 117 -248 75z" id="N_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3429 7067 c-7 -18 -22 -39 -32 -47 -10 -8 -22 -33 -27 -55 -11 -49
+                      -17 -44 181 -154 90 -51 161 -84 180 -84 30 -2 35 2 66 63 46 91 44 102 -24
+                      143 -131 77 -260 145 -301 156 -28 8 -31 7 -43 -22z" id="P_14" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M2418 7014 c-37 -33 -63 -64 -63 -76 0 -15 39 -42 165 -115 202 -116
+                      294 -163 318 -163 17 0 52 46 52 69 0 5 12 27 26 48 14 21 21 39 15 41 -6 2
+                      -11 11 -11 21 0 11 -29 33 -82 63 -214 119 -311 168 -333 168 -15 0 -48 -21
+                      -87 -56z" id="R_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 151.77 m2" class="path-hover"></path>
+                                        <path d="M3937 7004 c-61 -105 -62 -103 143 -211 96 -51 184 -92 196 -93 24 0
+                      104 101 104 131 0 10 -10 29 -22 43 -30 33 -329 196 -360 196 -19 0 -32 -14
+                      -61 -66z" id="P_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1289 6994 c-37 -29 -69 -60 -72 -68 -6 -16 75 -114 210 -254 l61
+                      -63 51 36 c28 20 51 43 51 50 0 7 14 17 31 20 18 4 27 10 22 14 -6 3 -13 16
+                      -17 27 -4 12 -21 38 -39 57 -18 19 -70 76 -116 126 -47 51 -92 96 -100 100
+                      -12 6 -35 -6 -82 -45z" id="S_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120.21 m2" class="path-hover"></path>
+                                        <path d="M6206 6912 c-16 -31 -35 -71 -42 -89 l-14 -31 58 -33 c183 -104 290
+                      -162 309 -170 28 -10 55 15 82 76 33 76 34 91 3 117 -34 28 -307 173 -343 182
+                      -23 5 -28 0 -53 -52z" id="L_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6730 6868 c-22 -40 -40 -80 -40 -88 0 -16 5 -19 232 -141 144 -77
+                      149 -79 172 -63 32 20 69 96 70 143 l1 36 -175 92 c-96 51 -185 93 -197 93
+                      -17 0 -31 -16 -63 -72z" id="L_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4727 6838 c-43 -85 -45 -98 -15 -117 93 -58 320 -174 348 -178 34
+                      -5 36 -3 68 55 36 67 40 102 15 124 -44 37 -332 188 -359 188 -14 0 -30 -21
+                      -57 -72z" id="N_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1101 6831 c-34 -33 -61 -69 -61 -79 0 -11 11 -30 25 -43 14 -13 57
+                      -63 95 -110 70 -87 132 -139 164 -139 24 0 126 88 126 109 0 23 -72 131 -87
+                      131 -7 0 -13 5 -13 12 0 7 -19 31 -42 54 -24 24 -61 61 -82 83 -21 23 -45 41
+                      -52 41 -7 0 -40 -27 -73 -59z" id="S_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120.01 m2" class="path-hover"></path>
+                                        <path d="M3295 6836 c-57 -90 -62 -104 -39 -125 24 -24 286 -169 338 -187 21
+                      -8 42 -11 47 -8 19 11 80 135 77 156 -2 18 -39 42 -173 114 -93 51 -180 95
+                      -192 99 -19 5 -28 -2 -58 -49z" id="P_15" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5265 6806 c-31 -59 -38 -79 -29 -92 11 -19 271 -163 341 -190 l42
+                      -16 25 28 c14 16 28 40 31 53 3 13 13 30 20 38 20 19 19 36 -2 62 -26 30 -311
+                      182 -353 188 -35 5 -36 4 -75 -71z" id="N_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3835 6820 c-14 -23 -30 -52 -35 -66 -23 -60 -19 -64 145 -157 160
+                      -92 212 -114 239 -104 21 8 76 107 76 138 0 33 -13 44 -135 112 -154 85 -220
+                      117 -244 117 -13 0 -30 -14 -46 -40z" id="P_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2088 6713 c-40 -38 -95 -89 -123 -114 -27 -25 -67 -62 -88 -82 -24
+                      -22 -38 -42 -35 -53 3 -20 215 -134 248 -134 18 0 88 110 179 282 48 92 45
+                      112 -20 145 -67 34 -81 30 -161 -44z" id="Q_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 145.99 m2" class="path-hover"></path>
+                                        <path d="M6090 6704 c-31 -49 -53 -111 -44 -125 8 -14 312 -178 348 -188 34
+                      -9 38 -7 60 22 56 76 70 132 39 159 -37 30 -305 170 -338 175 -32 5 -36 2 -65
+                      -43z" id="L_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M937 6665 c-79 -76 -80 -69 16 -180 87 -101 174 -185 192 -185 13 0
+                      126 94 133 111 7 17 -36 79 -115 169 -93 104 -139 150 -151 150 -4 0 -38 -29
+                      -75 -65z" id="S_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 116.83 m2" class="path-hover"></path>
+                                        <path d="M6641 6699 c-24 -39 -65 -138 -60 -143 16 -12 250 -141 316 -175 l83
+                      -41 15 36 c8 20 26 49 40 66 33 39 32 71 -3 100 -43 35 -303 177 -339 184 -28
+                      6 -34 3 -52 -27z" id="L_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4618 6637 c-52 -87 -50 -105 15 -144 115 -68 298 -163 319 -166 17
+                      -2 29 11 60 63 62 106 63 104 -140 216 -129 72 -176 94 -201 94 -9 0 -32 -28
+                      -53 -63z" id="N_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2318 6663 c-21 -23 -68 -122 -68 -144 0 -10 31 -32 82 -58 46 -24
+                      85 -46 88 -50 9 -13 192 -101 211 -101 10 0 24 10 30 23 7 12 18 25 25 30 18
+                      10 44 65 44 92 0 31 -18 45 -185 136 -166 89 -201 101 -227 72z" id="Q_01" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3177 6618 c-60 -106 -59 -108 20 -155 177 -104 294 -164 314 -161
+                      28 4 79 85 86 136 7 49 2 52 -182 151 -204 108 -195 107 -238 29z" id="P_18" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5165 6630 c-46 -72 -60 -110 -49 -127 9 -15 279 -168 351 -199 31
+                      -13 33 -13 50 16 9 17 21 30 25 30 5 0 18 20 30 44 35 73 30 79 -165 184 -95
+                      50 -183 92 -195 92 -15 0 -30 -13 -47 -40z" id="N_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M3725 6610 c-39 -62 -58 -107 -53 -122 3 -7 50 -38 104 -67 55 -30
+                      133 -74 175 -97 42 -24 82 -44 90 -44 21 1 45 22 68 60 62 104 58 112 -97 196
+                      -255 137 -248 135 -287 74z" id="P_16" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M796 6530 c-22 -17 -48 -39 -58 -50 -10 -11 -23 -20 -28 -20 -6 0
+                      -10 -9 -10 -21 0 -24 79 -129 97 -129 6 0 14 -8 17 -18 10 -31 123 -142 146
+                      -142 42 0 140 89 140 126 0 26 -233 284 -255 284 -6 0 -28 -14 -49 -30z" id="S_05" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 115.33 m2" class="path-hover"></path>
+                                        <path d="M5966 6475 c-20 -36 -36 -74 -36 -85 0 -23 -2 -21 194 -129 186 -102
+                      195 -103 244 -12 51 93 49 96 -143 202 -202 112 -210 113 -259 24z" id="L_07" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6514 6474 c-20 -31 -38 -70 -41 -89 -5 -32 -4 -34 78 -82 130 -77
+                      251 -140 281 -147 23 -5 32 0 64 39 48 59 58 124 23 147 -60 38 -309 169 -338
+                      178 -31 9 -33 7 -67 -46z" id="L_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4505 6429 c-60 -103 -62 -100 140 -213 110 -61 183 -96 197 -94 26
+                      3 59 49 84 115 l18 46 -31 26 c-49 41 -317 181 -346 181 -21 0 -33 -11 -62
+                      -61z" id="N_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2177 6405 c-20 -42 -37 -82 -37 -91 0 -8 20 -24 45 -35 25 -11 45
+                      -24 45 -29 0 -5 10 -12 22 -16 12 -3 66 -31 120 -62 126 -70 155 -77 185 -41
+                      13 15 23 30 23 33 0 4 10 20 21 36 30 39 19 72 -34 108 -61 42 -315 172 -335
+                      172 -12 0 -30 -25 -55 -75z" id="Q_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5040 6401 c-54 -91 -51 -107 32 -151 35 -18 111 -59 169 -91 58 -33
+                      117 -59 130 -59 29 0 74 45 95 95 20 49 4 82 -61 118 -151 86 -272 149 -296
+                      154 -25 5 -30 -1 -69 -66z" id="N_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3632 6438 c-30 -38 -72 -122 -72 -146 0 -30 25 -46 223 -151 136
+                      -73 154 -77 185 -44 68 74 81 138 35 171 -35 24 -311 168 -339 176 -12 4 -26
+                      1 -32 -6z" id="P_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1757 6409 c-10 -6 -39 -30 -64 -53 l-46 -43 24 -21 c37 -36 274
+                      -162 303 -162 19 0 32 10 53 43 33 51 53 106 45 125 -2 8 -54 38 -115 68 -111
+                      55 -161 65 -200 43z" id="Q_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 107.11 m2" class="path-hover"></path>
+                                        <path d="M580 6359 c-36 -28 -66 -60 -68 -70 -2 -11 16 -39 45 -71 27 -29 77
+                      -86 112 -126 35 -40 76 -81 90 -92 33 -23 71 -17 71 11 0 11 6 19 14 19 8 0
+                      28 12 45 27 53 46 45 65 -87 214 -65 74 -127 135 -138 137 -12 2 -45 -18 -84
+                      -49z" id="S_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 119.58 m2" class="path-hover"></path>
+                                        <path d="M5878 6318 c-32 -49 -58 -108 -58 -132 0 -19 11 -32 41 -51 56 -36
+                      339 -179 343 -174 25 27 86 138 86 155 0 27 -14 37 -205 142 -155 85 -185 94
+                      -207 60z" id="L_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2971 6238 c-23 -40 -40 -79 -39 -87 4 -18 345 -210 375 -211 24 0
+                      74 68 94 127 10 31 9 38 -7 54 -32 32 -327 189 -355 189 -22 0 -33 -12 -68
+                      -72z" id="O_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6415 6280 c-9 -16 -19 -30 -24 -30 -4 0 -15 -21 -24 -47 -14 -44
+                      -14 -49 1 -64 21 -20 309 -183 341 -194 36 -11 66 11 96 75 32 67 29 97 -12
+                      121 -119 70 -318 169 -338 169 -17 0 -29 -9 -40 -30z" id="L_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M4386 6207 c-22 -41 -37 -80 -34 -88 9 -22 337 -201 372 -203 27 -1
+                      34 5 59 52 16 29 32 66 37 82 8 27 5 33 -23 54 -59 44 -301 168 -337 173 -35
+                      4 -35 4 -74 -70z" id="N_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M391 6209 c-39 -33 -71 -64 -71 -68 0 -11 29 -47 128 -156 107 -120
+                      146 -155 172 -155 23 0 130 102 130 123 0 8 -12 30 -27 49 -48 60 -227 249
+                      -245 259 -13 7 -32 -4 -87 -52z" id="S_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 123.67 m2" class="path-hover"></path>
+                                        <path d="M1567 6252 c-44 -30 -78 -83 -75 -117 3 -28 15 -37 153 -113 206
+                      -114 213 -117 234 -98 9 8 32 44 51 80 34 63 34 65 16 85 -26 29 -284 172
+                      -321 177 -19 3 -40 -2 -58 -14z" id="Q_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 127.11 m2" class="path-hover"></path>
+                                        <path d="M2074 6214 c-19 -30 -38 -70 -41 -88 l-5 -33 143 -81 c79 -44 166
+                      -91 193 -104 47 -22 49 -22 60 -4 6 10 19 26 29 35 9 8 17 24 17 34 0 9 7 20
+                      15 23 9 4 15 19 15 40 0 26 -7 38 -32 57 -43 32 -325 177 -344 177 -8 0 -30
+                      -25 -50 -56z" id="Q_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4975 6250 c-20 -8 -68 -92 -80 -140 -5 -24 4 -31 167 -122 95 -54
+                      187 -100 203 -104 27 -5 33 -2 44 23 33 70 55 109 65 115 21 14 -48 65 -189
+                      143 -153 85 -180 96 -210 85z" id="N_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5762 6102 c-10 -21 -29 -55 -42 -78 -13 -22 -21 -47 -17 -56 10 -26
+                      339 -207 378 -208 19 0 87 99 95 139 5 23 1 32 -23 48 -48 34 -310 173 -342
+                      183 -28 8 -31 6 -49 -28z" id="L_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7314 6067 c-44 -29 -98 -63 -118 -75 -54 -32 -46 -57 29 -100 33
+                      -19 106 -61 163 -94 74 -44 108 -59 125 -54 30 7 118 163 125 221 l4 42 -92
+                      53 c-129 72 -138 72 -236 7z" id="J_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 145.97 m2" class="path-hover"></path>
+                                        <path d="M231 6084 c-53 -37 -111 -91 -111 -102 0 -5 57 -50 127 -98 69 -49
+                      141 -104 160 -121 41 -40 89 -44 136 -11 18 12 33 22 35 23 8 6 -20 55 -49 89
+                      -100 116 -212 235 -225 240 -24 9 -37 6 -73 -20z" id="S_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10,000 dolares AREA: 110.59 m2"
+                                          class="path-hover"></path>
+                                        <path d="M2881 6073 c-7 -16 -24 -45 -37 -65 -44 -63 -38 -70 150 -175 93 -52
+                      181 -96 195 -99 23 -4 31 2 62 53 20 32 39 67 43 77 11 32 -20 64 -102 105
+                      -42 22 -113 60 -157 85 -95 55 -136 60 -154 19z" id="O_03" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M6286 6053 c-13 -27 -31 -65 -39 -85 l-15 -37 61 -32 c34 -18 98 -52
+                      142 -76 101 -56 194 -96 210 -89 7 2 15 17 19 32 4 15 18 41 32 59 29 38 31
+                      68 6 93 -32 32 -330 182 -362 182 -25 0 -33 -7 -54 -47z" id="L_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M1438 6059 c-32 -50 -58 -109 -58 -133 0 -21 10 -31 53 -52 28 -15
+                      99 -53 157 -85 58 -32 122 -65 142 -73 l37 -16 41 73 c45 81 48 97 23 119 -34
+                      30 -315 180 -347 185 -26 4 -35 1 -48 -18z" id="Q_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M3417 6043 c-23 -34 -62 -132 -55 -138 6 -5 255 -143 298 -165 25
+                      -13 60 -26 78 -31 32 -7 33 -6 62 52 18 34 30 74 30 96 0 35 -4 40 -53 67
+                      -137 76 -299 156 -316 156 -10 0 -30 -17 -44 -37z" id="O_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M4276 6008 c-57 -103 -58 -102 102 -190 195 -107 231 -123 251 -111
+                      22 14 81 121 81 148 0 12 -8 29 -17 37 -38 33 -307 170 -343 175 -37 5 -38 5
+                      -74 -59z" id="N_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1960 6009 c-43 -71 -52 -97 -40 -119 5 -10 91 -62 191 -115 l181
+                      -97 29 28 c16 15 29 32 29 38 0 5 7 17 16 27 25 28 22 88 -5 110 -38 31 -327
+                      179 -349 179 -14 0 -31 -17 -52 -51z" id="Q_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4820 5987 c-22 -40 -40 -80 -40 -89 0 -10 17 -28 38 -41 84 -53 262
+                      -149 311 -167 l51 -20 10 26 c6 14 21 40 35 58 14 18 28 46 31 62 5 27 1 33
+                      -33 56 -64 42 -299 168 -332 178 -31 9 -32 8 -71 -63z" id="N_12" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8565 5973 c-13 -11 -39 -55 -76 -131 -24 -50 -28 -66 -19 -77 12
+                      -15 338 -187 377 -199 19 -6 27 3 67 77 63 116 62 133 -17 178 -249 144 -307
+                      171 -332 152z" id="H_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7618 5868 c-67 -123 -72 -144 -38 -168 47 -33 285 -159 313 -166
+                      l27 -6 -2 168 -3 167 -50 27 c-27 15 -72 39 -99 53 -79 43 -84 41 -148 -75z" id="J_01" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 145.97 m2" class="path-hover"></path>
+                                        <path d="M5654 5902 c-157 -282 -296 -542 -300 -559 -4 -13 -4 -29 -1 -36 3
+                      -7 49 -40 103 -72 104 -62 118 -65 208 -47 109 21 190 -34 231 -155 11 -33 26
+                      -46 106 -95 115 -71 156 -84 181 -61 10 9 18 23 18 32 0 21 81 184 96 194 7 4
+                      20 30 29 57 9 28 20 50 24 50 8 0 81 144 81 160 0 6 5 10 11 10 5 0 19 21 30
+                      46 l21 46 -24 25 c-12 13 -61 45 -108 70 -47 25 -193 105 -325 178 -281 155
+                      -300 165 -338 176 -25 7 -30 5 -43 -19z" fill="white" style="stroke-width:8; pointer-events: none;" stroke="black"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M7052 5845 c-50 -103 -51 -101 96 -183 134 -75 233 -122 256 -122 8
+                      0 17 13 21 29 3 16 12 32 20 34 7 3 21 26 30 52 18 45 18 47 -1 65 -36 36
+                      -327 190 -359 190 -28 0 -34 -6 -63 -65z" id="J_03" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M2770 5870 c-26 -36 -59 -110 -60 -131 0 -21 312 -199 361 -206 35
+                      -5 38 -3 64 40 14 26 31 62 36 82 9 32 8 39 -13 56 -35 32 -273 159 -323 174
+                      -44 14 -45 14 -65 -15z" id="O_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6161 5821 c-32 -63 -38 -81 -28 -93 16 -19 334 -195 370 -203 19 -5
+                      27 -3 27 6 0 8 16 34 35 58 51 64 55 90 19 119 -46 37 -336 191 -361 192 -17
+                      0 -30 -17 -62 -79z" id="L_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1330 5850 c-26 -26 -58 -90 -62 -125 -3 -28 4 -33 182 -131 139 -77
+                      189 -100 201 -93 21 11 76 98 85 134 8 34 -7 50 -85 91 -36 18 -109 58 -161
+                      89 -102 60 -129 66 -160 35z" id="Q_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3300 5838 c-45 -74 -63 -116 -57 -131 3 -9 43 -35 89 -58 46 -23
+                      124 -66 175 -96 104 -62 134 -66 161 -18 9 16 23 36 30 44 15 16 32 56 32 75
+                      0 18 -49 49 -218 140 -77 42 -152 76 -166 76 -19 0 -32 -9 -46 -32z" id="O_04" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1855 5816 c-13 -23 -31 -62 -40 -86 -19 -54 -33 -41 170 -155 184
+                      -103 202 -108 238 -65 15 17 27 36 27 42 0 5 7 25 16 44 14 30 15 37 1 57 -15
+                      23 -301 181 -356 197 -29 8 -32 6 -56 -34z" id="Q_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M4738 5833 c-32 -37 -68 -111 -68 -140 0 -27 8 -34 98 -83 53 -30
+                      131 -73 172 -97 41 -24 84 -43 95 -43 19 0 65 47 65 66 0 4 9 27 21 50 l20 43
+                      -23 24 c-23 24 -303 179 -344 191 -13 4 -26 0 -36 -11z" id="N_13" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8982 5718 c-32 -51 -82 -161 -82 -179 0 -9 23 -28 53 -44 28 -16
+                      106 -60 172 -97 66 -37 129 -68 141 -68 22 0 84 84 84 113 0 8 7 17 15 21 8 3
+                      15 12 15 20 0 8 5 16 12 18 8 3 7 12 -3 34 -14 29 -51 52 -268 165 -52 27
+                      -100 49 -107 49 -7 0 -21 -15 -32 -32z" id="H_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8407 5693 c-65 -104 -71 -136 -29 -159 15 -8 94 -53 177 -100 82
+                      -46 159 -84 172 -84 23 0 47 28 82 97 25 50 26 69 6 89 -20 21 -324 180 -357
+                      188 -24 5 -31 1 -51 -31z" id="H_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M4071 5636 c-22 -41 -38 -81 -35 -89 10 -26 356 -210 386 -205 22 3
+                      98 119 98 149 0 25 -28 49 -107 88 -37 19 -107 56 -154 83 -51 28 -99 48 -117
+                      48 -27 0 -34 -7 -71 -74z" id="M_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6962 5673 c-6 -16 -20 -41 -31 -58 -11 -16 -20 -44 -20 -60 -1 -29
+                      6 -34 158 -118 209 -116 214 -118 240 -86 24 29 58 95 65 129 7 28 -14 43
+                      -235 159 -131 69 -159 74 -177 34z" id="J_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2642 5642 c-42 -65 -54 -100 -43 -120 14 -24 320 -193 362 -199 35
+                      -5 37 -4 67 50 39 69 48 103 32 122 -10 12 -68 45 -294 167 -72 39 -87 37
+                      -124 -20z" id="O_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7513 5662 c-16 -16 -39 -50 -52 -75 -37 -69 -30 -78 167 -185 190
+                      -104 219 -111 237 -57 6 17 20 44 33 59 27 34 28 57 5 84 -15 18 -299 180
+                      -348 198 -9 4 -26 -5 -42 -24z" id="J_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1181 5585 c-18 -41 -31 -81 -28 -89 3 -7 65 -45 139 -84 73 -39 157
+                      -83 186 -99 l53 -28 24 30 c13 16 36 51 50 78 25 44 26 50 11 71 -22 34 -326
+                      196 -368 196 -31 0 -35 -4 -67 -75z" id="Q_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3166 5585 c-21 -41 -36 -80 -33 -88 6 -15 337 -198 371 -204 17 -4
+                      29 6 58 49 63 94 64 95 29 128 -16 16 -57 43 -90 60 -33 16 -98 52 -145 80
+                      -56 33 -96 50 -118 50 -31 0 -36 -4 -72 -75z" id="O_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M1740 5593 c-16 -25 -35 -62 -41 -81 -11 -33 -10 -37 14 -56 14 -12
+                      99 -59 187 -105 142 -73 165 -82 186 -72 13 6 24 16 24 23 0 7 12 36 28 65 33
+                      63 28 75 -46 118 -210 122 -272 155 -296 155 -21 0 -33 -10 -56 -47z" id="Q_11" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8300 5509 c0 -6 -16 -37 -35 -68 -22 -38 -32 -65 -29 -79 4 -14 48
+                      -44 138 -95 197 -112 234 -129 254 -118 18 10 66 99 76 142 7 32 -8 43 -211
+                      153 -130 71 -193 92 -193 65z" id="H_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3960 5432 c-27 -46 -40 -78 -36 -90 8 -25 345 -212 383 -212 24 0
+                      83 106 83 148 0 22 -8 36 -27 50 -65 45 -294 163 -326 169 -34 5 -35 4 -77
+                      -65z" id="M_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6856 5478 c-96 -154 -103 -139 119 -260 99 -54 187 -97 195 -96 16
+                      4 77 99 87 137 3 13 1 31 -4 40 -12 19 -317 186 -355 195 -22 5 -30 1 -42 -16z" id="J_07" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8868 5489 c-8 -5 -35 -38 -58 -74 -36 -55 -41 -69 -33 -88 16 -35
+                      371 -223 388 -205 35 37 85 118 85 140 0 32 -10 40 -190 143 -156 89 -171 96
+                      -192 84z" id="H_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M4544 5465 c-26 -27 -74 -120 -74 -145 1 -16 313 -193 362 -205 22
+                      -6 32 -2 52 22 14 15 28 40 31 56 4 15 11 27 16 27 5 0 9 16 9 34 0 43 -21 60
+                      -180 146 -63 34 -126 69 -140 76 -35 19 -47 18 -76 -11z" id="M_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M2526 5421 c-20 -32 -39 -72 -42 -89 -7 -33 -22 -23 273 -174 102
+                      -52 102 -52 124 -33 28 26 69 108 69 139 0 16 -10 32 -27 44 -49 34 -325 172
+                      -343 172 -12 0 -32 -22 -54 -59z" id="O_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7366 5405 c-43 -79 -45 -98 -8 -123 70 -49 327 -183 346 -180 11 2
+                      25 13 31 25 6 12 21 30 34 40 14 11 24 34 28 60 4 34 2 44 -16 60 -41 35 -326
+                      183 -353 183 -22 0 -32 -10 -62 -65z" id="J_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1085 5410 c-36 -71 -33 -89 23 -126 26 -17 105 -70 176 -118 146
+                      -100 140 -100 197 -1 45 79 41 93 -43 140 -210 116 -285 155 -305 155 -17 0
+                      -29 -12 -48 -50z" id="Q_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 115.43 m2" class="path-hover"></path>
+                                        <path d="M3077 5423 c-38 -61 -57 -101 -57 -122 0 -15 38 -41 164 -110 90 -50
+                      177 -96 194 -102 29 -10 34 -8 56 18 14 15 26 33 26 39 0 6 9 23 21 38 27 34
+                      19 67 -24 99 -42 33 -322 177 -341 177 -9 0 -26 -17 -39 -37z" id="O_08" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1606 5357 c-22 -40 -37 -80 -34 -88 7 -18 335 -197 376 -205 27 -6
+                      32 -3 47 30 10 20 21 36 26 36 5 0 9 9 9 19 0 11 5 23 10 26 6 3 10 19 10 35
+                      0 26 -11 35 -132 103 -183 102 -213 117 -245 117 -25 0 -33 -9 -67 -73z" id="Q_12" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8155 5236 c-39 -75 -41 -101 -8 -113 10 -3 25 -12 33 -19 8 -7 77
+                      -47 153 -89 167 -92 178 -93 224 -15 20 32 33 68 33 87 0 29 -6 36 -51 61 -28
+                      15 -105 57 -170 95 -158 88 -165 88 -214 -7z" id="H_07" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M3862 5247 c-42 -82 -52 -106 -46 -121 9 -22 361 -208 382 -202 25 8
+                      82 106 82 142 0 17 -8 38 -17 46 -33 28 -302 170 -338 178 -35 8 -36 7 -63
+                      -43z" id="M_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6750 5283 c0 -5 -18 -37 -40 -71 -57 -87 -54 -91 127 -190 82 -45
+                      166 -88 187 -97 36 -15 38 -15 57 7 27 31 57 96 61 132 3 33 14 25 -222 156
+                      -101 56 -170 82 -170 63z" id="J_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8733 5278 c-26 -34 -73 -128 -73 -146 0 -16 25 -35 108 -82 59 -33
+                      144 -80 190 -102 l84 -42 33 39 c19 22 34 45 35 51 0 6 7 17 15 24 21 18 19
+                      45 -7 74 -24 26 -304 180 -349 191 -16 4 -29 1 -36 -7z" id="H_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M4416 5258 c-32 -50 -69 -137 -64 -150 6 -15 329 -193 370 -203 23
+                      -6 29 -1 62 51 40 64 46 112 19 136 -28 24 -339 188 -357 188 -8 0 -22 -10
+                      -30 -22z" id="M_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2421 5228 c-10 -24 -21 -66 -24 -94 l-6 -50 176 -94 c137 -73 179
+                      -91 192 -83 23 14 72 102 78 139 4 26 0 34 -23 51 -60 41 -326 173 -350 173
+                      -20 0 -29 -9 -43 -42z" id="O_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2952 5192 c-49 -78 -53 -112 -15 -137 14 -10 100 -55 190 -102 182
+                      -93 179 -93 210 -17 10 24 24 44 31 44 7 0 12 14 12 35 0 32 -5 39 -52 69 -71
+                      44 -210 119 -279 149 l-55 25 -42 -66z" id="O_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M7251 5192 c-17 -38 -31 -77 -31 -88 0 -13 19 -29 63 -51 34 -18 114
+                      -62 177 -98 63 -36 124 -65 135 -65 22 1 58 50 69 93 3 15 11 27 16 27 6 0 10
+                      11 10 24 0 32 -30 54 -202 150 -96 53 -147 76 -171 76 -32 0 -36 -3 -66 -68z" id="J_08" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M1537 5217 c-22 -17 -77 -124 -77 -151 0 -18 33 -46 158 -131 160
+                      -110 212 -139 219 -120 2 6 26 44 53 84 28 41 50 82 50 92 0 31 -54 72 -196
+                      150 -152 84 -183 95 -207 76z" id="Q_15" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 143.42 m2" class="path-hover"></path>
+                                        <path d="M5182 5043 c-22 -38 -65 -117 -96 -178 -31 -60 -67 -130 -81 -155
+                      -45 -79 -46 -78 200 -212 121 -66 298 -163 393 -216 202 -110 205 -111 240
+                      -15 12 32 51 108 87 168 80 134 117 211 113 233 -4 19 -56 55 -147 102 -61 32
+                      -66 33 -131 24 -75 -10 -141 -2 -176 21 -34 22 -82 91 -94 135 -13 47 -26 58
+                      -133 114 -119 62 -126 61 -175 -21z" fill="white" style="stroke-width:8; pointer-events: none;" stroke="black"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8041 5020 c-24 -45 -41 -83 -40 -84 2 -2 47 -28 99 -58 158 -92 266
+                      -148 284 -148 19 0 84 97 92 137 4 21 0 33 -18 49 -35 33 -303 174 -340 180
+                      -33 6 -34 5 -77 -76z" id="H_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3767 5068 c-37 -60 -67 -122 -67 -139 0 -18 121 -92 297 -181 80
+                      -40 84 -41 103 -23 10 9 27 37 36 61 9 24 23 44 31 44 16 0 7 47 -14 68 -15
+                      15 -178 109 -263 152 -83 41 -107 45 -123 18z" id="M_07" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M6624 5048 c-9 -18 -20 -35 -24 -38 -8 -5 -30 -76 -30 -97 0 -12 18
+                      -23 205 -128 151 -85 167 -90 193 -62 33 37 63 107 60 140 -3 29 -14 36 -173
+                      124 -93 51 -180 93 -192 93 -15 0 -28 -10 -39 -32z" id="J_11" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8587 5012 c-20 -38 -37 -78 -37 -89 0 -11 19 -30 48 -49 67 -44 277
+                      -154 311 -164 35 -10 42 -3 90 83 30 53 32 60 18 80 -22 34 -304 191 -363 203
+                      -29 6 -32 3 -67 -64z" id="H_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M4280 5003 c-18 -31 -33 -71 -34 -87 -1 -28 5 -34 71 -71 189 -105
+                      286 -155 297 -155 19 0 66 50 66 70 0 10 7 23 15 30 18 15 20 60 3 83 -7 9
+                      -74 48 -148 88 -74 39 -146 78 -160 85 -51 28 -75 19 -110 -43z" id="M_05" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7166 5037 c-32 -50 -69 -136 -64 -149 6 -14 331 -190 373 -202 15
+                      -4 28 5 52 38 18 24 38 56 43 73 20 57 4 72 -162 160 -84 44 -170 85 -191 91
+                      -34 9 -39 8 -51 -11z" id="J_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2838 4982 c-45 -76 -51 -94 -36 -113 20 -24 260 -156 317 -175 l51
+                      -16 28 28 c79 83 90 120 45 152 -53 37 -310 172 -340 178 -28 5 -32 2 -65 -54z" id="O_12" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2413 4989 c8 -61 43 -168 66 -206 22 -35 113 -93 148 -93 34 0 110
+                      132 98 170 -6 19 -243 154 -291 166 -27 7 -27 7 -21 -37z" id="O_14" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 86.92 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M9520 4875 c-36 -25 -86 -60 -112 -78 -26 -17 -48 -39 -48 -47 0 -32
+                      250 -179 338 -199 l42 -9 57 107 c32 58 58 117 58 131 0 21 -15 33 -100 82
+                      -127 73 -147 74 -235 13z" id="F_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7951 4860 c-16 -23 -38 -62 -47 -87 l-18 -46 25 -20 c13 -10 67 -41
+                      119 -68 52 -27 124 -65 159 -84 35 -19 72 -35 82 -35 20 0 75 78 84 122 12 53
+                      -9 73 -174 162 -86 46 -166 87 -178 90 -18 6 -28 -1 -52 -34z" id="H_11" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3645 4848 c-8 -18 -23 -46 -35 -63 -31 -46 -26 -71 21 -100 73 -47
+                      304 -172 326 -177 19 -5 28 3 57 50 44 75 51 107 29 131 -21 22 -273 163 -322
+                      179 -51 18 -61 15 -76 -20z" id="M_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6486 4801 c-20 -39 -36 -79 -36 -89 0 -13 20 -30 63 -52 34 -18 112
+                      -62 174 -97 62 -34 123 -63 135 -63 41 0 114 142 91 177 -16 23 -318 186 -354
+                      190 l-38 5 -35 -71z" id="J_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8475 4810 c-60 -100 -59 -102 80 -182 167 -95 232 -128 251 -128 18
+                      0 64 44 64 61 0 5 9 23 21 38 39 53 26 69 -111 148 -158 90 -223 123 -249 123
+                      -13 0 -31 -19 -56 -60z" id="H_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M4157 4773 c-38 -81 -40 -86 -22 -97 91 -55 353 -196 365 -196 21 0
+                      35 11 51 41 8 15 24 45 37 69 l24 42 -26 27 c-32 33 -302 180 -352 191 l-36 8
+                      -41 -85z" id="M_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7058 4832 c-27 -32 -68 -114 -68 -138 0 -18 18 -33 93 -75 50 -29
+                      137 -74 192 -101 87 -42 101 -47 111 -33 6 8 15 15 20 15 5 0 16 21 23 46 8
+                      25 19 48 26 50 14 6 9 40 -8 61 -13 18 -316 179 -348 187 -18 4 -31 0 -41 -12z" id="J_12" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M2738 4801 c-15 -17 -34 -54 -44 -83 l-17 -52 29 -23 c55 -44 93 -56
+                      158 -50 52 4 198 46 213 60 2 3 0 14 -6 24 -13 25 -228 142 -273 149 -30 5
+                      -38 2 -60 -25z" id="O_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 87.06 m2" class="path-hover"></path>
+                                        <path d="M9870 4738 c-31 -51 -87 -170 -94 -200 -6 -25 1 -30 108 -92 95 -56
+                      235 -126 250 -126 2 0 7 70 11 156 l7 156 -27 28 c-26 27 -155 93 -207 105
+                      -23 6 -30 2 -48 -27z" id="F_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9272 4655 c-18 -30 -36 -70 -39 -88 l-5 -34 133 -75 c252 -142 258
+                      -144 300 -63 15 28 30 64 34 82 6 31 4 34 -47 66 -81 52 -306 167 -326 167
+                      -10 0 -30 -21 -50 -55z" id="F_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7820 4614 c-49 -86 -48 -92 16 -135 43 -29 287 -153 321 -163 19 -6
+                      26 2 58 58 59 105 58 108 -65 178 -106 61 -227 121 -266 132 -17 5 -27 -6 -64
+                      -70z" id="H_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3534 4639 c-29 -47 -48 -89 -58 -132 -6 -27 -4 -29 175 -117 99 -50
+                      187 -90 194 -90 17 0 65 43 65 57 0 6 6 16 14 22 24 20 29 78 9 100 -16 16
+                      -312 181 -355 196 -12 5 -24 -5 -44 -36z" id="M_11" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8358 4596 c-39 -67 -47 -106 -25 -123 6 -6 90 -50 185 -99 193 -99
+                      184 -98 239 -23 40 55 45 111 11 132 -104 64 -310 170 -338 174 -34 5 -36 3
+                      -72 -61z" id="H_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M4083 4638 c-30 -39 -74 -131 -71 -149 2 -15 44 -43 158 -106 85 -47
+                      176 -94 203 -104 43 -18 47 -18 47 -2 0 9 12 34 26 55 15 21 29 57 31 80 l5
+                      43 -154 86 c-84 48 -163 92 -175 98 -29 15 -58 14 -70 -1z" id="M_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M6911 4565 c-23 -41 -41 -80 -41 -87 0 -7 22 -25 48 -39 26 -14 109
+                      -61 185 -103 123 -70 142 -77 163 -67 14 6 27 19 31 28 3 10 12 25 19 34 8 8
+                      18 36 23 62 8 46 8 47 -28 70 -90 61 -309 177 -333 177 -22 0 -32 -11 -67 -75z" id="J_13" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4912 4543 c-32 -49 -52 -95 -52 -116 0 -7 28 -27 63 -46 34 -18 115
+                      -62 179 -98 72 -40 126 -63 140 -61 16 2 34 22 60 68 21 36 38 72 38 82 0 9
+                      -12 25 -27 36 -56 38 -310 172 -340 178 -27 5 -32 2 -61 -43z" id="K_02" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6301 4464 c-17 -27 -36 -66 -43 -88 -11 -34 -10 -39 7 -50 112 -66
+                      327 -179 351 -183 29 -5 33 -1 67 53 38 64 51 103 40 120 -13 17 -328 184
+                      -361 190 -28 6 -33 2 -61 -42z" id="I_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+
+                                        <path d="M9163 4458 c-43 -69 -58 -115 -44 -132 7 -9 70 -45 139 -82 70 -36
+                      146 -80 170 -96 54 -37 78 -30 117 36 35 61 46 101 32 120 -21 28 -333 196
+                      -364 196 -16 0 -31 -13 -50 -42z" id="F_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7705 4409 c-50 -95 -46 -106 57 -159 46 -24 118 -63 160 -87 42 -24
+                      90 -48 107 -53 27 -7 32 -5 54 28 43 66 59 103 53 127 -5 18 -41 43 -139 98
+                      -172 97 -212 117 -235 117 -14 0 -30 -21 -57 -71z" id="H_15" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9687 4402 c-21 -43 -37 -83 -37 -89 0 -13 111 -79 255 -150 145 -73
+                      140 -72 166 -21 12 24 30 49 40 56 23 16 24 50 4 79 -23 33 -337 202 -376 203
+                      -10 0 -29 -28 -52 -78z" id="F_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8241 4386 c-26 -46 -40 -83 -37 -94 6 -17 273 -169 360 -203 l40
+                      -16 33 50 c33 51 50 105 40 129 -6 17 -329 197 -366 204 -27 6 -31 2 -70 -70z" id="H_13" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3406 4398 c-47 -72 -52 -93 -27 -114 47 -40 337 -194 361 -192 19 2
+                      32 17 57 63 41 77 41 98 0 129 -38 29 -289 151 -329 160 -25 6 -31 1 -62 -46z" id="M_14" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M3942 4386 c-42 -71 -49 -106 -25 -128 28 -25 335 -186 362 -190 20
+                      -2 28 5 46 38 12 22 29 52 38 65 37 53 21 71 -158 170 -122 67 -192 99 -219
+                      99 -6 0 -26 -24 -44 -54z" id="M_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4783 4306 c-28 -58 -35 -80 -27 -93 15 -24 335 -195 368 -197 25 -1
+                      33 6 62 59 36 65 41 90 20 117 -18 24 -312 179 -352 185 -33 5 -33 4 -71 -71z" id="K_03" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5339 4313 c-35 -57 -56 -120 -43 -132 17 -17 308 -175 343 -187 34
+                      -12 37 -11 63 17 15 16 32 45 39 64 7 19 17 35 21 35 16 0 7 36 -15 56 -41 38
+                      -334 194 -365 194 -7 0 -26 -21 -43 -47z" id="K_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+
+
+
+                                        <path
+                                          d="m 6181.195 4223.494 c -38.014 -31.311 688.677 -530.831 324 -190 c 49 -23 45.197 -129.37 87 3 c -6 -18 12.517 -90.47 -9 -34 c -84.201 -122.228 58.171 -148.125 116.446 -193.298 c 99 -56 178 -94 202 -97 c 38 -5 68.681 -57.869 110.58 39.678 c 42 65 45 95 14 124 c -35 32 -309 182 -345 189 c -30 6 -33 4 -50 -32 c -18 -39 -33 -57 -42 -49 c 32 71 28 77 -203.111 126.36 c 22.48 219.239 298.1 -284.21 110.855 -139.164 z"
+                                          id="I_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+
+                                        <path
+                                          d="M 6176 4226 H 6176 c 27 27 34 18 -7 -17 c -6 -18 -10 -33 -9 -34 c -58 -84 19 -88 143 -149 c 99 -56 178 -94 202 -97 c 38 -5 39 -4 74 50 c 42 65 61 85 14 124 c -55 20 -309 182 -345 189 c -30 6 -33 4 -50 -32 c -18 -39 -33 -57 -42 -49 z"
+                                          id="I_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+
+
+                                        <path d="M9051 4252 c-17 -26 -37 -64 -45 -84 l-16 -37 43 -29 c58 -40 339
+                      -182 360 -182 17 0 62 76 77 132 12 41 -9 60 -147 134 -178 94 -179 94 -212
+                      104 -28 8 -32 5 -60 -38z" id="F_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6711 4208 c-36 -64 -43 -96 -26 -116 14 -17 364 -192 379 -190 13 2
+                      29 19 41 45 12 24 26 48 33 55 7 7 12 27 12 45 0 38 -4 42 -213 157 -75 42
+                      -148 76 -162 76 -20 0 -32 -13 -64 -72z" id="I_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M7596 4211 c-46 -80 -52 -103 -29 -122 30 -25 241 -139 257 -139 9 0
+                      16 -4 16 -10 0 -11 72 -50 94 -50 17 0 75 98 86 146 7 30 5 36 -19 53 -63 45
+                      -305 173 -335 178 -32 5 -35 3 -70 -56z" id="H_18" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9577 4200 c-21 -38 -37 -78 -37 -88 0 -15 44 -43 177 -116 98 -53
+                      187 -96 198 -95 22 0 81 74 98 122 9 27 7 33 -14 51 -44 38 -335 196 -361 196
+                      -21 0 -31 -12 -61 -70z" id="F_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3329 4253 c-16 -4 -22 -13 -67 -107 -19 -38 -21 -50 -11 -62 13 -16
+                      236 -144 314 -181 28 -12 57 -23 66 -23 23 0 91 138 83 168 -4 15 -25 32 -58
+                      49 -28 14 -97 52 -153 85 -103 60 -145 77 -174 71z" id="M_15" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8167 4233 c-8 -10 -29 -47 -46 -82 -23 -49 -28 -68 -19 -78 12 -15
+                      237 -140 321 -178 62 -29 78 -26 98 20 16 32 36 66 48 78 16 16 13 42 -6 59
+                      -22 19 -330 184 -359 192 -13 4 -26 0 -37 -11z" id="H_16" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M3848 4209 c-31 -49 -58 -109 -58 -132 0 -21 23 -37 169 -116 93 -51
+                      179 -95 191 -98 28 -7 56 20 87 85 39 83 37 87 -149 187 -185 99 -217 109
+                      -240 74z" id="M_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M11882 4177 c-22 -28 -102 -189 -102 -207 0 -12 15 -29 38 -43 69
+                      -44 147 -85 174 -91 25 -6 28 -3 57 73 17 43 35 101 41 127 11 47 10 50 -15
+                      69 -31 26 -121 71 -156 79 -16 3 -31 1 -37 -7z" id="B_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M4707 4150 c-6 -16 -17 -30 -23 -30 -12 0 -40 -65 -46 -104 -2 -15
+                      32 -38 177 -118 99 -54 189 -97 200 -96 23 4 73 81 85 133 7 29 5 40 -9 54
+                      -19 19 -344 191 -362 191 -6 0 -16 -13 -22 -30z" id="K_06" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M5213 4088 c-49 -99 -49 -101 -6 -130 86 -56 322 -178 344 -178 18 1
+                      33 15 62 59 41 63 46 100 20 123 -23 19 -201 118 -284 158 -91 43 -99 41 -136
+                      -32z" id="K_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6065 4024 c-26 -41 -45 -82 -43 -92 2 -10 61 -49 153 -100 180 -99
+                      229 -119 248 -103 26 21 79 138 73 158 -6 19 -278 173 -352 200 l-33 12 -46
+                      -75z" id="I_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8947 4053 c-58 -91 -69 -131 -44 -151 27 -23 275 -156 322 -173 l50
+                      -18 28 32 c35 39 67 100 67 125 0 10 -8 26 -17 34 -21 18 -328 175 -360 183
+                      -18 5 -27 -1 -46 -32z" id="F_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9497 4042 c-25 -28 -67 -113 -67 -137 0 -17 32 -40 169 -118 94 -53
+                      181 -97 194 -97 28 0 57 29 88 89 34 66 22 79 -161 181 -177 99 -200 107 -223
+                      82z" id="F_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3196 4023 c-42 -76 -57 -115 -51 -134 4 -11 31 -34 61 -50 30 -17
+                      57 -36 62 -43 4 -6 48 -37 97 -69 50 -31 96 -62 103 -67 29 -25 56 -6 94 65
+                      63 121 64 115 -44 178 -122 72 -246 135 -280 143 -21 5 -29 1 -42 -23z" id="M_18" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 131.85 m2" class="path-hover"></path>
+                                        <path d="M8017 3971 c-21 -39 -37 -81 -35 -93 2 -17 42 -43 172 -114 93 -51
+                      180 -94 193 -97 19 -3 27 3 45 34 12 22 25 39 30 39 4 0 8 5 8 12 0 6 7 19 15
+                      29 10 10 14 26 10 42 -5 19 -41 44 -171 116 -91 51 -179 95 -197 98 -31 5 -33
+                      2 -70 -66z" id="H_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3738 4003 c-25 -28 -79 -143 -68 -143 5 0 10 -6 10 -12 0 -14 276
+                      -164 343 -187 39 -13 41 -13 64 13 13 15 23 34 23 42 0 9 7 22 16 31 9 10 14
+                      29 12 51 -3 35 -6 37 -173 129 -93 51 -179 93 -191 93 -11 0 -28 -8 -36 -17z" id="M_16" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M4563 3903 c-55 -117 -65 -99 116 -202 179 -102 206 -114 231 -106
+                      24 8 80 116 80 154 0 28 -6 34 -69 65 -38 20 -113 60 -166 91 -54 31 -112 59
+                      -129 62 -30 5 -32 3 -63 -64z" id="K_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5096 3871 c-47 -90 -47 -104 4 -121 22 -7 40 -17 40 -21 0 -4 51
+                      -34 113 -67 61 -33 126 -67 143 -77 39 -24 81 -14 90 20 3 14 10 25 16 25 5 0
+                      16 16 24 36 30 72 -2 100 -271 238 -103 53 -115 50 -159 -33z" id="K_05" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M11721 3888 c-54 -100 -61 -116 -56 -130 8 -22 189 -128 229 -135 31
+                      -5 36 -2 52 28 10 19 23 58 30 87 l12 52 -31 24 c-18 13 -45 31 -62 41 -16 10
+                      -46 28 -65 41 -19 12 -46 25 -60 29 -22 5 -28 0 -49 -37z" id="B_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M7394 3837 c-20 -42 -34 -83 -32 -93 2 -9 56 -48 123 -86 160 -93
+                      238 -130 259 -122 26 10 88 129 84 161 -3 24 -19 36 -128 96 -144 78 -204 106
+                      -242 114 -26 5 -30 1 -64 -70z" id="G_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5976 3868 c-8 -13 -27 -49 -42 -81 l-28 -57 24 -25 c38 -36 337
+                      -197 362 -193 26 4 88 110 88 150 0 32 -13 42 -205 145 -157 85 -179 92 -199
+                      61z" id="I_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8809 3795 c-23 -47 -39 -88 -37 -90 5 -5 108 -62 263 -145 129 -69
+                      130 -69 176 15 21 39 39 78 39 87 0 10 -19 29 -41 44 -67 42 -327 174 -343
+                      174 -9 0 -32 -35 -57 -85z" id="F_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6512 3833 c-48 -68 -78 -153 -54 -153 5 0 62 -32 128 -72 120 -71
+                      215 -117 245 -118 9 0 19 9 22 20 3 11 11 20 19 20 14 1 58 85 58 111 0 9 -8
+                      23 -17 31 -33 28 -339 188 -361 188 -11 0 -29 -12 -40 -27z" id="I_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M9362 3794 c-24 -36 -44 -78 -45 -92 -2 -28 -11 -23 261 -169 121
+                      -65 144 -66 163 -3 7 22 18 40 25 40 14 0 24 22 24 54 0 32 -29 55 -155 124
+                      -60 33 -130 71 -155 86 -25 14 -52 26 -60 26 -8 0 -34 -30 -58 -66z" id="F_09" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M3587 3730 c-49 -95 -57 -130 -32 -130 8 0 22 -8 32 -18 23 -24 219
+                      -156 256 -173 15 -7 27 -16 27 -21 0 -4 14 -8 31 -8 26 0 33 6 51 46 11 26 35
+                      67 54 91 40 52 43 82 12 110 -33 29 -318 181 -354 189 -30 6 -31 4 -77 -86z" id="M_17" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 159.85 m2" class="path-hover"></path>
+                                        <path d="M4510 3725 c-5 -14 -10 -88 -10 -164 0 -130 1 -139 23 -158 27 -25
+                      192 -113 212 -113 19 0 59 55 81 110 10 25 28 60 41 79 49 72 33 90 -167 194
+                      -161 84 -167 86 -180 52z" id="K_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 151.43 m2" class="path-hover"></path>
+                                        <path d="M5016 3717 c-56 -89 -66 -110 -66 -134 0 -25 11 -34 88 -76 48 -26
+                      133 -70 190 -98 115 -57 111 -58 164 19 33 48 39 93 16 116 -8 7 -34 24 -59
+                      36 -24 13 -89 49 -144 80 -55 32 -117 62 -138 68 -34 9 -39 8 -51 -11z" id="K_08" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M11593 3648 c-38 -75 -43 -92 -35 -105 9 -13 124 -84 203 -123 58
+                      -30 62 -30 80 -14 20 18 59 113 59 145 0 11 -8 28 -17 38 -32 33 -200 121
+                      -230 121 -25 0 -32 -7 -60 -62z" id="B_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7306 3678 c-8 -13 -27 -49 -42 -80 -23 -47 -25 -59 -15 -72 12 -14
+                      68 -46 279 -157 69 -37 122 -50 122 -30 0 4 14 25 30 46 23 29 30 48 30 80 0
+                      23 -6 47 -12 53 -7 5 -62 36 -123 67 -252 132 -245 129 -269 93z" id="G_03" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5832 3598 l-43 -83 21 -17 c11 -9 60 -38 108 -64 48 -26 112 -61
+                      142 -79 30 -18 72 -38 92 -43 35 -10 39 -8 57 16 29 43 61 109 61 130 0 10 -8
+                      26 -17 34 -29 25 -320 178 -350 184 -26 5 -30 1 -71 -78z" id="I_10" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M7818 3595 c-38 -75 -41 -86 -28 -99 15 -14 381 -206 393 -206 4 0 7
+                      8 7 19 0 10 9 30 20 44 11 14 20 31 20 38 0 7 7 20 16 30 34 37 12 60 -137
+                      144 -137 77 -211 113 -236 114 -6 1 -31 -37 -55 -84z" id="G_01" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M8697 3597 c-20 -39 -37 -79 -37 -88 0 -14 59 -51 281 -173 99 -54
+                      109 -51 157 42 l40 77 -22 22 c-18 19 -108 71 -295 170 -71 37 -81 33 -124
+                      -50z" id="F_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6397 3628 c-30 -39 -57 -102 -57 -132 0 -25 -6 -21 194 -131 142
+                      -77 206 -101 206 -76 0 6 11 22 25 37 28 30 49 95 40 123 -3 10 -47 39 -98 66
+                      -50 26 -126 67 -167 91 -107 60 -114 61 -143 22z" id="I_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M9256 3618 c-9 -18 -26 -49 -37 -68 -34 -61 -24 -79 72 -137 182
+                      -109 264 -153 286 -153 13 0 23 4 23 9 0 5 16 32 35 61 44 66 47 110 8 138
+                      -55 38 -309 170 -338 177 -27 5 -33 2 -49 -27z" id="F_12" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M4851 3420 c-88 -155 -89 -152 39 -222 111 -61 134 -67 166 -43 10 8
+                      27 15 36 15 9 0 23 8 30 19 7 10 23 21 36 25 12 4 22 12 22 17 0 5 7 9 15 9 9
+                      0 36 19 60 41 34 31 42 45 35 54 -17 21 -336 195 -357 195 -14 0 -36 -30 -82
+                      -110z" id="K_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 151.14 m2" class="path-hover"></path>
+                                        <path d="M7190 3454 c-11 -25 -27 -52 -35 -60 -24 -24 -30 -64 -12 -81 9 -9
+                      93 -58 189 -109 l172 -93 23 21 c28 27 73 114 73 144 0 17 -30 38 -165 113
+                      -91 51 -179 96 -196 101 -29 9 -31 7 -49 -36z" id="G_06" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M11475 3439 c-19 -33 -35 -73 -35 -88 0 -25 8 -32 82 -66 45 -21 89
+                      -46 98 -55 25 -25 106 -53 132 -47 19 5 28 21 47 88 l25 82 -27 21 c-50 40
+                      -224 126 -255 126 -27 0 -35 -7 -67 -61z" id="B_04" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M10036 3427 c-19 -34 -36 -75 -38 -91 -3 -32 -14 -25 231 -160 143
+                      -79 150 -80 189 -19 45 70 54 100 40 123 -14 22 -260 161 -336 190 l-51 20
+                      -35 -63z" id="C_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M5758 3453 c-23 -26 -68 -119 -68 -140 0 -22 311 -201 363 -210 33
+                      -5 36 -3 65 48 52 92 56 107 28 132 -32 29 -305 175 -342 183 -21 4 -34 1 -46
+                      -13z" id="I_11" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7731 3442 c-27 -39 -60 -112 -61 -134 0 -20 69 -63 248 -153 l133
+                      -66 36 37 c55 59 70 126 36 156 -26 23 -313 176 -344 183 -22 5 -30 1 -48 -23z" id="G_04" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M6261 3381 c-56 -105 -57 -104 137 -209 92 -49 177 -93 188 -96 17
+                      -5 29 2 53 33 17 21 31 43 31 49 0 5 7 15 15 22 22 18 18 53 -7 77 -43 38
+                      -323 183 -355 183 -27 0 -34 -7 -62 -59z" id="I_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M9127 3377 c-20 -34 -37 -76 -39 -91 -3 -27 3 -32 92 -78 52 -27 132
+                      -72 178 -99 90 -54 128 -60 147 -23 6 12 24 40 40 63 l28 42 -20 26 c-30 41
+                      -340 223 -380 223 -6 0 -27 -28 -46 -63z" id="F_13" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8544 3303 c-6 -5 -23 -31 -37 -60 -15 -28 -31 -54 -37 -58 -5 -3
+                      -10 -17 -10 -30 0 -27 18 -38 225 -143 77 -39 150 -73 163 -74 19 -3 29 7 54
+                      54 16 32 31 72 32 90 1 31 -3 34 -165 124 -168 94 -205 110 -225 97z" id="E_02" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M11365 3237 c-39 -67 -49 -96 -38 -113 11 -16 282 -161 315 -168 25
+                      -6 28 -2 57 68 39 95 39 111 -1 136 -68 42 -233 123 -264 130 -31 7 -34 6 -69
+                      -53z" id="B_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7077 3253 c-41 -61 -60 -109 -53 -134 4 -18 47 -47 172 -118 91 -52
+                      178 -97 193 -99 23 -3 30 4 64 66 58 109 60 106 -105 200 -117 66 -228 122
+                      -242 122 -2 0 -15 -17 -29 -37z" id="G_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M9936 3238 c-41 -72 -59 -115 -53 -131 5 -15 325 -194 362 -203 25
+                      -6 43 12 79 81 36 69 34 90 -13 119 -83 53 -317 176 -333 176 -10 0 -28 -18
+                      -42 -42z" id="C_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M5606 3182 c-21 -44 -36 -84 -33 -89 4 -6 85 -54 182 -108 134 -74
+                      181 -96 199 -91 27 7 75 82 83 132 4 27 0 35 -28 57 -56 42 -294 168 -330 173
+                      -34 6 -34 5 -73 -74z" id="I_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7625 3235 c-15 -14 -38 -50 -52 -81 -30 -66 -27 -72 61 -116 34 -17
+                      112 -59 173 -94 62 -35 119 -64 126 -64 18 0 57 42 57 62 0 9 6 18 14 21 7 3
+                      16 22 19 42 8 49 -9 65 -153 147 -207 117 -210 118 -245 83z" id="G_05" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+
+                                        <path d="M10453 3180 c-18 -38 -33 -77 -33 -87 0 -18 64 -58 265 -163 111 -59
+                      145 -68 145 -41 0 10 7 24 15 31 8 7 25 32 37 57 l22 45 -34 28 c-34 28 -181
+                      116 -289 172 -81 42 -90 39 -128 -42z" id="C_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+
+                                        <path
+                                          d="M 10193 3702 c -35 -54 -44 -79 -78 -137 c -50 -86 174 -160 258 -192 c 189 -116 221 -126 246 -143 c 112 -78 220 -131 288 -167 l 41 43 l 673 1259 c -34 28 -167 111 -304 191 c -99 41 -192 108 -517 272 z"
+                                          id="C_05" fill="white" stroke="black" style="stroke-width:8; pointer-events: none;"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+
+                                        <!-- <text x="5100" y="4750" fill="black" style="font-size: 10rem;">MERCADO</text> -->
+                                        <text x="5100" y="4750" fill="black" class="f1">HOLA</text>
+
+
+
+                                        <path d="M6156 3179 c-64 -108 -65 -107 61 -177 169 -94 272 -144 291 -140 10
+                      2 23 20 30 43 7 22 19 46 27 55 25 28 28 66 6 86 -24 23 -319 181 -353 189
+                      -22 6 -29 -1 -62 -56z" id="I_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8406 3069 c-9 -19 -25 -50 -36 -69 -40 -68 -34 -74 165 -182 99 -54
+                      186 -97 194 -96 20 4 101 126 101 153 0 12 -8 29 -17 37 -35 29 -322 177 -357
+                      183 -32 7 -36 5 -50 -26z" id="E_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M11286 3075 c-8 -8 -18 -25 -22 -37 -4 -13 -18 -40 -32 -60 -22 -35
+                      -23 -40 -10 -60 16 -23 327 -208 351 -208 8 0 27 40 46 96 31 91 31 97 15 115
+                      -9 10 -21 19 -25 19 -5 0 -68 34 -141 75 -73 41 -140 75 -149 75 -10 0 -24 -7
+                      -33 -15z" id="B_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8936 3015 c-47 -85 -47 -108 2 -138 128 -81 314 -177 343 -177 9 0
+                      24 18 35 42 10 23 30 55 43 71 18 21 22 33 15 44 -9 15 -276 175 -329 198 -72
+                      30 -70 31 -109 -40z" id="E_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6970 3057 c0 -7 -13 -34 -30 -60 -51 -80 -45 -93 68 -156 289 -161
+                      277 -158 325 -88 67 97 62 114 -52 172 -36 18 -106 59 -156 89 -89 56 -155 74
+                      -155 43z" id="G_10" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M9811 3012 c-19 -32 -34 -72 -35 -92 -1 -34 -1 -35 154 -122 172 -97
+                      214 -115 233 -100 7 6 27 40 46 76 42 83 37 99 -50 146 -35 18 -111 60 -169
+                      92 -57 32 -114 58 -125 58 -14 0 -31 -18 -54 -58z" id="C_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M5500 2984 c-63 -114 -67 -107 128 -209 92 -48 180 -88 197 -88 25
+                      -2 35 6 62 46 18 27 35 65 39 85 6 31 4 38 -16 51 -52 36 -323 179 -345 184
+                      -22 4 -29 -4 -65 -69z" id="I_15" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7506 3028 c-37 -56 -69 -141 -59 -157 10 -15 249 -144 336 -180 l48
+                      -20 11 24 c6 14 17 25 25 25 7 0 13 10 13 23 0 12 9 30 20 40 23 19 25 45 7
+                      67 -13 18 -223 140 -302 176 -63 30 -81 30 -99 2z" id="G_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M10372 3032 c-30 -30 -75 -128 -68 -150 4 -12 69 -53 174 -109 92
+                      -49 176 -93 186 -97 20 -7 66 17 66 35 0 6 11 24 25 41 29 34 33 79 9 103 -9
+                      8 -35 25 -58 37 -22 11 -90 49 -151 83 -133 77 -156 84 -183 57z" id="C_04" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6062 3003 c-35 -50 -63 -114 -60 -136 2 -15 44 -43 167 -110 90 -49
+                      177 -91 195 -94 29 -4 34 -1 69 49 44 65 47 95 10 130 -34 31 -321 188 -345
+                      188 -9 0 -25 -12 -36 -27z" id="I_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8284 2838 c-16 -29 -34 -67 -41 -85 l-12 -32 57 -34 c175 -105 279
+                      -160 311 -164 35 -4 37 -3 67 49 40 69 49 111 26 130 -14 12 -178 105 -302
+                      170 -56 30 -73 24 -106 -34z" id="E_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M11137 2819 c-48 -81 -47 -102 1 -133 93 -59 324 -177 339 -174 22 4
+                      48 50 64 110 12 42 11 49 -5 67 -24 27 -296 179 -332 187 -27 5 -32 1 -67 -57z" id="B_07" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6825 2788 c-19 -40 -35 -78 -35 -85 0 -13 233 -148 274 -159 14 -3
+                      30 -13 34 -21 5 -8 26 -18 48 -23 46 -11 49 -8 96 88 27 54 29 65 17 77 -8 8
+                      -86 55 -174 105 -112 63 -169 90 -192 90 -32 0 -36 -4 -68 -72z" id="G_11" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8837 2828 c-49 -67 -57 -83 -57 -114 0 -31 5 -35 162 -119 89 -48
+                      178 -89 197 -92 33 -3 38 -1 64 40 15 25 27 49 27 55 0 5 6 15 14 22 30 24 -3
+                      58 -118 124 -229 131 -250 137 -289 84z" id="E_04" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M10262 2828 c-25 -33 -73 -134 -70 -152 3 -21 128 -97 228 -141 25
+                      -11 48 -25 53 -31 4 -7 27 -20 52 -29 l44 -17 31 30 c16 17 30 35 30 42 0 6
+                      10 24 22 41 38 50 18 70 -177 176 -94 51 -177 93 -186 93 -9 0 -21 -6 -27 -12z" id="C_01" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M5378 2760 c-21 -39 -35 -77 -32 -84 6 -16 326 -191 365 -200 22 -5
+                      30 0 51 32 13 20 32 57 42 81 16 40 16 45 0 62 -26 29 -329 179 -361 179 -26
+                      0 -33 -8 -65 -70z" id="I_18" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M7366 2772 c-40 -66 -44 -92 -18 -114 24 -21 290 -162 331 -176 39
+                      -14 46 -11 67 31 9 18 28 44 42 60 22 23 24 31 16 54 -7 22 -40 44 -169 111
+                      -88 46 -176 86 -196 89 -35 5 -37 4 -73 -55z" id="G_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M5947 2788 c-32 -43 -54 -87 -58 -117 -4 -27 -14 -21 233 -160 110
+                      -62 130 -70 152 -61 15 5 31 21 36 35 5 14 19 38 31 54 36 49 24 78 -51 124
+                      -90 56 -287 157 -304 157 -8 0 -26 -15 -39 -32z" id="I_16" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M9610 2643 c-62 -113 -67 -104 139 -215 99 -54 187 -98 196 -98 19 0
+                      83 98 91 140 9 41 -5 54 -115 110 -53 26 -125 64 -159 84 -93 52 -113 49 -152
+                      -21z" id="D_02" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8183 2653 c-10 -21 -28 -51 -40 -66 -29 -36 -29 -72 0 -91 79 -52
+                      335 -186 353 -186 28 0 84 84 91 138 6 48 5 49 -197 154 -192 100 -186 98
+                      -207 51z" id="E_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+
+                                        <path d="M11015 2590 c-24 -50 -35 -83 -30 -89 9 -8 73 -44 292 -163 40 -22
+                      82 -38 94 -36 15 2 33 22 55 63 39 69 41 86 17 115 -28 33 -325 190 -359 190
+                      -28 0 -33 -7 -69 -80z" id="B_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+
+
+                                        <path
+                                          d="
+                                        M 10920 2432 c -24 -50 -35 -83 -58 -143 c 9 -8 73 -44 292 -163 c 40 -22 82 -38 94 -36 c 15 2 33 22 55 63 c 39 69 41 86 17 115 c -28 33 -325 190 -359 190 c -28 0 -33 -7 -69 -80 z"
+                                          id="B_09" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+
+
+                                        <path d="M6711 2579 c-34 -67 -39 -85 -29 -95 28 -26 360 -205 376 -202 21 4
+                      71 85 82 133 7 32 5 40 -15 59 -36 33 -305 177 -341 183 -31 5 -32 4 -73 -78z" id="G_14" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8706 2601 c-20 -32 -38 -72 -41 -87 -5 -28 -1 -32 107 -94 137 -79
+                      256 -140 272 -140 10 0 26 21 78 99 40 60 14 92 -141 172 -53 27 -120 63 -150
+                      79 -30 17 -62 30 -72 30 -11 0 -31 -22 -53 -59z" id="E_05" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M5271 2565 c-23 -41 -41 -85 -41 -97 0 -19 31 -46 162 -138 88 -62
+                      172 -115 185 -118 19 -4 26 3 43 39 22 47 34 68 62 110 9 15 18 39 20 54 3 26
+                      -6 33 -147 112 -133 76 -211 113 -235 113 -5 0 -27 -34 -49 -75z" id="I_19" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 148.23 m2" class="path-hover"></path>
+                                        <path d="M7276 2608 c-32 -52 -56 -104 -56 -124 0 -25 39 -51 215 -145 156
+                      -82 167 -85 196 -45 63 83 75 136 37 159 -101 61 -330 177 -351 177 -17 0 -32
+                      -9 -41 -22z" id="G_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M5822 2571 c-16 -25 -35 -64 -42 -85 -11 -35 -11 -41 6 -53 39 -29
+                      307 -175 345 -188 l40 -15 15 33 c8 17 23 46 34 62 11 17 23 36 26 43 13 27
+                      -15 58 -87 98 -41 22 -111 62 -156 88 -45 26 -97 51 -117 56 -35 8 -36 6 -64
+                      -39z" id="I_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M9489 2423 c-23 -42 -38 -81 -35 -91 3 -10 87 -62 187 -116 140 -76
+                      185 -97 198 -89 21 13 80 101 88 132 3 13 1 31 -4 40 -13 21 -329 188 -366
+                      193 -25 4 -30 -2 -68 -69z" id="D_03" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M10040 2418 c-68 -108 -70 -106 142 -222 172 -95 182 -99 206 -85 14
+                      8 30 23 36 34 5 11 18 32 28 47 25 38 23 84 -4 102 -71 46 -335 186 -350 186
+                      -11 0 -33 -24 -58 -62z" id="D_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8046 2407 c-46 -83 -46 -101 2 -130 71 -46 297 -165 323 -172 22 -6
+                      31 -1 53 27 29 39 56 99 56 125 0 31 -293 201 -361 210 -35 5 -37 4 -73 -60z" id="E_10" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6604 2387 c-19 -39 -34 -81 -34 -94 0 -23 45 -51 277 -175 l94 -50
+                      22 20 c12 12 35 46 50 76 42 82 35 90 -157 193 -87 47 -172 89 -188 94 -29 8
+                      -30 6 -64 -64z" id="G_15" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M8591 2395 c-18 -32 -35 -72 -37 -89 -5 -31 -4 -31 153 -118 241
+                      -131 221 -124 249 -97 30 28 64 98 64 131 0 16 -10 34 -24 45 -39 31 -310 172
+                      -343 179 -28 6 -32 2 -62 -51z" id="E_08" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7146 2368 c-21 -34 -40 -73 -43 -88 -4 -23 0 -29 33 -45 21 -10 43
+                      -22 48 -27 29 -25 271 -148 291 -148 41 0 112 102 101 146 -4 13 -21 34 -39
+                      47 -43 33 -320 177 -339 177 -9 0 -32 -28 -52 -62z" id="G_13" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2"
+                                          class="path-hover">
+                                        </path>
+                                        <path d="M5728 2393 c-33 -36 -98 -169 -98 -199 0 -29 9 -37 105 -102 57 -39
+                      114 -73 125 -77 11 -3 20 -11 20 -16 0 -5 16 -17 35 -26 19 -9 35 -20 35 -25
+                      0 -4 16 -8 35 -8 29 0 36 4 41 26 4 15 13 34 21 43 24 26 93 149 93 164 0 19
+                      -47 65 -85 84 -16 8 -82 44 -145 79 -136 75 -160 82 -182 57z" id="I_20" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 176.28 m2" class="path-hover"></path>
+                                        <path d="M9380 2210 c-22 -44 -40 -83 -40 -87 0 -12 202 -140 272 -173 95 -44
+                      116 -43 150 5 32 46 53 107 45 128 -9 24 -301 187 -359 201 -26 6 -30 2 -68
+                      -74z" id="D_06" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7932 2196 c-19 -35 -32 -75 -30 -88 2 -18 29 -37 118 -86 152 -85
+                      245 -132 257 -132 14 0 62 74 79 123 13 36 13 42 -3 60 -10 10 -43 32 -73 47
+                      -30 15 -95 51 -145 80 -54 31 -106 54 -130 57 l-40 5 -33 -66z" id="E_11" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9915 2188 c-19 -40 -35 -79 -35 -88 0 -20 392 -232 405 -218 17 17
+                      72 153 68 168 -7 26 -29 41 -200 133 -90 49 -152 77 -172 77 -29 0 -34 -5 -66
+                      -72z" id="D_04" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8507 2228 c-35 -31 -80 -123 -73 -146 6 -18 264 -167 345 -199 39
+                      -15 41 -15 65 8 14 13 26 31 26 40 0 9 9 28 20 42 25 31 25 52 3 76 -21 20
+                      -307 185 -340 195 -14 5 -29 0 -46 -16z" id="E_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M6546 2200 c-13 -69 1 -190 24 -190 4 0 13 -24 20 -52 11 -51 42 -98
+                      65 -98 7 0 20 -9 30 -20 9 -10 37 -27 62 -36 42 -17 45 -16 63 2 27 28 110
+                      194 110 221 0 26 -16 37 -185 131 -60 33 -126 63 -146 67 -35 6 -36 5 -43 -25z" id="G_18" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 133.14 m2" class="path-hover"></path>
+                                        <path d="M7064 2208 c-27 -34 -74 -128 -74 -146 0 -21 53 -54 260 -165 117
+                      -62 125 -64 154 -33 31 34 62 142 46 161 -18 21 -315 184 -348 191 -18 4 -32
+                      1 -38 -8z" id="G_16" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 130.00 m2" class="path-hover"></path>
+                                        <path d="M10721 2032 c-17 -38 -31 -78 -31 -89 0 -15 33 -39 143 -101 78 -44
+                      164 -91 190 -104 48 -23 49 -23 63 -3 9 11 18 32 21 47 3 15 14 35 24 44 24
+                      21 24 57 2 85 -10 11 -56 41 -103 65 -47 24 -118 62 -159 84 -104 56 -111 55
+                      -150 -28z" id="A_01" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9261 2012 c-39 -86 -39 -102 2 -126 145 -84 286 -160 317 -171 l38
+                      -13 30 48 c16 26 35 64 42 84 10 32 10 40 -5 57 -25 27 -341 189 -369 189 -19
+                      0 -29 -13 -55 -68z" id="D_07" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7842 2026 c-7 -19 -24 -50 -37 -70 -33 -48 -31 -60 8 -89 39 -30
+                      331 -187 346 -187 16 0 67 75 87 125 15 39 15 46 1 59 -23 23 -353 196 -374
+                      196 -12 0 -23 -12 -31 -34z" id="E_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9806 1989 c-20 -40 -36 -80 -36 -89 0 -22 8 -27 217 -139 162 -87
+                      193 -98 193 -68 0 7 16 37 35 67 41 64 43 82 11 108 -35 27 -326 179 -358 186
+                      -25 6 -29 1 -62 -65z" id="D_05" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8380 2000 c-7 -16 -16 -30 -20 -30 -11 0 -40 -64 -40 -88 0 -16 29
+                      -37 123 -90 146 -83 260 -142 275 -142 6 0 13 14 17 30 4 17 18 43 31 57 20
+                      21 24 36 22 67 -3 39 -6 43 -68 77 -36 20 -110 62 -166 93 -118 66 -155 72
+                      -174 26z" id="E_12" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M6906 1894 c-36 -58 -66 -110 -66 -115 0 -21 191 -99 244 -99 46 0
+                      109 24 189 71 44 26 67 46 65 56 -3 16 -322 192 -349 193 -10 0 -42 -40 -83
+                      -106z" id="G_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 133.10 m2" class="path-hover"></path>
+                                        <path d="M10619 1848 c-19 -29 -41 -69 -48 -88 -14 -42 -21 -37 149 -130 199
+                      -109 215 -115 245 -102 14 7 25 20 25 31 0 11 11 33 25 49 31 37 32 72 3 99
+                      -37 32 -302 182 -334 189 -26 5 -32 1 -65 -48z" id="A_02" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9174 1848 c-3 -12 -20 -43 -36 -70 -19 -31 -27 -55 -23 -68 3 -11
+                      36 -36 73 -56 37 -20 113 -63 169 -95 56 -33 113 -59 126 -59 27 0 46 19 72
+                      70 29 56 34 93 16 111 -9 8 -86 54 -172 102 -167 93 -212 106 -225 65z" id="D_10" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7712 1791 c-61 -99 -58 -113 30 -157 40 -20 101 -54 135 -76 63 -40
+                      150 -78 177 -78 17 0 71 92 80 136 5 22 2 34 -11 46 -21 19 -245 141 -319 174
+                      l-51 22 -41 -67z" id="E_15" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9695 1789 c-20 -34 -39 -74 -42 -89 -5 -27 0 -31 88 -79 52 -28 141
+                      -75 198 -104 97 -49 105 -51 115 -33 6 10 26 38 44 61 33 46 40 79 19 106 -26
+                      33 -344 199 -382 199 -2 0 -20 -28 -40 -61z" id="D_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8246 1761 c-20 -39 -36 -79 -36 -88 0 -13 33 -36 108 -78 59 -32
+                      142 -78 184 -102 62 -36 81 -42 96 -34 32 17 71 69 83 112 12 37 11 42 -12 64
+                      -36 35 -312 185 -353 192 -34 5 -35 5 -70 -66z" id="E_13" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M10512 1670 c-10 -11 -31 -47 -47 -80 -29 -60 -29 -61 -9 -79 42 -41
+                      349 -201 384 -201 4 0 24 24 44 54 30 42 37 61 34 91 -3 34 -8 41 -63 72 -140
+                      81 -295 163 -309 163 -8 0 -24 -9 -34 -20z" id="A_03" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9040 1603 c-35 -66 -43 -93 -33 -109 21 -30 353 -207 380 -202 22 4
+                      82 113 83 148 0 31 -31 53 -206 149 -167 91 -181 92 -224 14z" id="D_11" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7619 1613 c-6 -15 -14 -30 -18 -33 -21 -13 -49 -83 -42 -103 9 -23
+                      341 -207 373 -207 21 0 73 76 87 127 8 28 6 37 -12 57 -27 29 -328 186 -357
+                      186 -13 0 -24 -10 -31 -27z" id="E_18" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9575 1567 c-44 -83 -42 -101 9 -122 19 -8 36 -19 38 -23 4 -11 203
+                      -119 263 -143 l40 -16 32 35 c18 20 33 43 33 51 0 8 7 22 15 31 20 23 6 61
+                      -32 87 -93 64 -312 173 -347 173 -7 0 -30 -33 -51 -73z" id="D_09" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8145 1568 c-34 -61 -59 -117 -54 -122 6 -6 227 -129 306 -171 l73
+                      -39 27 21 c16 11 35 38 43 59 8 21 20 45 27 52 33 34 22 43 -200 166 -182 101
+                      -184 101 -222 34z" id="E_16" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M10370 1408 c-22 -40 -40 -79 -40 -86 0 -12 85 -72 104 -72 5 0 17
+                      -6 25 -14 21 -19 252 -136 269 -136 7 0 23 24 36 54 13 29 29 57 35 60 22 14
+                      12 64 -17 85 -44 31 -339 181 -356 181 -9 0 -33 -32 -56 -72z" id="A_04" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8931 1395 c-63 -97 -63 -99 54 -167 227 -132 266 -151 289 -140 25
+                      11 86 119 86 151 0 24 -17 35 -197 135 -67 37 -138 71 -156 76 -34 7 -35 6
+                      -76 -55z" id="D_14" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7497 1378 c-15 -29 -29 -67 -33 -84 -6 -29 -3 -33 68 -76 119 -74
+                      251 -146 279 -153 24 -6 30 -1 63 53 23 39 36 72 36 95 0 35 -1 36 -117 98
+                      -274 146 -258 142 -296 67z" id="E_19" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9488 1408 c-31 -48 -58 -108 -58 -131 0 -19 21 -35 128 -94 146 -82
+                      230 -123 254 -123 18 0 58 50 58 73 0 8 7 20 15 27 8 7 15 27 15 44 0 24 -7
+                      36 -33 52 -65 43 -325 174 -345 174 -11 0 -26 -10 -34 -22z" id="D_12" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M8053 1398 c-26 -34 -73 -128 -73 -146 0 -16 33 -38 159 -106 189
+                      -102 234 -122 239 -107 2 6 19 29 37 51 46 56 54 96 24 126 -33 32 -329 194
+                      -355 194 -12 0 -26 -6 -31 -12z" id="E_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M10258 1201 c-21 -38 -38 -77 -38 -88 0 -14 34 -38 128 -90 168 -94
+                      227 -123 250 -123 20 0 52 31 70 70 7 14 17 33 24 42 9 12 9 25 3 44 -8 22
+                      -45 46 -180 120 -93 52 -181 94 -195 94 -21 0 -31 -12 -62 -69z" id="A_05" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8810 1169 c-33 -67 -39 -85 -28 -95 28 -27 338 -194 361 -194 28 0
+                      46 18 81 85 29 55 32 78 14 93 -25 20 -334 181 -360 187 -25 6 -29 2 -68 -76z" id="D_15" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7390 1178 c-13 -24 -36 -62 -52 -85 -15 -23 -28 -51 -28 -62 0 -14
+                      35 -44 123 -105 67 -47 135 -97 151 -111 35 -33 70 -49 89 -42 16 6 100 151
+                      117 201 15 47 4 65 -67 105 -294 166 -295 167 -333 99z" id="E_22" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9358 1163 c-60 -99 -60 -102 32 -157 106 -63 287 -156 303 -156 15
+                      0 97 121 97 145 0 9 -10 26 -22 39 -33 33 -320 186 -350 186 -20 0 -33 -12
+                      -60 -57z" id="D_13" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M7943 1197 c-6 -7 -24 -37 -41 -68 -54 -95 -56 -93 136 -197 223
+                      -121 212 -118 245 -77 15 19 27 40 27 48 0 8 8 21 19 31 22 20 17 57 -13 84
+                      -21 20 -260 148 -328 176 -28 12 -38 13 -45 3z" id="E_20" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M10180 1051 c0 -5 -16 -32 -35 -61 -20 -30 -35 -64 -35 -81 0 -25 8
+                      -32 63 -60 34 -17 91 -49 127 -70 96 -56 121 -59 162 -17 19 18 49 45 67 59
+                      28 22 32 29 23 46 -10 17 -185 125 -289 177 -35 17 -83 21 -83 7z" id="A_06" fill="white" stroke="black"
+                                          style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8730 989 c-7 -28 -13 -74 -14 -102 l-1 -51 60 -34 c33 -19 107 -59
+                      163 -89 118 -61 114 -62 162 22 34 60 37 88 13 114 -40 39 -327 191 -363 191
+                      -5 0 -13 -23 -20 -51z" id="D_18" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9254 979 c-14 -23 -33 -63 -42 -87 -18 -54 -26 -47 138 -134 63 -34
+                      137 -74 164 -90 62 -37 85 -34 111 17 11 22 26 44 33 48 6 4 12 27 12 51 l0
+                      43 -163 90 c-90 50 -177 94 -195 97 -28 7 -33 4 -58 -35z" id="D_16" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M7792 923 c-57 -98 -82 -150 -82 -169 0 -15 66 -81 94 -94 34 -15
+                      112 -66 118 -76 4 -6 21 -17 38 -24 16 -7 30 -16 30 -21 0 -5 7 -9 15 -9 7 0
+                      18 -7 23 -16 5 -10 19 -14 37 -12 22 2 33 14 57 58 16 30 38 64 48 75 24 25
+                      59 103 60 131 0 11 -11 31 -24 43 -34 32 -324 181 -352 181 -18 0 -31 -14 -62
+                      -67z" id="E_21" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M10055 837 c-28 -43 -67 -138 -62 -151 3 -7 53 -39 111 -70 98 -52
+                      156 -69 156 -46 0 6 6 10 14 10 15 0 76 53 76 66 0 4 7 15 15 24 9 10 13 24
+                      10 31 -8 21 -215 137 -264 148 -37 8 -43 7 -56 -12z" id="A_07" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9138 769 c-29 -55 -46 -99 -47 -121 -1 -11 47 -43 154 -102 85 -47
+                      170 -92 189 -100 32 -13 35 -13 53 7 31 36 63 86 63 97 0 5 5 10 10 10 18 0
+                      10 36 -12 57 -13 11 -43 31 -68 43 -25 13 -91 49 -148 82 -57 33 -119 62 -137
+                      65 -31 5 -35 2 -57 -38z" id="D_17" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M8714 785 c-12 -29 7 -168 32 -245 27 -80 91 -183 117 -188 10 -2 26
+                      13 43 40 16 24 37 53 48 65 18 22 66 143 66 169 0 12 -28 29 -213 128 -74 41
+                      -88 45 -93 31z" id="D_19" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9932 602 c-17 -26 -42 -72 -56 -102 -14 -30 -48 -93 -76 -140 -83
+                      -144 -127 -250 -102 -250 40 0 202 87 237 127 11 13 26 23 33 23 7 0 12 5 12
+                      10 0 14 146 160 159 160 6 0 11 6 11 14 0 8 9 18 20 21 29 9 37 51 14 77 -21
+                      22 -153 91 -195 101 -24 6 -31 1 -57 -41z" id="A_08" fill="white" stroke="black" style="stroke-width:8"
+                                          data-toggle="tooltip" data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover">
+                                        </path>
+                                        <path d="M9014 533 c-21 -38 -55 -98 -76 -135 -40 -71 -45 -94 -25 -121 20
+                      -27 119 -97 138 -97 12 0 40 40 88 124 115 200 116 217 19 265 -91 46 -100 43
+                      -144 -36z" id="D_20" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                                        <path d="M9185 343 c-44 -82 -80 -159 -80 -173 0 -19 10 -30 44 -47 24 -12 63
+                      -25 88 -29 39 -6 47 -3 73 22 16 16 30 34 30 40 0 6 8 22 18 35 10 13 29 51
+                      42 84 13 33 30 65 37 71 7 6 13 19 13 28 0 35 -86 95 -155 110 -30 6 -31 5
+                      -110 -141z" id="D_21" fill="white" stroke="black" style="stroke-width:8" data-toggle="tooltip"
+                                          data-bs-original-title="PRECIO: 10000 dolares AREA: 120M2" class="path-hover"></path>
+                </g>
+              </svg>
+
+            </div>
+            <div class="border-top border-bottom p-4" style="background-color: #99A3A4;">
+              <strong style="font-size: x-large;">AUTOPISTA PUNO - MOQUEGUA</strong>
+            </div>
+            
+          </center>
+          <!-- FIN LOTES EN SVG -->
+
+          <hr>
+          <div class="row">
+            <div class="col-2 mt-2">
+              <span>Lotes Seleccionados: </span>
+            </div>
+
+            <div class="col-7 mt-2" id="idSeleccionado"></div>
+
+            <div class="col d-flex justify-content-end">
+              <button type="button" id="next-btn-1" class="btn btn-primary mt-2" disabled="">Siguiente</button>
+            </div>
+          </div>
+
+
+        </div>
+      </fieldset>
+
+      <!-- PASO 2 -->
+      <fieldset id="step2" style="display: none;">
+        <div class="card-header p-4">
+          <h3>Paso 2: Completa tus datos</h3>
+        </div>
+
+        <div class="row px-5 mx-5 my-3">
+          <div class="col-4 p-4">
+            <h5>Datos de la separación</h5>
+            <hr>
+            <h6><strong>Terrenos : </strong><span id="terrenos-seleccionados" class="p-2"></span></h6>
+            <h6><strong>Cantidad :</strong><span id="cant_id" class="px-2"></span></h6>
+            <h6><strong>Total $ :</strong><span>aqui</span></h6>
+          </div>
+
+          <div class="col-8 p-4">
+            <h5>Completa tus datos</h5>
+            <hr>
+            
+            <div class="row d-flex border border-2 border-bottom-0">
+              <div class="my-3">
+                <label for="{{ form.apellidos.id_for_label }}">
+                  <h6>{{ form.apellidos.label }}:</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.apellidos }}</div>
+                </div>
+              </div>
+
+              <div class="my-3">
+                <label for="{{ form.nombres.id_for_label }}">
+                  <h6>{{ form.nombres.label }}:</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.nombres }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row d-flex border border-2 border-top-0 border-bottom-0 pt-3">
+              <div class="col mb-3">
+                <label for="{{ form.dni.id_for_label }}">
+                  <h6>{{ form.dni.label }}</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.dni }}</div>
+                </div>
+              </div>
+
+              <div class="col mb-3">
+                <label for="{{ form.telefono.id_for_label }}">
+                  <h6>{{ form.telefono.label }}</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.telefono }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row d-flex border border-2 border-top-0 border-bottom-0">
+              {% comment %}correo y direccion{% endcomment %}
+              <div class="my-3">
+                <label for="{{ form.email.id_for_label }}">
+                  <h6>{{ form.email.label }}:</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.email }}</div>
+                </div>
+              </div>
+
+              <div class="my-3">
+                <label for="{{ form.direccion.id_for_label }}">
+                  <h6>{{ form.direccion.label }}</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div class="">{{ form.direccion }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row d-flex border border-2 border-top-0">
+              <div class="my-3">
+                  <label for="{{ form.terrenos.id_for_label }}">
+                      <h6>{{ form.terrenos.label }}:</h6>
+                  </label>
+                  <div class="row d-flex justify-content-center">
+                    <div>
+                      <input type="text" class="selec form-control" id="{{ form.terrenos.auto_id }}" name="{{ form.terrenos.html_name }}" readonly style="width: 100%;">
+                    </div>
+                  </div>
+              </div>
+            </div>
+          
+
+          </div>
+
+          <div class="d-flex justify-content-end">
+            <button type="button" id="prev-btn-2" class="btn btn-danger mx-2">Anterior</button>
+            <button type="submit" id="next-btn-2" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Paso 3 -->
+      <fieldset id="step3" style="display: none;">
+        <h2>Paso 3: Información adicional</h2>
+        <h1>gracias por su compra</h1>
+      </fieldset>
+    </div>
+  </form>
+
+
+  <hr>
+
+  <!-- Seleccionar ID de los path -->
+  <script>
+    // Lista de IDs seleccionados
+    var idsSeleccionados = [];
+
+    // Obtener todos los elementos <path>
+    var paths = document.querySelectorAll('svg path');
+    var idSeleccionado = document.getElementById('idSeleccionado');
+
+    const terrenosSeleccionados = document.getElementById('terrenos-seleccionados');
+    const canTerrenos = document.getElementById('cant_id');
+
+    const button = document.getElementById('next-btn-1');
+
+    // Obtener el contenedor donde se agregarán los elementos input
+    var elemento = document.querySelector(".selec");
+
+    // Función para actualizar el contenido del div con los IDs seleccionados
+    function actualizarDiv() {
+      idSeleccionado.textContent = idsSeleccionados.join(', ');
+      terrenosSeleccionados.textContent = idsSeleccionados.join(', ');
+      canTerrenos.textContent = idsSeleccionados.length
+      elemento.value = idsSeleccionados.join(', '); // Reemplaza "O_01" con el valor deseado
+
+
+    }
+
+    // Agregar un event listener a cada <path>
+    paths.forEach(function (path) {
+      path.addEventListener('click', function (event) {
+        var pathId = event.target.id;
+        var index = idsSeleccionados.indexOf(pathId);
+        if (index === -1) {
+          idsSeleccionados.push(pathId);
+          event.target.setAttribute('fill', 'green');
+
+        } else {
+          idsSeleccionados.splice(index, 1);
+          event.target.setAttribute('fill', 'white');
+        }
+
+        // Actualizar el contenido del div
+        if (idsSeleccionados.length > 0) {
+          button.disabled = false;
+        } else {
+          button.disabled = true;
+        }
+        actualizarDiv();
+      });
+    });
+  </script>
+
+  <!-- Descripcion del terreno -->
+  <script>
+    $(document).ready(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+  <!-- Form wizard, formulario con pasos -->
+  <script>
+    const form = document.getElementById('form')
+    const steps = document.querySelectorAll('fieldset')
+    const nextBtns = document.querySelectorAll('button[type="button"][id^="next-btn"]')
+    const prevBtns = document.querySelectorAll('button[type="button"][id^="prev-btn"]')
+
+    let currentStep = 0
+
+    function showStep(n) {
+      steps[currentStep].style.display = 'none'
+      steps[n].style.display = 'block'
+      currentStep = n
+    }
+
+    function nextStep() {
+      if (currentStep < steps.length - 1) {
+        showStep(currentStep + 1)
+      }
+    }
+
+    function prevStep() {
+      if (currentStep > 0) {
+        showStep(currentStep - 1)
+      }
+    }
+
+    nextBtns.forEach((btn) => btn.addEventListener('click', nextStep))
+    prevBtns.forEach((btn) => btn.addEventListener('click', prevStep))
+
+    console.log(form);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
+      // Procesar los datos del formulario
+      console.log(new FormData(form))
+    })
+
+    showStep(currentStep)
+  </script>
+
+
+  <!-- Colorear los terrenos separados -->
+  {% block script %}
+  <script>
+      var pathsColorear = document.querySelectorAll('svg path');
+      var ids = [];
+  
+      pathsColorear.forEach(function(path) {
+          var id = path.getAttribute('id');
+          ids.push(id);
+      });
+      
+      {% for terreno in terrenos %}
+        var terrenoSplit = "{{ terreno }}".split(','); // Separar los elementos por coma
+        terrenoSplit.forEach(function(element) {
+          var trimmedElement = element.trim();
+          console.log(trimmedElement); // Imprimir cada elemento del terreno
+          if (ids.includes(trimmedElement)) {
+            var pathEncontrado = document.getElementById(trimmedElement);
+            if (pathEncontrado) { // Verificar si se encontró el elemento
+              pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
+              pathEncontrado.style.pointerEvents = "none"; // Desactivar el cursor
+            } else {
+              console.log("¡Path no encontrado!"); // Manejar el caso donde no se encuentra el elemento
+            }
+          }
+        });
+      {% endfor %}
+  </script>
+{% endblock %}
+
+
+</body>
+
+
+</html>

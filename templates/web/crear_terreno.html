@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load tags_extras %}
+
+
+{% block content %}
+
+<div class="page-wrapper">
+
+    <!-- empieza accesos directos -->
+
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Lista de Compras en la Web</h3>
+            </div>
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="">Panel</a></li>
+                    <li class="breadcrumb-item">Compras Web</li>
+                </ol>
+            </div>
+
+        </div>
+        <div>
+            hola mundo
+        </div>
+    </div>
+
+
+    <a id="add" href="{% url 'web:separarLote' %}" data-toggle="tooltip" data-placement="left"
+        title="Crear nuevo proyecto" class="btn btn-info btn-circle fa fa-plus"></a>
+
+
+
+    <style>
+        .img-activo {
+            margin-left: -10px;
+            border: 2px solid #72BE53;
+        }
+
+        .img-desactivado {
+            margin-left: -10px;
+            border: 2px solid #BE5653;
+        }
+
+        #add {
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            animation: scale 1.2s infinite;
+
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#users').DataTable({
+                "language": {
+                    "lengthMenu": "Mostar _MENU_ documentos",
+                    "zeroRecords": "Sin coincidencias",
+                    "info": "Pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "Sin registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "search": "Buscar"
+                },
+
+                "ordering": false,
+                "info": false,
+                "paging": false,
+            });
+        });
+
+
+    </script>
+
+    <!-- termina accesos directos -->
+
+
+
+    <a href="" style="text-decoration: none;">
+        <footer class="footer">© Link-P</footer>
+    </a>
+
+
+
+
+</div>
+
+
+
+{% endblock content %}

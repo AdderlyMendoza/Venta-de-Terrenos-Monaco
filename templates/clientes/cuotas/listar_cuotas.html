@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <h1>Listado de Cuotas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Forma de Pago</th>
+                <th>Venta</th>
+                <th>Precio de Venta</th>
+                <th>Cuota Inicial</th>
+                <th>Número de Cuotas</th>
+                <th>Cuota Mínima</th>
+                <th>Cuotas Pendientes</th>
+                <th>Porcentaje Inicial</th>
+                <th>Saldo Pendiente</th>
+                <th>Fecha de Pago</th>
+                <th>Fecha de Vencimiento</th>
+                <th>Estado de Pagada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cuota in cuotas %}
+                <tr>
+                    <td>{{ cuota.forma_pago }}</td>
+                    <td>{{ cuota.venta }}</td>
+                    <td>{{ cuota.precio_venta }}</td>
+                    <td>{{ cuota.cuota_inicial }}</td>
+                    <td>{{ cuota.cuota_numero }}</td>
+                    <td>{{ cuota.min_cuota }}</td>
+                    <td>{{ cuota.cuotas_pendientes }}</td>
+                    <td>{{ cuota.porcentaje_inicial }}</td>
+                    <td>{{ cuota.saldo_pendiente }}</td>
+                    <td>{{ cuota.fecha_pago }}</td>
+                    <td>{{ cuota.fecha_vencimiento }}</td>
+                    <td>{{ cuota.pagada }}</td>
+                    <td>
+                        <a href="{% url 'clientes:view_cuotas' cuota.id %}" title="Ver Detalles"><i class="fas fa-eye"></i></a>
+                        <a href="{% url 'clientes:crear_cuota' %}" title="Crear Cuotas"><i class="fas fa-plus"></i></a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

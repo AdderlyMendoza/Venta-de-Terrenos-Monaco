@@ -1,0 +1,160 @@
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="page-wrapper">
+
+    <div class="container-fluid">
+
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h3 class="text-themecolor">Lista de Empleados</h3>
+            </div>
+
+            <div class="col-md-7 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Inicio</a></li>
+                    <li class="breadcrumb-item"><a
+                            href="">Panel</a>
+                    </li>
+                    <li class="breadcrumb-item">Lista</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body row">
+                        <div class="col-12 justify-content-center">
+        
+                            <div class="row d-flex justify-content-center">
+        
+                                <div>
+                
+                                    <h4 class="card-title"><span class="lstick m-r-20"></span><b>Lista de Empleados</b></h4>
+                                    <h6 class="card-subtitle"></span>ver lista</h6>
+                                </div>
+        
+                            </div>
+
+                            <hr>
+        
+                            
+                            <table id="users" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
+                                <thead>
+                                    <tr>
+                                        <th>Estado</th>
+                                        <th>Cargo</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido Paterno</th>
+                                        <th>Apellido Materno</th>
+                                        <th>Documento</th>
+                                        <th>Celular</th>
+                                        <th>Acciones</th>
+                                       
+                                    </tr>
+                                </thead>
+                                
+                                <tbody style="font-size: 14px; font-weight: 400;">
+                                    {% for emp in empleados %}
+                                    <tr>
+                                    
+                                        {% if emp.estado == "ACTIVO" %}
+    
+                                        <td style="color: rgb(0, 0, 255)"><b>{{emp.estado}}</b>
+                                        </td>
+    
+                                         {% else %}
+    
+                                        <td style="color: rgb(237, 30, 11)"><b>{{emp.estado}}</b>
+                                        </td>
+
+                                         {% endif %}     
+
+                                        <td>{{ emp.cargo }}</td>
+                                        <td>{{ emp.nombres }}</td>
+                                        <td>{{ emp.ap_paterno }}</td>
+                                        <td>{{ emp.ap_materno }}</td>
+                                        <td>{{ emp.documento }}</td>
+                                        <td>{{ emp.celular }}</td>
+            
+                                        <td>
+                                                       
+                                            <a href="{% url 'rrhh:actualizar_empleado' emp.pk  %}">
+                                                <i class="fa fa-edit" style="color: blue;"></i>
+                                            </a> 
+
+                                            <a href="{% url 'rrhh:eliminar_empleado' emp.pk %}">
+                                                <i class="fa fa-trash" style="color: red; margin-left: 5px;"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+
+                                </tbody>
+                               
+                            </table>
+                    
+                            
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .img-activo {
+                margin-left: -10px;
+                border: 2px solid #72BE53;
+            }
+    
+            .img-desactivado {
+                margin-left: -10px;
+                border: 2px solid #BE5653;
+            }
+    
+            #add {
+                position: fixed;
+                bottom: 60px;
+                right: 20px;
+                animation: scale 1.2s infinite;
+            }
+        </style>
+    
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    
+        <script>
+            $(document).ready(function () {
+                $('#users').DataTable({
+                    "language": {
+                        "lengthMenu": "Mostar _MENU_ documentos",
+                        "zeroRecords": "Sin coincidencias",
+                        "info": "Pagina _PAGE_ de _PAGES_",
+                        "infoEmpty": "Sin registros disponibles",
+                        "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                        "search": "Buscar"
+                    },
+    
+                    "ordering": false,
+                    "info": false,
+                    "paging": false,
+                });
+            });
+        </script>
+    </div>
+
+    <a id="add" href="{% url 'rrhh:crear_empleado' %}" data-toggle="tooltip" data-placement="left" title="Agregar nuevo empleado" class="btn btn-info btn-circle fa fa-plus"></a>
+
+
+    <!-- Termina accesos directos -->
+
+    <a href="" style="text-decoration: none;">
+        <footer class="footer">© Link-P</footer>
+    </a>
+    </div>
+</div>
+
+
+{% endblock %}

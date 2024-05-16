@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<!-- 
+    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass 
+    .\venv\Scripts\activate
+    cd mona...
+    python manage.py runserver
+
+    // SOLUCIONANDO MIGRACIONS
+    python manage.py migrate web zero
+    python manage.py migrate
+-->
+
+<body class="h-screen flex flex-col justify-between">
+    <header class=" bg-cyan-950 text-2xl text-white flex justify-center p-4">
+        SEPARA TU TERRENO
+    </header>
+
+    <main class="h-full grid grid-cols-3">
+
+        <div class="text-black bg-gray-100 m-10 col-span-1">
+            <img src="https://th.bing.com/th/id/R.70b60f0a8bead46916dc7b9089176270?rik=ALn%2fy%2f0qoRQcOg&riu=http%3a%2f%2fsignificadosdelossuenos.net%2fwp-content%2fuploads%2f2017%2f01%2fSo%c3%b1ar-con-edificios-sin-f%c3%adn-de-significados.jpg&ehk=j%2fC3Zsot0mdjj%2bzv2fGVxNbp9oHvjn%2bkdFb8qqPVb0Y%3d&risl=&pid=ImgRaw&r=0"
+                alt="" class="h-[7rem] rounded-full mt-10 mx-auto">
+            <p class="text-2xl text-cyan-800 font-semibold px-20 mt-10">Inmobiliaria MONACO</p>
+            <hr class="border-cyan-900 border-2 mx-10 my-2">
+            <p class="text-md px-10 pt-5 text-justify">Empresa líder del sector inmobiliario en el norte del país que
+                tiene más de catorce años aportando al
+                desarrollo urbanístico ordenado en la ciudad de Piura. Ofrecemos un concepto diferente en el cual
+                valoramos la arborización y cuidamos que nuestros proyectos cuenten con grandes parques, jardines,
+                espacios amplios y zonas de esparcimiento contribuyendo a mejorar la calidad de vida de miles de
+                familias. A la fecha se han desarrollado seis importantes proyectos contando ya con más de 6500
+                clientes que han cumplido el anhelado sueño de la casa propia en nuestras urbanizaciones.
+
+            </p>
+        </div>
+
+        <div id="content1" class="col-span-2 p-10 bg-gray-200 m-10">
+            <h1>hola { } </h1>
+        </div>
+
+
+    </main>
+    <div>
+
+    </div>
+    <script>
+        var datos = {
+            "terrenos": [
+                {
+                    "id": 1,
+                    "metros2": "180 m2",
+                    "precio": "$ 11,950"
+                },
+                {
+                    "id": 2,
+                    "metros2": "280 m2",
+                    "precio": "$ 11,950"
+                },
+                {
+                    "id": 3,
+                    "metros2": "200 m2",
+                    "precio": "$ 11,950"
+                }
+                ,
+                {
+                    "id": 4,
+                    "metros2": "120 m2",
+                    "precio": "$ 11,950"
+                }
+                ,
+                {
+                    "id": 5,
+                    "metros2": "100 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 6,
+                    "metros2": "70 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 7,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 8,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 9,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 10,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 11,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 12,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 13,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 14,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 15,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 16,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 17,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 18,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+                ,
+                {
+                    "id": 19,
+                    "metros2": "120 m2",
+                    "precio": "$ 10,950"
+                }
+            ]
+        };
+
+        var contentDiv = document.getElementById("content1"); // obtener div
+
+        var ulPrimer = document.createElement("ul");
+        ulPrimer.classList.add("flex", "px-[3.67rem]");
+
+        var ulSegundo = document.createElement("ul");
+        ulSegundo.classList.add("flex");
+
+        datos.terrenos.forEach(function (terrenos) {
+            var ilPrimero = document.createElement("li");
+            if (terrenos.id <= 9) {
+                contentDiv.appendChild(ulPrimer);
+                if (terrenos.id == 1) {
+                    ilPrimero.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]" style="clip-path: polygon(68% 0, 100% 0, 100% 100%, 0% 100%);">' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulPrimer.appendChild(ilPrimero);
+                }
+
+                if (terrenos.id == 9) {
+                    ilPrimero.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]" style="clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);">' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulPrimer.appendChild(ilPrimero);
+                }
+
+                if (terrenos.id == 2 || terrenos.id == 3 || terrenos.id == 4 || terrenos.id == 5 || terrenos.id == 6 || terrenos.id == 7 || terrenos.id == 8) {
+                    ilPrimero.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]">' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulPrimer.appendChild(ilPrimero);
+                }
+            }
+
+            var ilSegundo = document.createElement("li");
+
+            if (terrenos.id > 9) {
+                contentDiv.appendChild(ulSegundo);
+
+                if (terrenos.id == 10) {
+                    ilSegundo.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]" style="clip-path: polygon(68% 0, 100% 0, 100% 100%, 0% 100%);">' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulSegundo.appendChild(ilSegundo);
+                }
+
+                if (terrenos.id == 18) {
+                    ilSegundo.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]" style="clip-path: polygon(0 0, 100% 0, 34% 100%, 0% 100%);">' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulSegundo.appendChild(ilSegundo);
+                }
+
+                if (terrenos.id == 11 || terrenos.id == 12 || terrenos.id == 13 || terrenos.id == 14 || terrenos.id == 15 || terrenos.id == 16 || terrenos.id == 17) {
+                    ilSegundo.innerHTML =
+                        '<input type="checkbox" id="' + terrenos.id + '" class="hidden peer" required="">' +
+                        '<label for="' + terrenos.id + '" class="inline-flex items-center p-3 text-black bg-white border-2 cursor-pointer peer-checked:bg-green-500 hover:text-gray-900 hover:bg-green-300 peer-checked:text-gray-600 h-[7rem] w-[5.4rem]" >' +
+                        '<div class="">' +
+                        '<div class="text-[13px] font-semibold flex justify-center">' + terrenos.metros2 + '</div>' +
+                        '<div class="text-[11px] pt-1">' + terrenos.precio + '</div>' +
+                        '</div>' +
+                        '</label>'
+                    ulSegundo.appendChild(ilSegundo);
+                }
+
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load tags_extras %}
+
+
+    {% block content %}
+
+    
+    <div class="page-wrapper">
+  
+
+  
+
+        <!-- empieza accesos directos -->
+
+        <div class="container-fluid r-aside">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Editar Proyecto</h3>
+                </div>
+        
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'usuarios:home' %}">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'proyectos:proyectos' %}">Panel</a></li>
+                        <li class="breadcrumb-item">Editar</li>
+                    </ol>
+                </div>
+            </div>
+        
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body row">
+                            <div class="col-12 justify-content-center">
+        
+                                <div class="row d-flex justify-content-center">
+                                    <div class="col col-md-12 col-lg-10">
+                                        <div class="row">
+                                            <div class="col bg-light border rounded p-3">
+
+                                                <form role="form" enctype="multipart/form-data" action="" method="POST" id="upload-image-form" class="p-4">
+                                                    {% csrf_token %}
+                                                    <h4 class="mb-3">Editar Proyecto</h4>
+                                                    <hr>
+
+                                                    
+                                                
+                                                    <div class="row d-flex">
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.estado.id_for_label }}">
+                                                                <h6>{{ form.estado.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.estado }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.nombre.id_for_label }}">
+                                                                <h6>{{ form.nombre.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.nombre }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.lugar.id_for_label }}">
+                                                                <h6>{{ form.lugar.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.lugar }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.direccion.id_for_label }}">
+                                                                <h6>{{ form.direccion.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.direccion }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.tipo.id_for_label }}">
+                                                                <h6>{{ form.tipo.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.tipo }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.precio_compra.id_for_label }}">
+                                                                <h6>{{ form.precio_compra.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.precio_compra }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.precio_venta.id_for_label }}">
+                                                                <h6>{{ form.precio_venta.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.precio_venta }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.observacion.id_for_label }}">
+                                                                <h6>{{ form.observacion.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="">
+                                                                    {{ form.observacion }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                
+                                                
+                                                    <div class="row d-flex justify-content-center mt-3">
+                                                        <div class="col text-center">
+                                                            <button type="submit" class="btn btn-primary" name="crear-proyecto">Actualizar</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                
+        
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- termina accesos directos -->
+
+      
+
+        <a href="" style="text-decoration: none;">
+          <footer class="footer">© Link-P</footer>
+        </a>
+  
+      
+  
+  
+    </div>
+
+
+  
+{% endblock content %}
+
+<script src="{% static 'js/jquery-3.5.1.js' %}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  
+            const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3100,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+              }
+            })
+          
+            Toast.fire({
+           
+              imageHeight: 100,
+              title: '{{mensaje}}, 
+          
+            })
+       
+</script>
+
+
+
+

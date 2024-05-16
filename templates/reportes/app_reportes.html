@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% load tags_extras %}
+
+
+{% block content %}
+
+    
+<div class="page-wrapper">
+
+    <div class="container-fluid r-aside">
+        <div class="row page-titles">
+            <div class="col-md-5 col-lg-5 align-self-center">
+                <h3 class="text-themecolor">reportes General</h3>
+            </div>
+    
+            <div class="col-md-7 col-lg-4 align-self-center">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">Inicio</a></li>
+                    <li class="breadcrumb-item">Panel</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-xlg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Reporte Clientes</h6>
+                        </div>
+        
+                        <div>
+                            <img src="" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+        
+                        
+        
+                        <a href="{% url 'clientes:clientes' %}"><button class="btn btn-info">
+                                Ingresar</button></a>
+         
+                        
+        
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                       
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+            <div class="col-lg-3 col-xlg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Reporte Ventas </h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/solicitudcompra.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+        
+                        <a href=""><button class="btn btn-success">
+                                Ingresar</button></a>
+        
+        
+                    </div>
+        
+                </div>
+            </div>
+        
+        
+        
+            <div class="col-lg-3 col-xlg-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Reporte de Gastos</h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/registrocompras.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+        
+                      
+        
+                        <a href=""><button class="btn btn-primary">
+                                Ingresar</button></a>
+        
+                        
+        
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                        
+        
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-3 col-xlg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Reportes de Socios</h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/checkOC.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+        
+                      
+                        <a href=""><button class="btn btn-dark">
+                                Ingresar</button></a>
+                        
+        
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                        
+                    </div>
+        
+                </div>
+            </div>
+        
+            <div class="col-lg-3 col-xlg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Analisis de periodos</h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/analisisperiodos.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+                        
+                        <a href=""><button class="btn btn-info">
+                                Ingresar</button></a>
+                        
+        
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                        
+                    </div>
+        
+                </div>
+            </div>
+        
+            <div class="col-lg-3 col-xlg-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Seguimiento general</h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/FlujoIngresos.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+                   
+                        <a href=""><button class="btn btn-success">
+                                Ingresar</button></a>
+                       
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                        
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-xlg-3">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <div>
+                            <h6>Contratos</h6>
+                        </div>
+        
+                        <div>
+                            <img src="{% static 'img/contratos.png' %}" alt="" style="max-width:100px; height:auto; margin: 5px;">
+                        </div>
+        
+                   
+                        <a href=""><button class="btn btn-primary">
+                                Ingresar</button></a>
+                     
+        
+                        <a href="#"><button class="btn btn-secondary">
+                            Sin permisos</button></a>
+                       
+                    </div>
+                </div>
+            </div>
+        
+                
+        </div>
+    </div>
+    
+    
+    
+    
+    <aside class="right-side-panel">
+
+
+</div>
+
+
+  
+{% endblock content %}

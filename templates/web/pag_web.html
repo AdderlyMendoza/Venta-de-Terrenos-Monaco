@@ -1,0 +1,481 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+  <!-- https://www.tailwindawesome.com/resources/cookie -->
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+
+    <!-- Header responsivo -->
+    <style>
+      #menu-toggle:checked + #menu {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 
+  <header class="fixed top-0 w-full z-10 transition-colors duration-300" id="main-header">
+    <nav class="px-4 py-10">
+      <div class="flex flex-wrap justify-between items-center mx-auto px-[11rem]">
+        <a href="#" class="flex items-center text-white font-bold text-2xl">
+          <div class="grayscale-1">
+            <img src="LogoBlanco.png" class="mr-3 h-[4.5rem] bg-transparent" alt="Monaco" id="logoHeader" />
+          </div>
+        </a>
+        <div class="flex items-center lg:order-2">
+          <a href="#" class="text-white px-4 py-1 hover:bg-gray-800/50">
+            <span>Contactanos</span>
+          </a>
+          <a href="#" class="text-white px-4 py-1 hover:bg-gray-800/50">
+            <span>Log in</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header> 
+-->
+
+    <header
+      id="main-header"
+      class="fixed top-0 w-full z-10 transition-colors duration-300 py-4 md:px-12">
+      <nav id="header" class="w-full">
+        <div
+          class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-6 py-3"
+        >
+          <label for="menu-toggle" class="cursor-pointer md:hidden block">
+            <svg
+              class="fill-current text-gray-900"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+            >
+              <title>Menu</title>
+              <path
+                d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
+                fill="white"
+                id="pathResponsive"
+              ></path>
+            </svg>
+          </label>
+
+          <input class="hidden" type="checkbox" id="menu-toggle" />
+
+          <div
+            class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1"
+            id="menu"
+          >
+            <nav id="navResponsivo" class="text-white">
+              <ul class="md:flex items-center justify-between pt-4 md:pt-0">
+                <li>
+                  <a class="inline-block no-underline hover:bg-black/50 py-2 px-4" href="{% url 'web:pag_web'%}#Nosotros">Nosotros</a>
+                </li>
+                <li>
+                  <a class="inline-block no-underline hover:bg-black/50 py-2 px-4" href="{% url 'web:pag_web'%}#Servicios">Servicios</a>
+                </li>
+                <li>
+                  <a class="inline-block no-underline hover:bg-black/50 py-2 px-4" href="{% url 'web:pag_web'%}#Asesores">Asesores</a>
+                </li>
+                <li>
+                  <a class="inline-block no-underline hover:bg-black/50 py-2 px-4" href="{% url 'web:pag_web'%}#Ubicacion">Ubicacion</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="order-1 md:order-2">
+            <a
+              class="flex items-center tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl"
+              href="#"
+            >
+              <img
+                src="{% static 'logos/logoBlanco.png' %}"
+                class="mr-3 md:h-[4.2rem] h-[3rem] bg-transparent"
+                alt="Monaco"
+                id="logoHeader"
+              />
+            </a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- INICIO -->
+      <section class="relative" id="inicio">
+        <div class="bg-no-repeat bg-center">
+          <img
+            src="https://bing.com/th?id=OSGI.58CF494D4076424E43A9D41677010DAB&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3"
+            alt=""
+            class="h-screen w-screen brightness-50"
+          />
+        </div>
+
+        <div class="absolute inset-0 flex flex-col md:pl-[10%] justify-center">
+          <div
+            class="flex flex-col text-center md:text-left animate-slide-in-right"
+          >
+            <span class="text-white text-4xl">¡Pre venta!</span>
+            <span class="text-white text-6xl font-semibold pt-4"
+              >LOTES EN PUNO</span
+            >
+            <span class="text-white text-4xl pt-4">¡Aprovecha las ofertas!</span
+            ><br />
+          </div>
+          <div class="text-center md:text-left">
+            <button
+              class="border-2 borde-white mt-2 p-4 text-2xl text-white font-semibold rounded-lg hover:bg-[#Fc3333] hover:text-white"
+            >
+              <a href="{% url 'web:separarLote' %}">Separa tus lotes</a>
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="p-8 bg-black/50 w-full md:w-[70%] flex flex-col md:flex-row justify-around py-6 absolute bottom-0 md:top-auto left-0 md:left-[15%]"
+        >
+          <div class="w-full md:w-1/3 mb-4 md:mb-0 md:mr-4">
+            <p class="text-white font-semibold">Desde mes</p>
+            <span class="text-xl text-white font-bold">$135 ó S/500.00</span>
+          </div>
+          <div class="w-full md:w-1/3 mb-4 md:mb-0 md:mr-4">
+            <p class="text-white font-semibold">Desde pago contado</p>
+            <span class="text-xl text-white font-bold"
+              >$1350 ó S/10,000.00</span
+            >
+          </div>
+          <div class="w-full md:w-1/3">
+            <p class="text-white font-semibold">Dirección</p>
+            <div class="flex">
+              <span class="text-xl text-white font-bold"
+                >Jr. Puno #123, Puno, Perú</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUIENES SOMOS -->
+      <h1
+        class="flex justify-center p-[4%] text-4xl font-bold text-[#Fc3333]"
+        id="Nosotros">
+        QUIÉNES SOMOS
+      </h1>
+      <section class="px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8">
+        <div class="flex flex-col sm:flex-row">
+          <div class="w-full sm:w-1/2 mb-4 sm:mb-0">
+            <!-- Contenido de la primera parte -->
+            <img
+              src="https://bing.com/th?id=OSGI.72C09A3C5581B1E4C0ABB9EE6F41282B&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3"
+              alt=""
+            />
+          </div>
+          <div class="w-full sm:w-1/2 sm:pl-8 flex flex-col sm:pt-0 pt-4">
+            <!-- Contenido de la segunda parte -->
+            <span
+              class="text-xl sm:text-3xl font-semibold text-center md:text-left"
+              >Consultoria e Inmobiliara Monaco</span
+            >
+            <p class="pt-2 sm:pt-4">
+              En Consultoría e Inmobiliaria Mónaco, ubicada en la hermosa ciudad
+              de Puno, Perú, nos dedicamos a ofrecer un servicio inmobiliario
+              excepcional y personalizado. Nos enorgullecemos de proporcionar
+              soluciones integrales que se ajusten a las necesidades y deseos de
+              nuestros clientes.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NUESTROS SERVICIOS -->
+      <h1 class="flex justify-center pt-[3%] text-4xl font-bold text-[#Fc3333]" id="Servicios">
+        NUESTROS SERVICIOS
+      </h1>
+      <section class="px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8">
+        <div class="flex flex-col sm:flex-row">
+          <!-- Contenido de la segunda parte -->
+          <div class="w-full sm:w-1/3 pl-0 sm:pl-8 mb-4 sm:mb-0">
+            <div class="empresa-lider">
+              <span class="text-xl sm:text-3xl font-semibold"
+                >Empresa Lider</span
+              >
+              <p class="pt-2 sm:pt-4">
+                En Inmobiliaria Mónaco, nos enorgullecemos de ofrecer un
+                <b>servicio excepcional y personalizado</b> a nuestros clientes.
+                Con años de experiencia en el sector, nuestro equipo altamente
+                capacitado está comprometido en brindar soluciones inmobiliarias
+                integrales que se adaptan a las necesidades y deseos de cada
+                cliente.
+              </p>
+            </div>
+          </div>
+          <div class="w-full sm:w-1/3 pl-0 sm:pl-8 mb-4 sm:mb-0">
+            <div class="empresa-lider">
+              <span class="text-xl sm:text-3xl font-semibold"
+                >Servicios Excepcionales</span
+              >
+              <p class="pt-2 sm:pt-4">
+                Ofrecemos una amplia gama de servicios inmobiliarios, incluyendo
+                la compra y venta de propiedades residenciales y comerciales,
+                alquileres a corto y largo plazo, asesoramiento inmobiliario,
+                gestión de propiedades y valoraciones.
+              </p>
+            </div>
+          </div>
+          <div class="w-full sm:w-1/3 pl-0 sm:pl-8">
+            <div class="empresa-lider">
+              <span class="text-xl sm:text-3xl font-semibold"
+                >Empresa Lider</span
+              >
+              <p class="pt-2 sm:pt-4">
+                En Inmobiliaria Mónaco, nos enorgullecemos de ofrecer un
+                <b>servicio excepcional y personalizado</b> a nuestros clientes.
+                Con años de experiencia en el sector, nuestro equipo altamente
+                capacitado está comprometido en brindar soluciones inmobiliarias
+                integrales que se adaptan a las necesidades y deseos de cada
+                cliente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NUESTROS ASESORES -->
+      <h1 class="flex justify-center pt-[3%] text-4xl font-bold text-[#Fc3333]" id="Asesores">
+        NUESTROS ASESORES
+      </h1>
+      <section class="px-4 sm:px-8 lg:px-12 py-4 sm:py-6 lg:py-8">
+        <div class="flex flex-wrap text-center justify-center">
+          <!-- Contenido del 1 asesor -->
+          <div class="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4 justify-center">
+            <div
+              class="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+            >
+              <div class="flex justify-end px-4 pt-4"></div>
+              <div class="flex flex-col items-center pb-10">
+                <img
+                  class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                  src="https://assets-es.imgfoot.com/media/cache/1200x1200/cristiano-ronaldo-al-nassr.jpg"
+                  alt="Bonnie image"
+                />
+                <h5 class="mb-1 text-xl font-medium text-gray-900">
+                  Cristiano Ronaldo
+                </h5>
+                <span class="text-sm text-gray-500">Visual Designer</span>
+                <div class="flex mt-4 md:mt-6">
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                    >Contactar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido del 2 asesor -->
+          <div class="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
+            <div
+              class="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+            >
+              <div class="flex justify-end px-4 pt-4"></div>
+              <div class="flex flex-col items-center pb-10">
+                <img
+                  class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                  src="https://assets-es.imgfoot.com/media/cache/1200x1200/cristiano-ronaldo-al-nassr.jpg"
+                  alt="Bonnie image"
+                />
+                <h5 class="mb-1 text-xl font-medium text-gray-900">
+                  Cristiano Ronaldo
+                </h5>
+                <span class="text-sm text-gray-500">Visual Designer</span>
+                <div class="flex mt-4 md:mt-6">
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                    >Contactar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contenido del 3 asesor -->
+          <div class="w-full sm:w-1/2 lg:w-1/4 px-2 mb-4">
+            <div
+              class="max-w-sm bg-white border border-gray-200 rounded-lg shadow"
+            >
+              <div class="flex justify-end px-4 pt-4"></div>
+              <div class="flex flex-col items-center pb-10">
+                <img
+                  class="w-24 h-24 mb-3 rounded-full shadow-lg"
+                  src="https://assets-es.imgfoot.com/media/cache/1200x1200/cristiano-ronaldo-al-nassr.jpg"
+                  alt="Bonnie image"
+                />
+                <h5 class="mb-1 text-xl font-medium text-gray-900">
+                  Cristiano Ronaldo
+                </h5>
+                <span class="text-sm text-gray-500">Visual Designer</span>
+                <div class="flex mt-4 md:mt-6">
+                  <a
+                    href="#"
+                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+                    >Contactar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- UBICACION -->
+      <h1 class="flex justify-center pt-[3%] text-4xl font-bold text-[#Fc3333]"
+        id="Ubicacion">
+        UBICANOS EN
+      </h1>
+      <section class="pt-[3%]">
+        <div id="map" class="relative" style="width: 100%; height: 400px">
+          <div
+            class="absolute top-[12rem] left-[15%] flex flex-col justify-around h-[10rem] w-[15rem]"
+          >
+            <h1 class="font-semibold text-5xl text-green-500">
+              ¡Ubicación perfecta!
+            </h1>
+            <button
+              class="border-2 p-2 mt-8 text-xl hover:bg-purple-500 hover:text-white"
+            >
+              <a href="#">Google Maps</a>
+            </button>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- 
+      <img src="https://bing.com/th?id=OSGI.47706721625BF705B3333739724F4E3A&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3">
+      <img src="https://bing.com/th?id=OSGI.489C46C7D91E82E14F1F34E76C45F531&amp;h=1000&amp;wspan=1920&amp;c=1&amp;rs=1&amp;o=3">
+      <img src="https://bing.com/th?id=OSGI.72C09A3C5581B1E4C0ABB9EE6F41282B&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3">
+      <img src="https://bing.com/th?id=OSGI.58CF494D4076424E43A9D41677010DAB&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3">
+      <img src="https://bing.com/th?id=OSGI.5ACBA321EBCE8935D4FE73FC4676BCEB&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3"> 
+      -->
+
+    </main>
+
+    <footer class="bg-gray-500 shadow mt-8 text-center">
+      <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a
+            href="https://flowbite.com/"
+            class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+          >
+            <img
+              src="https://flowbite.com/docs/images/logo.svg"
+              class="h-8"
+              alt="Flowbite Logo"
+            />
+            <span
+              class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
+              >Monaco</span
+            >
+          </a>
+          <ul
+            class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0"
+          >
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6"
+                >Sobre Nosotros</a
+              >
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Política</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+            </li>
+            <li>
+              <a href="#" class="hover:underline">Contacto</a>
+            </li>
+          </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+        <span class="block text-sm text-white sm:text-center"
+          >© 2024 <a href="#" class="hover:underline">Monaco™</a>. All Rights
+          Reserved.</span
+        >
+      </div>
+    </footer>
+
+    <!-- Graficar mapa Ubicacion -->
+    <script>
+      // Coordenadas de la ubicación inicial
+      var initialLocation = [-15.84056717172345, -70.0271835178623];
+
+      // Inicializar el mapa
+      var map = L.map("map").setView(initialLocation, 18);
+
+      // Agregar capa base de OpenStreetMap
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution:
+          'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      // Agregar un marcador en la ubicación inicial
+      L.marker(initialLocation).addTo(map).bindPopup("C.E. MONACO").openPopup();
+    </script>
+
+    <!-- Scroll header -->
+    <script>
+      window.addEventListener("scroll", function () {
+        const header = document.getElementById("main-header");
+        const navResponsivo = document.getElementById("navResponsivo");
+        const pathResponsive = document.getElementById("pathResponsive");
+
+        const spans = header.querySelectorAll("span");
+        // filter invert sepia hue-rotate-[180deg]
+
+        const imgElement = document.getElementById("logoHeader");
+
+        if (window.scrollY > 0) {
+          header.classList.add("bg-white", "border-b-2", "border-gray-300");
+          navResponsivo.classList.add("text-black");
+          pathResponsive.setAttribute("fill", "black");
+          spans.forEach((span) => {
+            span.classList.add("text-black", "font-semibold");
+          });
+
+          imgElement.src = "{% static 'logos/logoRojo.png' %}";
+          imgElement.classList.add("md:h-[4.2rem]", "h-[3rem]");
+        } else {
+          header.classList.remove("bg-white", "border-b-2", "border-gray-300");
+          navResponsivo.classList.remove("text-black");
+
+          pathResponsive.setAttribute("fill", "white");
+          spans.forEach((span) => {
+            span.classList.remove("text-black", "font-semibold");
+          });
+          imgElement.src = "{% static 'logos/logoBlanco.png' %}";
+          imgElement.classList.remove("h-[4.5rem]");
+        }
+      });
+    </script>
+  </body>
+</html>
