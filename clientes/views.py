@@ -55,11 +55,9 @@ def eliminar_cliente(request, pk):
 
 # SEPARAR LOTES
 
-# def listar_ventas(request):
-#     ventas = Venta.objects.all()
-#     return render(request, 'clientes/lotes/lista_ventas.html', {'ventas': ventas})
-#     web = Web.objects.all()
-#     return render(request, 'web/listar_compras.html', {'web':web})
+def listar_separaciones_web(request):
+    terrenos = Venta.objects.all()
+    return render(request, 'web:listar_compras.html', {'terrenos': terrenos})
 
 def listar_ventas(request):
     proyectos = Proyectos.objects.all()
