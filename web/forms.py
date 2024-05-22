@@ -9,6 +9,9 @@ class formularioWeb( forms.ModelForm ):
     
     def __init__(self, *args, **kwargs):
         super(formularioWeb, self).__init__(*args, **kwargs)
+
+        # Establece el valor predeterminado del campo 'proyecto'
+        self.initial['proyecto'] = 'TULIPANES'
         
         self.fields['dni'].label = "DNI"
         self.fields['nombres'].label = "NOMBRES"
@@ -17,6 +20,8 @@ class formularioWeb( forms.ModelForm ):
         self.fields['email'].label = "EMAIL"
         self.fields['direccion'].label = "DIRECCION"
         self.fields['terrenos'].label = "TERRENOS"
+        self.fields['proyecto'].label = "PROYECTO"
+
 
         self.fields['dni'].widget.attrs['class'] = "form-control"
         self.fields['nombres'].widget.attrs['class'] = "form-control"
@@ -25,3 +30,5 @@ class formularioWeb( forms.ModelForm ):
         self.fields['email'].widget.attrs['class'] = "form-control"
         self.fields['direccion'].widget.attrs['class'] = "form-control"
         self.fields['terrenos'].widget.attrs['class'] = "form-control"
+        self.fields['proyecto'].widget.attrs['class'] = "form-control"
+

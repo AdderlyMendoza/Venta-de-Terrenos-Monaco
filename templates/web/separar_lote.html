@@ -1473,13 +1473,13 @@
             <hr>
             <h6><strong>Terrenos : </strong><span id="terrenos-seleccionados" class="p-2"></span></h6>
             <h6><strong>Cantidad :</strong><span id="cant_id" class="px-2"></span></h6>
-            <h6><strong>Total $ :</strong><span>aqui</span></h6>
+            <h6><strong>Total $ :</strong><span>FALTA IMPLEMENTAR XD</span></h6>
           </div>
 
           <div class="col-8 p-4">
             <h5>Completa tus datos</h5>
             <hr>
-            
+            {% comment %} Apellidos y Nombres {% endcomment %}
             <div class="row d-flex border border-2 border-bottom-0">
               <div class="my-3">
                 <label for="{{ form.apellidos.id_for_label }}">
@@ -1500,6 +1500,7 @@
               </div>
             </div>
 
+            {% comment %} Dni y Telefono {% endcomment %}
             <div class="row d-flex border border-2 border-top-0 border-bottom-0 pt-3">
               <div class="col mb-3">
                 <label for="{{ form.dni.id_for_label }}">
@@ -1520,6 +1521,7 @@
               </div>
             </div>
 
+            {% comment %} Email {% endcomment %}
             <div class="row d-flex border border-2 border-top-0 border-bottom-0">
               {% comment %}correo y direccion{% endcomment %}
               <div class="my-3">
@@ -1541,6 +1543,33 @@
               </div>
             </div>
 
+            {% comment %} Terrenos y Proyecto {% endcomment %}
+            <div class="row d-flex border border-2 border-top-0  pt-3">
+                <div class="col mb-3">
+                  <label for="{{ form.terrenos.id_for_label }}">
+                    <h6>{{ form.terrenos.label }}:</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div>
+                    <input type="text" class="selec form-control" id="{{ form.terrenos.auto_id }}" name="{{ form.terrenos.html_name }}" readonly style="width: 100%;">
+                  </div>
+                </div>
+              </div>
+
+              <div class="col mb-3">
+                  <label for="{{ form.proyecto.id_for_label }}">
+                    <h6>{{ form.proyecto.label }}:</h6>
+                </label>
+                <div class="row d-flex justify-content-center">
+                  <div>
+                    <input type="text" class="name_proyecto form-control" id="{{ form.proyecto.auto_id }}" name="{{ form.proyecto.html_name }}" readonly style="width: 100%;">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {% comment %} 
+            Terrenos 
             <div class="row d-flex border border-2 border-top-0">
               <div class="my-3">
                   <label for="{{ form.terrenos.id_for_label }}">
@@ -1553,7 +1582,21 @@
                   </div>
               </div>
             </div>
-          
+
+            Proyecto
+            <div class="row d-flex border border-2 border-top-0">
+              <div class="my-3">
+                  <label for="{{ form.proyecto.id_for_label }}">
+                      <h6>{{ form.proyecto.label }}:</h6>
+                  </label>
+                  <div class="row d-flex justify-content-center">
+                    <div>
+                      <input type="text" class="name_proyecto form-control" id="{{ form.proyecto.auto_id }}" name="{{ form.proyecto.html_name }}" readonly style="width: 100%;">
+                    </div>
+                  </div>
+              </div>
+            </div>
+            {% endcomment %}
 
           </div>
 
@@ -1591,6 +1634,8 @@
 
     // Obtener el contenedor donde se agregarán los elementos input
     var elemento = document.querySelector(".selec");
+    var name_proyecto = document.querySelector(".name_proyecto");
+
 
     // Función para actualizar el contenido del div con los IDs seleccionados
     function actualizarDiv() {
@@ -1598,6 +1643,7 @@
       terrenosSeleccionados.textContent = idsSeleccionados.join(', ');
       canTerrenos.textContent = idsSeleccionados.length
       elemento.value = idsSeleccionados.join(', '); // Reemplaza "O_01" con el valor deseado
+      name_proyecto.value = "TULIPANES"; // Reemplaza "O_01" con el valor deseado
 
 
     }

@@ -2,6 +2,7 @@ from django.db import models
 from datetime import timedelta
 from django.db.models.signals import pre_save, post_save
 from proyectos.models import *
+from web.models import *
 from django.dispatch import receiver
 from django.utils import timezone
 from datetime import date

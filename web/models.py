@@ -8,6 +8,8 @@ class Web( models.Model ):
     email = models.CharField(max_length=50, verbose_name='Email')
     direccion = models.CharField(max_length=50, verbose_name='Direccion')
     terrenos = models.CharField(max_length=500, verbose_name='Terrenos')
+    proyecto = models.CharField(max_length=500, verbose_name='Proyecto')
+
         
     class Meta:
         verbose_name = ("Web")
