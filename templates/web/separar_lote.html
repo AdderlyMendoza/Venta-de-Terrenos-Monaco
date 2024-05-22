@@ -1724,7 +1724,7 @@
 
   <!-- Colorear los terrenos separados -->
   {% block script %}
-  <script>
+    <script>
       var pathsColorear = document.querySelectorAll('svg path');
       var ids = [];
   
@@ -1733,22 +1733,35 @@
           ids.push(id);
       });
       
-      {% for terreno in terrenos %}
+      console.log("estadoTerreno")
+      var estadoTerreno = {{ estados | safe }};
+      console.log(estadoTerreno);
+      var temporal = 0;
+      {% for terreno in terrenos  %}
         var terrenoSplit = "{{ terreno }}".split(','); // Separar los elementos por coma
+        console.log(terrenoSplit)
         terrenoSplit.forEach(function(element) {
           var trimmedElement = element.trim();
-          console.log(trimmedElement); // Imprimir cada elemento del terreno
+          // console.log(trimmedElement); // Imprimir cada elemento del terreno
           if (ids.includes(trimmedElement)) {
             var pathEncontrado = document.getElementById(trimmedElement);
             if (pathEncontrado) { // Verificar si se encontró el elemento
-              pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
+              if (estadoTerreno[temporal] == "SEPARADO"){
+                pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
+              }
+              if (estadoTerreno[temporal] == "VENDIDO"){
+                pathEncontrado.setAttribute("fill", "red"); // Cambiar el atributo fill al nuevo color
+              }
+              //pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
               pathEncontrado.style.pointerEvents = "none"; // Desactivar el cursor
             } else {
               console.log("¡Path no encontrado!"); // Manejar el caso donde no se encuentra el elemento
             }
           }
         });
+        temporal = temporal + 1;
       {% endfor %}
+
   </script>
 {% endblock %}
 

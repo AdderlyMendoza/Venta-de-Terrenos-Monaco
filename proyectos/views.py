@@ -51,7 +51,6 @@ def eliminar_proyecto(request, pk):
     return render(request, 'proyectos/eliminar_proyecto.html', {'proyecto': proyecto})
 
 
- 
     #subproyectos
 
 
@@ -67,8 +66,12 @@ def proyectos_y_subproyectos(request):
 
     return render(request, 'proyectos/subproyectos/subproyectos.html', {'proyectos': proyectos, 'proyecto_seleccionado': proyecto_seleccionado, 'subproyectos': subproyectos})
 
+
+
+
 def obtener_subproyectos(proyecto):
     return Sub_Proyecto.objects.filter(proyecto=proyecto)
+
 
 
 def crear_subproyecto(request):

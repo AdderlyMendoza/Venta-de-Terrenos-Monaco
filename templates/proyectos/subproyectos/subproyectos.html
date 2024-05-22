@@ -61,14 +61,19 @@
                     {% for subproyecto in subproyectos %}
                     <tr>
                     
-                        {% if subproyecto.estado == "DISPONIBLE" %}
+                        {% if subproyecto.estado == "VENDIDO" %}
 
-                        <td style="text-primary"><b>{{subproyecto.estado}}</b>
+                        <td style="color: rgb(50,205,50)"><b>{{subproyecto.estado}}</b>
+                        </td>
+
+                        {% elif subproyecto.estado == "SEPARADO" %}
+
+                        <td style="color: rgb(237, 30, 11)"><b>{{subproyecto.estado}}</b>
                         </td>
 
                         {% else %}
 
-                        <td style="color: rgb(237, 30, 11)"><b>{{subproyecto.estado}}</b>
+                        <td style="color: rgb(0,0,0)"><b>{{subproyecto.estado}}</b>
                         </td>
 
                         {% endif %}     

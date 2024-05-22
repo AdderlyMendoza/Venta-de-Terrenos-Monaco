@@ -66,8 +66,13 @@ def separar_lote(request):
             return redirect("web:pag_web")  # Redirigir a una página que confirme que se realizó la separación
     else:
         form = formularioWeb()
+
+        terrenos = Web.objects.values_list('terrenos', flat=True)
+        estados = list(Sub_Proyecto.objects.values_list('estado', flat=True))
+
     
-    return render(request, "web/separar_lote.html", {'form': form})
+    #return render(request, "web/separar_lote.html", {'form': form})
+    return render(request, "web/separar_lote.html", {'form': form, 'terrenos': terrenos, 'estados': estados}) # enviamos el form y los terrenos
 
 
 def listar(request):
