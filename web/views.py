@@ -53,6 +53,10 @@ def separar_lote(request):
             form.save()
             
             datos = request.POST.get("terrenos", "")  # Obtener los terrenos separados por el usuario
+            print("###############################################")
+            print(datos)
+            print("###############################################")
+
             lista_datos = [dato.strip() for dato in datos.split(",")]  # Separar los terrenos y eliminar espacios en blanco
             
             for dato in lista_datos:

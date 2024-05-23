@@ -1734,8 +1734,8 @@
       });
       
       console.log("estadoTerreno")
-      var estadoTerreno = {{ estados | safe }};
-      console.log(estadoTerreno);
+      var estadoTerreno = {{ estados | safe }}; // Traer cada estado de cada terreno
+      // console.log(estadoTerreno);
       var temporal = 0;
       {% for terreno in terrenos  %}
         var terrenoSplit = "{{ terreno }}".split(','); // Separar los elementos por coma
