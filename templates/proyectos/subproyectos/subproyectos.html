@@ -7,7 +7,7 @@
 
 <!-- Hoverable Table rows -->
 <div class="card">
-    <h5 class="card-header">Lista de Lotes aderly xd</h5>
+    <h5 class="card-header">Lista de Subproyectos</h5>
     <a href="{% url 'proyectos:crear_subproyecto' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
         <i class='bx bx-plus'></i> Crear
     </a>
@@ -47,9 +47,11 @@
             <table id="users" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Estado</th>
                         <th>Proyecto</th>
-                        <th>Nombre</th>
+                        <th>Manzana</th>
+                        <th>Lote</th>
                         <th>m2</th>
                         <th>Precio de Venta</th>
                         <th>Plano</th>
@@ -60,24 +62,22 @@
                 <tbody style="font-size: 14px; font-weight: 400;">
                     {% for subproyecto in subproyectos %}
                     <tr>
-                    
-                        {% if subproyecto.estado == "VENDIDO" %}
+                        <td>{{ subproyecto.id_personalizado }}</td>
+                        {% if subproyecto.estado == "DISPONIBLE" %}
 
-                        <td style="color: rgb(50,205,50)"><b>{{subproyecto.estado}}</b>
+                        <td style="color: rgb(0, 0, 255)"><b>{{subproyecto.estado}}</b>
                         </td>
-
                         {% elif subproyecto.estado == "SEPARADO" %}
-
-                        <td style="color: rgb(237, 30, 11)"><b>{{subproyecto.estado}}</b>
-                        </td>
+                        <td style="color: rgb(255, 0, 0)"><b>{{subproyecto.estado}}</b>
 
                         {% else %}
 
-                        <td style="color: rgb(0,0,0)"><b>{{subproyecto.estado}}</b>
+                        <td style="color: rgb(0, 0, 0)"><b>{{subproyecto.estado}}</b>
                         </td>
 
                         {% endif %}     
                         <td>{{ subproyecto.proyecto.nombre }}</td>
+                        <td>{{ subproyecto.manzana }}</td>
                         <td>{{ subproyecto.nombre }}</td>
                         <td>{{ subproyecto.m2 }}</td>
                         <td>{{ subproyecto.precio_venta }}</td>
@@ -110,9 +110,5 @@
 
     
 </div>
-<!--/ Hoverable Table rows -->
-
-<!-- Agregar el botón de crear proyecto -->
-
 
 {% endblock menu %}

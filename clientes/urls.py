@@ -24,6 +24,8 @@ urlpatterns = [
     path('ventas/<int:venta_id>/actualizar/', views.actualizar_venta, name='actualizar_venta'),
     path('ventas/<int:venta_id>/eliminar/', views.eliminar_venta, name='eliminar_venta'),
 
+    path('separar_lote/', views.crear_lote , name = 'separar_lote'),
+
     #cuotas
  
     

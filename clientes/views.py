@@ -3,6 +3,7 @@ from .models import Cliente
 from .models import Web
 from django.shortcuts import get_object_or_404
 from .forms import *
+from django.contrib import messages
 # from web.models import *
 
 
@@ -90,19 +91,60 @@ def crear_venta(request):
                 subproyecto = venta.subproyecto
                 subproyecto.estado = 'SEPARADO'
                 subproyecto.save()
+
                 return redirect('clientes:listar_ventas')
             except ValueError as e:
                 error_message = str(e)
-                return render(request, 'clientes/lotes/crear_venta.html', {'form': form, 'error_message': error_message})
+                messages.error(request, error_message)
+                # Renderizar el formulario nuevamente si hay un error
+                form = VentaForm(request.POST)
     else:
-        form = VentaForm()  # Instancia el formulario sin ningún argumento adicional
+        form = VentaForm()
 
     return render(request, 'clientes/lotes/crear_venta.html', {'form': form})
 
 
+def crear_lote(request):
+    if request.method == 'POST':
+        form = VentaForm(request.POST)
+        if form.is_valid():
+            try:
+                venta = form.save(commit=False)
+                venta.save()
+
+                subproyecto_id = form.cleaned_data.get('id_personalizado')
+                subproyecto = Sub_Proyecto.objects.get(id=subproyecto_id)
+
+                # Llenar automáticamente los campos de subproyecto y proyecto en el formulario
+                form.fields['subproyecto'].initial = subproyecto.nombre
+                form.fields['proyecto'].initial = subproyecto.proyecto.nombre
+
+                subproyecto.estado = 'SEPARADO'
+                subproyecto.save()
+
+                # Pasar el ID del subproyecto a la plantilla
+                return render(request, 'clientes/lotes/separar_lotes.html', {'form': form, 'subproyecto_id': subproyecto_id})
+            except Sub_Proyecto.DoesNotExist:
+                messages.error(request, 'El subproyecto no existe')
+                # Renderizar el formulario nuevamente si hay un error
+                form = VentaForm(request.POST)
+            except ValueError as e:
+                error_message = str(e)
+                messages.error(request, error_message)
+                # Renderizar el formulario nuevamente si hay un error
+                form = VentaForm(request.POST)
+    else:
+        form = VentaForm()
+
+    return render(request, 'clientes/lotes/separar_lotes.html', {'form': form})
+
 def ver_venta(request, venta_id):
     venta = get_object_or_404(Venta, pk=venta_id)
-    return render(request, 'clientes/lotes/ver_venta.html', {'venta': venta})
+    if venta.cancelar_separacion_si_aplica():
+        mensaje = "¡La separación fue cancelada!"
+    else:
+        mensaje = "La separación no fue cancelada."
+    return render(request, 'clientes/lotes/ver_venta.html', {'venta': venta, 'mensaje': mensaje})
 
 def actualizar_venta(request, venta_id):
     venta = get_object_or_404(Venta, pk=venta_id)
