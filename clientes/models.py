@@ -29,17 +29,56 @@ class Cliente(models.Model):
 
 
 class Venta(models.Model):
+
+    ESTADO_CHOICES = (
+        ('pagado', 'pagado'),
+        ('pendiente', 'pendiente'),
+       
+    )
+    
+    estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='pendiente')
+    proyecto = models.ForeignKey(Proyectos,  on_delete=models.CASCADE)
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='ventas')
-    proyecto = models.ForeignKey(Proyectos, on_delete=models.CASCADE, related_name='ventas', blank=True, null=True)
+    proyecto = models.ForeignKey(Proyectos, on_delete=models.CASCADE, related_name='ventas') # ?
+    manzana = models.ForeignKey(Manzana, on_delete=models.CASCADE,  default=1, related_name='ventas',)
     subproyecto = models.ForeignKey(Sub_Proyecto, on_delete=models.CASCADE, related_name='ventas')
-    precio_venta = models.FloatField()
-    adelanto = models.FloatField(default=0)  # Campo para precio de adelanto
+    precio_venta = models.FloatField(default=0.00)
+    adelanto = models.FloatField(default=0.00, blank=True, null=True,) 
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_separacion = models.IntegerField()
+    fecha_modificado = models.DateTimeField(auto_now=True)
 
     def save(self, *args, **kwargs):
-        self.subproyecto.estado = 'SEPARADO'
-        self.subproyecto.save()
+        if not self.pk:  # Only on creation
+            self.subproyecto.estado = 'SEPARADO'
+            self.subproyecto.save()
+            self.fecha_creacion = timezone.now() 
+            
+        if not self.precio_venta and self.subproyecto:
+                self.precio_venta = self.subproyecto.precio_venta # Set creation date as separation date
         super().save(*args, **kwargs)
+
+    def cancelar_separacion_si_aplica(self):
+        fecha_separacion = self.fecha_separacion  # Define the number of days before separation is canceled
+        if self.fecha_creacion:  # Check if separation date is set
+            diferencia_dias = timezone.now() - self.fecha_creacion
+            if diferencia_dias.days > fecha_separacion:
+                self.subproyecto.estado = 'DISPONIBLE'
+                self.subproyecto.save()
+                self.fecha_creacion = None  # Reset separation date
+                self.save()  # Save the updated venta
+                return True  # Separation canceled
+        return False  # Separation not canceled
+    
+    @staticmethod
+    def restar_dia_separacion():
+        ventas_separadas = Venta.objects.filter(fecha_creacion__isnull=False, subproyecto__estado='SEPARADO')
+        for venta in ventas_separadas:
+            venta.fecha_separacion -= 1
+            venta.save()
+            if venta.fecha_separacion <= 0:
+                venta.subproyecto.estado = 'DISPONIBLE'
+                venta.subproyecto.save()
 
     class Meta:
         verbose_name = ("Venta")
@@ -48,15 +87,9 @@ class Venta(models.Model):
     def __str__(self):
         return f"Venta de {self.subproyecto.nombre} del proyecto {self.proyecto.nombre} a {self.cliente.nombres}"
 
-
     def obtener_nombre_cliente(self):
         return self.cliente.nombres
-
-    def obtener_precio_subproyecto(self):
-        return self.subproyecto.precio_venta
-
-
-
+   
 @receiver(pre_save, sender=Venta)
 def actualizar_precio_venta(sender, instance, **kwargs):
     instance.precio_venta = instance.subproyecto.precio_venta
@@ -64,8 +97,11 @@ def actualizar_precio_venta(sender, instance, **kwargs):
 
 @receiver(pre_save, sender=Venta)
 def verificar_subproyecto(sender, instance, **kwargs):
-    if instance.subproyecto.ventas.exists():
-        raise ValueError('Este subproyecto ya está asociado a una venta')
+    # Verificar si es una instancia nueva (no tiene un ID asignado)
+    if instance.pk is None:
+        # Si es nueva, verificar si el subproyecto ya está asociado a otra venta
+        if instance.subproyecto.ventas.exists():
+            raise ValueError('Este subproyecto ya está asociado a una venta')
     
 
 

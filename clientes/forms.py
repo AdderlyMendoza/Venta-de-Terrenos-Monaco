@@ -38,25 +38,31 @@ class ClienteForm(forms.ModelForm):
 
 class VentaForm(forms.ModelForm):
     proyecto = forms.ModelChoiceField(queryset=Proyectos.objects.all(), empty_label=None, label='Proyecto')
-    subproyecto = forms.ModelChoiceField(queryset=Sub_Proyecto.objects.none(), empty_label=None, label='Subproyecto')
+    manzana = forms.ModelChoiceField(queryset=Manzana.objects.all(), empty_label=None, label="Manzana")
+    subproyecto = forms.ModelChoiceField(queryset=Sub_Proyecto.objects.all(), empty_label=None, label='Subproyecto')
 
     class Meta:
         model = Venta
-        fields = ['cliente', 'proyecto', 'subproyecto', 'adelanto' ]
-        widgets = {
-            'precio_venta': forms.HiddenInput()
-        }
+        # fields = [  'cliente', 'proyecto', 'manzana', 'subproyecto',  'fecha_separacion']
+        fields = '__all__'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        if 'instance' in kwargs and kwargs['instance'] is not None:
-            self.fields['precio_venta'].initial = kwargs['instance'].subproyecto.precio_venta
 
-        if 'proyecto' in self.data:
-            proyecto_id = int(self.data.get('proyecto'))
-            self.fields['subproyecto'].queryset = Sub_Proyecto.objects.filter(proyecto_id=proyecto_id)
-        elif self.instance.pk:
-            self.fields['subproyecto'].queryset = self.instance.proyecto.subproyecto_set
+        # Obtener el proyecto y la manzana seleccionados
+        proyecto_id = self.data.get('proyecto')
+        manzana_id = self.data.get('manzana')
+
+        if proyecto_id and manzana_id:
+            # Filtrar los subproyectos que pertenecen al proyecto y a la manzana seleccionados
+            self.fields['subproyecto'].queryset = Sub_Proyecto.objects.filter(
+                proyecto_id=proyecto_id,
+                manzana_id=manzana_id,
+                estado="DISPONIBLE"
+            )
+        else:
+            # Si no se seleccionó ningún proyecto o manzana, mostrar todos los subproyectos disponibles
+            self.fields['subproyecto'].queryset = Sub_Proyecto.objects.filter(estado="DISPONIBLE")
 
         
 

@@ -10,7 +10,11 @@ urlpatterns = [
     # Your URL patterns here
     path('clientes_panel/', views.app_clientes, name='clientes_panel'),
     path('clientes/', views.clientes, name='clientes'),
-    
+
+    path('clientes-ventas/', views.clientes_ventas, name='clientes_ventas'),
+    path('clientes-ventas-crear/', views.clientes_ventas_crear, name='clientes_ventas_crear'),
+    path('clientes-filtrar/', views.clientes_filtrar, name='clientes_filtrar'),
+
     path('crear/', views.crear_cliente, name='crear_cliente'),
     path('ver/<int:pk>/', views.ver_cliente, name='ver_cliente'),
     

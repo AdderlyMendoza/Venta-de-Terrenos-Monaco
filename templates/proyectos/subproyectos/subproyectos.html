@@ -49,7 +49,9 @@
                     <tr>
                         <th>Estado</th>
                         <th>Proyecto</th>
-                        <th>Nombre</th>
+                        <th>Manzana</th>
+                        <th>SubProyecto(lote)</th>
+                        <th>Identificador</th>
                         <th>m2</th>
                         <th>Precio de Venta</th>
                         <th>Plano</th>
@@ -68,7 +70,7 @@
 
                         {% elif subproyecto.estado == "SEPARADO" %}
 
-                        <td style="color: rgb(255,0,50)"><b>{{subproyecto.estado}}</b>
+                        <td style="color: rgb(237, 30, 11)"><b>{{subproyecto.estado}}</b>
                         </td>
 
                         {% else %}
@@ -78,7 +80,10 @@
 
                         {% endif %}     
                         <td>{{ subproyecto.proyecto.nombre }}</td>
+                        <td>{{ subproyecto.manzana }}</td>
                         <td>{{ subproyecto.nombre }}</td>
+                        <td>{{ subproyecto.id_personalizado }}</td>
+
                         <td>{{ subproyecto.m2 }}</td>
                         <td>{{ subproyecto.precio_venta }}</td>
                     

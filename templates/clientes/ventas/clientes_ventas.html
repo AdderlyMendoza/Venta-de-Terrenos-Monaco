@@ -1,0 +1,79 @@
+
+{% extends "pages/index.html" %}
+{% load static %}
+{% load tags_extras %}
+
+{% block menu %}
+
+<!-- Hoverable Table rows -->
+<div class="card">
+    <h5 class="card-header">Lista de CLIENTES VENTAS</h5>
+    <a href="{% url 'clientes:crear_venta' %}" class="btn btn-sm btn-primary spaced-button" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
+      <i class='bx bx-plus'></i> Crear Venta
+    </a>
+    <a href="{% url 'web:separarLote' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 150px; z-index: 1000">
+        <i class='bx bx-plus'></i> Separar Lote
+    </a>
+
+    <div class="table-responsive text-nowrap">
+      <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Proyecto</th>
+                <th>Mz.</th>
+                <th>Sub proyecto(lote)</th>
+                <th>Identificador</th>
+                <th>Precio lote</th>
+                <th>Adelanto</th>
+                <th>Dias</th>
+           
+            </tr>
+        </thead>
+        <tbody>
+          
+            {% for venta in ventas %}
+            <tr>
+
+                 <td>{{ venta.fecha_creacion|date:"d/m/Y" }}</td>
+                {% if venta.estado == "pagado" %}
+                <td style="color: rgb(0, 0, 255)"><b>{{ venta.estado }}</b></td>
+                
+                {% else %}
+                <td style="color: rgb(237, 30, 11)"><b>{{ venta.estado }}</b></td>
+                {% endif %}
+
+                
+                <td>{{ venta.cliente }}</td>
+                <td>{{ venta.proyecto }}</td>
+                <td>{{ venta.manzana }}</td>
+                <td>{{ venta.subproyecto }}</td>  
+                <td>{{ venta.id_personalizado }}</td>  
+                <td>{{ venta.precio_venta }}</td>
+                <td>{{ venta.adelanto }}</td>
+                <td>{{ venta.fecha_separacion }}</td>
+                <td>
+                    <a href="{% url 'clientes:ver_venta' venta.id %}" class="btn btn-sm btn-primary">
+                        <i class='bx bx-detail'></i> 
+                    </a>
+                    <a href="{% url 'clientes:actualizar_venta' venta.id %}" class="btn btn-sm btn-primary">
+                        <i class='bx bx-edit'></i> 
+                    </a>
+                    
+                    <a href="{% url 'clientes:eliminar_venta' venta.id %}" class="btn btn-sm btn-danger">
+                        <i class='bx bx-trash'></i> 
+                    </a>
+                  
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+</div>
+<!--/ Hoverable Table rows -->
+
+{% endblock menu %}

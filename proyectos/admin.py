@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(Proyectos)
 admin.site.register(Sub_Proyecto)
 admin.site.register(Imagen)
+admin.site.register(Manzana)

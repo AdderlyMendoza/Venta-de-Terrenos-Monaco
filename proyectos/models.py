@@ -28,17 +28,30 @@ class Proyectos(models.Model):
     def __str__(self):
         return self.nombre
 
+class Manzana(models.Model):
+
+    nombre = models.CharField(max_length=50)
+
+    class Meta:
+        verbose_name = ("Manzana")
+        verbose_name_plural = ("Manzanas")
+
+    def __str__(self):
+        return self.nombre
+
 
 class Sub_Proyecto(models.Model):
 
     class estados(models.TextChoices):
 
             VENDIDO = "VENDIDO"
+            CUOTAS = "CUOTAS"
             DISPONIBLE = "DISPONIBLE"
             SEPARADO = "SEPARADO"
 
     estado = models.CharField(choices=estados.choices, default="DISPONIBLE", max_length=20, verbose_name="Estado")
     proyecto = models.ForeignKey(Proyectos,  on_delete=models.CASCADE)
+    manzana = models.ForeignKey(Manzana, on_delete=models.CASCADE)
     nombre = models.CharField(max_length=50)
     m2 = models.IntegerField()
     precio_venta = models.IntegerField()
@@ -46,15 +59,17 @@ class Sub_Proyecto(models.Model):
     observacion = models.CharField(max_length=50, blank=True, null=True)
     fecha_creacion =models.DateTimeField(auto_now_add=True)
     fecha_modificado =models.DateTimeField(auto_now_add=True)
-
+    id_personalizado = models.CharField(max_length=100, unique=True, blank=True, null=True)
 
     class Meta:
         verbose_name = ("Sub_Proyecto")
         verbose_name_plural = ("Sub_Proyectos")
-
   
     def __str__(self):
-        return self.nombre
+        return self.id_personalizado
+    
+    def save(self, *args, **kwargs):
+        super(Sub_Proyecto, self).save(*args, **kwargs)
 
 class Imagen(models.Model):
     sub_proyecto = models.ForeignKey(Sub_Proyecto, on_delete=models.CASCADE, related_name='imagenes')

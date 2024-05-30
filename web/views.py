@@ -53,15 +53,11 @@ def separar_lote(request):
             form.save()
             
             datos = request.POST.get("terrenos", "")  # Obtener los terrenos separados por el usuario
-            print("###############################################")
-            print(datos)
-            print("###############################################")
-
             lista_datos = [dato.strip() for dato in datos.split(",")]  # Separar los terrenos y eliminar espacios en blanco
-            
+
             for dato in lista_datos:
                 try:
-                    subproyecto = Sub_Proyecto.objects.get(nombre=dato)
+                    subproyecto = Sub_Proyecto.objects.get(id_personalizado=dato)
                     subproyecto.estado = "SEPARADO"
                     subproyecto.save()
                 except Sub_Proyecto.DoesNotExist:
@@ -72,11 +68,12 @@ def separar_lote(request):
         form = formularioWeb()
 
         terrenos = Web.objects.values_list('terrenos', flat=True)
+        subProyectos = list(Sub_Proyecto.objects.values_list('id_personalizado', 'estado')) # enviamos el terreno y su estado para colorear en el mapa de la web
         estados = list(Sub_Proyecto.objects.values_list('estado', flat=True))
 
     
     #return render(request, "web/separar_lote.html", {'form': form})
-    return render(request, "web/separar_lote.html", {'form': form, 'terrenos': terrenos, 'estados': estados}) # enviamos el form y los terrenos
+    return render(request, "web/separar_lote.html", {'form': form, 'terrenos': terrenos, 'estados': estados, 'subProyectos':subProyectos}) # enviamos el form y los terrenos
 
 
 def listar(request):
@@ -85,21 +82,3 @@ def listar(request):
 
 def pag_web(request):
     return render(request, 'web/pag_web.html')
-
-def cambiar_estado_subproyecto(terrenoCambiar):
-    try:
-        # Buscar el registro por el valor de nombre
-        objeto = get_object_or_404(Sub_Proyecto, nombre=terrenoCambiar)
-        
-        # Cambiar el valor de estado
-        objeto.estado = "SEPARADO"
-        
-        # Guardar los cambios en la base de datos
-        objeto.save()
-        
-        # Retornar el objeto actualizado
-        return None
-    
-    except Sub_Proyecto.DoesNotExist:
-        # Retornar None si no se encuentra el terreno
-        return None

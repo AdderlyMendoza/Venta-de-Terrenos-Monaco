@@ -1,5 +1,6 @@
 from django import forms
-from .models import Proyectos ,Sub_Proyecto
+from .models import Proyectos , Manzana, Sub_Proyecto
+
 
 class ProyectoForm(forms.ModelForm):
     class Meta:
@@ -49,10 +50,11 @@ class ProyectoForm(forms.ModelForm):
 
 class SubProyectoForm(forms.ModelForm):
     proyecto = forms.ModelChoiceField(queryset=Proyectos.objects.all(), empty_label="Seleccione un proyecto")
+    manzana = forms.ModelChoiceField(queryset=Manzana.objects.all(), empty_label="Seleccione una Manzana")
     
     class Meta:
         model = Sub_Proyecto
-        fields = ['estado','proyecto','nombre', 'm2', 'precio_venta', 'plano', 'observacion']
+        fields = '__all__'
         widgets = {
             'plano': forms.FileInput(attrs={'accept': 'application/pdf,image/*'}),
         }
@@ -61,26 +63,33 @@ class SubProyectoForm(forms.ModelForm):
         super(SubProyectoForm, self).__init__(*args, **kwargs)
         
         self.fields['estado'].label = 'Estado'
-        self.fields['nombre'].label = 'Nombre'
-        
+        self.fields['proyecto'].label = 'Proyecto'
+        self.fields['manzana'].label = 'Manzana'
+        self.fields['nombre'].label = 'Nombre'    
         self.fields['m2'].label = 'M2'
         self.fields['precio_venta'].label = 'Precio Venta'
         self.fields['plano'].label = 'Plano'
         self.fields['observacion'].label = 'Observacion'
-        
-        
+        self.fields['id_personalizado'].label = 'Identificador'
+
+                
         self.fields['estado'].widget.attrs['placeholder'] = 'Estado'
+        self.fields['proyecto'].widget.attrs['placeholder'] = 'Proyecto'
+        self.fields['manzana'].widget.attrs['placeholder'] = 'Manzana'
         self.fields['nombre'].widget.attrs['placeholder'] = 'Nombre'
-       
         self.fields['m2'].widget.attrs['placeholder'] = 'M2'
         self.fields['precio_venta'].widget.attrs['placeholder'] = 'Precio Venta'
         self.fields['plano'].widget.attrs['placeholder'] = 'Plano'
         self.fields['observacion'].widget.attrs['placeholder'] = 'Observacion'
+        self.fields['id_personalizado'].widget.attrs['placeholder'] = 'Identificador'
+
         
         self.fields['estado'].widget.attrs['class'] = 'form-control'
-        self.fields['nombre'].widget.attrs['class'] = 'form-control'
-        
+        self.fields['proyecto'].widget.attrs['class'] = 'form-control'
+        self.fields['manzana'].widget.attrs['class'] = 'form-control'
+        self.fields['nombre'].widget.attrs['class'] = 'form-control'        
         self.fields['m2'].widget.attrs['class'] = 'form-control'
         self.fields['precio_venta'].widget.attrs['class'] = 'form-control'
         self.fields['plano'].widget.attrs['class'] = 'form-control'
         self.fields['observacion'].widget.attrs['class'] = 'form-control'
+        self.fields['id_personalizado'].widget.attrs['class'] = 'form-control'

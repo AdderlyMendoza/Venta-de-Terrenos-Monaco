@@ -1,13 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Cliente
 from .models import Web
+from .models import Venta
+
 from django.shortcuts import get_object_or_404
 from .forms import *
 # from web.models import *
 
+from django.http import JsonResponse
+
+
 
 from django.shortcuts import render
-
 
 
 def app_clientes(request):
@@ -90,7 +94,7 @@ def crear_venta(request):
                 subproyecto = venta.subproyecto
                 subproyecto.estado = 'SEPARADO'
                 subproyecto.save()
-                return redirect('clientes:listar_ventas')
+                return redirect('clientes:clientes_ventas')
             except ValueError as e:
                 error_message = str(e)
                 return render(request, 'clientes/lotes/crear_venta.html', {'form': form, 'error_message': error_message})
@@ -122,3 +126,30 @@ def eliminar_venta(request, venta_id):
         return redirect('listar_ventas')
     return render(request, 'clientes/lotes/confirmar_eliminar_venta.html', {'venta': venta})
 
+
+
+# adderly
+
+def clientes_ventas(request):
+     ventas = Venta.objects.all()
+     return render(request, 'clientes/ventas/clientes_ventas.html', {'ventas':ventas})
+
+
+def clientes_ventas_crear(request):
+     ventas = Venta.objects.all()
+     return render(request, 'clientes/ventas/clientes_ventas.html', {'ventas':ventas})
+
+
+def clientes_filtrar(request):
+    proyecto_id = request.GET.get('proyecto_id')
+    manzana_id = request.GET.get('manzana_id')
+
+    # Filtrar los subproyectos correspondientes
+    subproyectos = Sub_Proyecto.objects.filter(
+        proyecto_id=proyecto_id,
+        manzana_id=manzana_id,
+        estado="DISPONIBLE"
+    ).values_list('id', 'nombre')  
+
+    # Devolver los subproyectos en formato JSON
+    return JsonResponse({'subproyectos': dict(subproyectos)})

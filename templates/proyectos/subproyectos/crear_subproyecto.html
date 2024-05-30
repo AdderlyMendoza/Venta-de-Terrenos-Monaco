@@ -68,11 +68,23 @@
                                                         </div>
 
                                                         <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.manzana.id_for_label }}">
+                                                                <h6>{{ form.manzana.label }}</h6>
+                                                            </label>
+                                                            <div class="row d-flex justify-content-center">
+                                                                <div class="" id="miManzana">
+                                                                    <span id="valorManzana"></span>
+                                                                    {{ form.manzana }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
                                                             <label for="{{ form.nombre.id_for_label }}">
                                                                 <h6>{{ form.nombre.label }}</h6>
                                                             </label>
                                                             <div class="row d-flex justify-content-center">
-                                                                <div class="">
+                                                                <div class="" id="miLote">
                                                                     {{ form.nombre }}
                                                                 </div>
                                                             </div>
@@ -121,6 +133,18 @@
                                                             </div>
                                                         </div>
 
+                                                        <div class="col-lg-4 col-md-4  my-3 row-sm">
+                                                            <label for="{{ form.id_personalizado.id_for_label }}">
+                                                              <h6>{{ form.id_personalizado.label }}:</h6>
+                                                            </label>
+                                                          <div class="row d-flex justify-content-center">
+                                                            <div>
+                                                              <input type="text" class="id_personalizado form-control" id="{{ form.id_personalizado.auto_id }}" name="{{ form.id_personalizado.html_name }}" readonly style="width: 100%;">
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        
+
                                                     </div>
                                                 
                                                 
@@ -147,6 +171,38 @@
     </div>
 
 
+    {% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener los elementos de los campos de entrada
+            var manzanaInput = document.getElementById('id_manzana');
+            var nombreInput = document.getElementById('id_nombre');
+            var id_personalizado = document.querySelector(".id_personalizado");
+
+            var valorManzana = "A";
+            var valorNombre = "01";
+            manzanaInput.addEventListener('change', function() {
+                var valorManzana = manzanaInput.options[manzanaInput.selectedIndex].text;
+                var valorNombre = nombreInput.value;
+                console.log('Valor de Manzana:', valorManzana);
+                console.log("final m:",valorManzana+"_"+valorNombre)
+                id_personalizado.value = valorManzana+"_"+valorNombre
+            });
+
+            nombreInput.addEventListener('input', function() {
+                // Obtener el valor del campo de nombre
+                var valorManzana = manzanaInput.options[manzanaInput.selectedIndex].text;
+                var valorNombre = nombreInput.value;
+                // Imprimir el valor en la consola
+                console.log('Valor de Nombre:', valorNombre);
+                console.log("final i:",valorManzana+"_"+valorNombre)
+                id_personalizado.value = valorManzana+"_"+valorNombre
+            });
+
+
+        });
+    </script>
+    {% endblock %}
 
 {% endblock %}
 

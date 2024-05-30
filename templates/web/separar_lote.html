@@ -1568,36 +1568,6 @@
               </div>
             </div>
 
-            {% comment %} 
-            Terrenos 
-            <div class="row d-flex border border-2 border-top-0">
-              <div class="my-3">
-                  <label for="{{ form.terrenos.id_for_label }}">
-                      <h6>{{ form.terrenos.label }}:</h6>
-                  </label>
-                  <div class="row d-flex justify-content-center">
-                    <div>
-                      <input type="text" class="selec form-control" id="{{ form.terrenos.auto_id }}" name="{{ form.terrenos.html_name }}" readonly style="width: 100%;">
-                    </div>
-                  </div>
-              </div>
-            </div>
-
-            Proyecto
-            <div class="row d-flex border border-2 border-top-0">
-              <div class="my-3">
-                  <label for="{{ form.proyecto.id_for_label }}">
-                      <h6>{{ form.proyecto.label }}:</h6>
-                  </label>
-                  <div class="row d-flex justify-content-center">
-                    <div>
-                      <input type="text" class="name_proyecto form-control" id="{{ form.proyecto.auto_id }}" name="{{ form.proyecto.html_name }}" readonly style="width: 100%;">
-                    </div>
-                  </div>
-              </div>
-            </div>
-            {% endcomment %}
-
           </div>
 
           <div class="d-flex justify-content-end">
@@ -1614,7 +1584,6 @@
       </fieldset>
     </div>
   </form>
-
 
   <hr>
 
@@ -1643,9 +1612,9 @@
       terrenosSeleccionados.textContent = idsSeleccionados.join(', ');
       canTerrenos.textContent = idsSeleccionados.length
       elemento.value = idsSeleccionados.join(', '); // Reemplaza "O_01" con el valor deseado
-      name_proyecto.value = "TULIPANES"; // Reemplaza "O_01" con el valor deseado
+      name_proyecto.value = "TULIPANES"; // Reemplaza "TULIPANES" con el valor deseado
 
-
+      
     }
 
     // Agregar un event listener a cada <path>
@@ -1725,43 +1694,21 @@
   <!-- Colorear los terrenos separados -->
   {% block script %}
     <script>
-      var pathsColorear = document.querySelectorAll('svg path');
-      var ids = [];
-  
-      pathsColorear.forEach(function(path) {
-          var id = path.getAttribute('id');
-          ids.push(id);
-      });
-      
-      console.log("estadoTerreno")
-      var estadoTerreno = {{ estados | safe }}; // Traer cada estado de cada terreno
-      // console.log(estadoTerreno);
-      var temporal = 0;
-      {% for terreno in terrenos  %}
-        var terrenoSplit = "{{ terreno }}".split(','); // Separar los elementos por coma
-        console.log(terrenoSplit)
-        terrenoSplit.forEach(function(element) {
-          var trimmedElement = element.trim();
-          // console.log(trimmedElement); // Imprimir cada elemento del terreno
-          if (ids.includes(trimmedElement)) {
-            var pathEncontrado = document.getElementById(trimmedElement);
-            if (pathEncontrado) { // Verificar si se encontró el elemento
-              if (estadoTerreno[temporal] == "SEPARADO"){
-                pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
-              }
-              if (estadoTerreno[temporal] == "VENDIDO"){
-                pathEncontrado.setAttribute("fill", "red"); // Cambiar el atributo fill al nuevo color
-              }
-              //pathEncontrado.setAttribute("fill", "yellow"); // Cambiar el atributo fill al nuevo color
-              pathEncontrado.style.pointerEvents = "none"; // Desactivar el cursor
-            } else {
-              console.log("¡Path no encontrado!"); // Manejar el caso donde no se encuentra el elemento
-            }
-          }
-        });
-        temporal = temporal + 1;
-      {% endfor %}
+      {% for subProyecto in subProyectos %}
+        console.log('{{ subProyecto.0 }}', '{{ subProyecto.1 }}');
+        var pathCambiarColor = document.getElementById('{{ subProyecto.0 }}');
+        if( '{{subProyecto.1}}' == "SEPARADO" )
+          pathCambiarColor.setAttribute("fill", "yellow");
+          pathCambiarColor.setAttribute("pointer-events", "none");
 
+        if( '{{subProyecto.1}}' == "VENDIDO" )
+          pathCambiarColor.setAttribute("fill", "red");
+          pathCambiarColor.setAttribute("pointer-events", "none");
+
+        if( '{{subProyecto.1}}' == "DISPONIBLE" )
+          pathCambiarColor.setAttribute("pointer-events", "auto");
+        
+      {% endfor %}
   </script>
 {% endblock %}
 
