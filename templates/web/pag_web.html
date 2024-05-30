@@ -31,27 +31,45 @@
   </head>
 
   <body>
-    <!-- 
-  <header class="fixed top-0 w-full z-10 transition-colors duration-300" id="main-header">
-    <nav class="px-4 py-10">
-      <div class="flex flex-wrap justify-between items-center mx-auto px-[11rem]">
-        <a href="#" class="flex items-center text-white font-bold text-2xl">
-          <div class="grayscale-1">
-            <img src="LogoBlanco.png" class="mr-3 h-[4.5rem] bg-transparent" alt="Monaco" id="logoHeader" />
-          </div>
-        </a>
-        <div class="flex items-center lg:order-2">
-          <a href="#" class="text-white px-4 py-1 hover:bg-gray-800/50">
-            <span>Contactanos</span>
-          </a>
-          <a href="#" class="text-white px-4 py-1 hover:bg-gray-800/50">
-            <span>Log in</span>
-          </a>
-        </div>
-      </div>
-    </nav>
-  </header> 
--->
+    {% comment %} REDES SOCIALES {% endcomment %}
+    <section class=" bg-transparent z-20 fixed top-0 md:px-12 py-4 flex flex-col justify-end right-0 ">
+      {% comment %} facebook {% endcomment %}
+      <a
+        href="https://www.facebook.com/people/MONACO-Constructora-e-Inmobiliaria/61554996729302/"
+        type="button"
+        data-twe-ripple-init
+        data-twe-ripple-color="light"
+        class="mb-2 inline-block rounded bg-[#1877f2] p-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-black/50 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
+        <span class="[&>svg]:h-4 [&>svg]:w-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 320 512">
+            <path
+              d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+          </svg>
+        </span>
+      </a>
+
+      {% comment %} youtube {% endcomment %}
+      <a
+        href="https://www.youtube.com/"
+        type="button"
+        data-twe-ripple-init
+        data-twe-ripple-color="light"
+        class="mb-2 inline-block rounded bg-[#ff0000] p-2.5 text-xs font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-black/50 focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg">
+        <span class="[&>svg]:h-4 [&>svg]:w-4">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 576 512">
+            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+            <path
+              d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z" />
+          </svg>
+        </span>
+      </a>
+    </section>
 
     <header
       id="main-header"
@@ -125,7 +143,7 @@
           <img
             src="https://bing.com/th?id=OSGI.58CF494D4076424E43A9D41677010DAB&amp;h=1000&amp;w=1920&amp;c=1&amp;rs=1&amp;o=3"
             alt=""
-            class="h-screen w-screen brightness-50"
+            class="h-screen w-screen brightness-50 z-100"
           />
         </div>
 
@@ -195,11 +213,7 @@
               >Consultoria e Inmobiliara Monaco</span
             >
             <p class="pt-2 sm:pt-4">
-              En Consultoría e Inmobiliaria Mónaco, ubicada en la hermosa ciudad
-              de Puno, Perú, nos dedicamos a ofrecer un servicio inmobiliario
-              excepcional y personalizado. Nos enorgullecemos de proporcionar
-              soluciones integrales que se ajusten a las necesidades y deseos de
-              nuestros clientes.
+              En Consultora e Inmobiliaria Mónaco, nos enorgullecemos de ofrecer una amplia gama de servicios personalizados para satisfacer todas tus necesidades inmobiliarias en el prestigioso Principado de Mónaco. Con una sólida experiencia en el mercado local y un equipo altamente cualificado, estamos aquí para guiar y asistir en cada paso del camino.
             </p>
           </div>
         </div>
@@ -215,43 +229,30 @@
           <div class="w-full sm:w-1/3 pl-0 sm:pl-8 mb-4 sm:mb-0">
             <div class="empresa-lider">
               <span class="text-xl sm:text-3xl font-semibold"
-                >Empresa Lider</span
+                >Compra y Venta de Propiedades</span
               >
               <p class="pt-2 sm:pt-4">
-                En Inmobiliaria Mónaco, nos enorgullecemos de ofrecer un
-                <b>servicio excepcional y personalizado</b> a nuestros clientes.
-                Con años de experiencia en el sector, nuestro equipo altamente
-                capacitado está comprometido en brindar soluciones inmobiliarias
-                integrales que se adaptan a las necesidades y deseos de cada
-                cliente.
+                Desde exclusivos apartamentos con vistas al mar hasta lujosas villas enclavadas en las colinas, tenemos acceso a una cartera diversa de propiedades que se adaptan a todos los gustos y presupuestos. Nuestros expertos inmobiliarios están comprometidos a encontrar la residencia perfecta que cumpla con tus exigencias y expectativas.
               </p>
             </div>
           </div>
           <div class="w-full sm:w-1/3 pl-0 sm:pl-8 mb-4 sm:mb-0">
             <div class="empresa-lider">
               <span class="text-xl sm:text-3xl font-semibold"
-                >Servicios Excepcionales</span
+                >Alquiler de Propiedades</span
               >
               <p class="pt-2 sm:pt-4">
-                Ofrecemos una amplia gama de servicios inmobiliarios, incluyendo
-                la compra y venta de propiedades residenciales y comerciales,
-                alquileres a corto y largo plazo, asesoramiento inmobiliario,
-                gestión de propiedades y valoraciones.
+                Ya sea que estés buscando un alojamiento temporal o una residencia a largo plazo, te ofrecemos una selección de alquileres de alta calidad que abarcan desde elegantes estudios hasta impresionantes penthouses. Nos aseguramos de que cada cliente encuentre la propiedad ideal que se ajuste a sus necesidades y estilo de vida.
               </p>
             </div>
           </div>
           <div class="w-full sm:w-1/3 pl-0 sm:pl-8">
             <div class="empresa-lider">
               <span class="text-xl sm:text-3xl font-semibold"
-                >Empresa Lider</span
+                >Asesoramiento Inmobiliario Personalizado</span
               >
               <p class="pt-2 sm:pt-4">
-                En Inmobiliaria Mónaco, nos enorgullecemos de ofrecer un
-                <b>servicio excepcional y personalizado</b> a nuestros clientes.
-                Con años de experiencia en el sector, nuestro equipo altamente
-                capacitado está comprometido en brindar soluciones inmobiliarias
-                integrales que se adaptan a las necesidades y deseos de cada
-                cliente.
+                Nuestro equipo de asesores inmobiliarios altamente capacitados está a tu disposición para brindarte orientación experta en cada etapa de tu proceso inmobiliario. Desde la evaluación del mercado hasta la negociación de contratos, estamos aquí para garantizar una experiencia sin problemas y satisfactoria.
               </p>
             </div>
           </div>
@@ -424,7 +425,7 @@
       </div>
     </footer>
 
-    <!-- Graficar mapa Ubicacion -->
+    <!-- GRAFICAR UBIACION DE MONACO CON JS -->
     <script>
       // Coordenadas de la ubicación inicial
       var initialLocation = [-15.84056717172345, -70.0271835178623];
@@ -442,7 +443,7 @@
       L.marker(initialLocation).addTo(map).bindPopup("C.E. MONACO").openPopup();
     </script>
 
-    <!-- Scroll header -->
+    <!-- SCROLL DEL HEADER -->
     <script>
       window.addEventListener("scroll", function () {
         const header = document.getElementById("main-header");

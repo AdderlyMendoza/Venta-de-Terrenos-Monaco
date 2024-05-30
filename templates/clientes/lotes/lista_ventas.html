@@ -7,97 +7,75 @@
 
 <!-- Hoverable Table rows -->
 <div class="card">
-    <h5 class="card-header">Lista de seperaciones por la web</h5>
-    <a href="{% url 'proyectos:crear_subproyecto' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
-        <i class='bx bx-plus'></i> Crear
-    </a>
+    <h5 class="card-header">Lista de lotes separados</h5>
+    <a href="{% url 'clientes:crear_venta' %}" class="btn btn-sm btn-primary spaced-button" style="position: absolute; top: 20px; right: 20px; z-index: 1000">
+      <i class='bx bx-plus'></i> Crear
+  </a>
+  <a href="{% url 'web:separar_lote' %}" class="btn btn-sm btn-primary" style="position: absolute; top: 20px; right: 130px; z-index: 1000">
+    <i class='bx bx-plus'></i> Separar
+  </a>
 
+    <div class="table-responsive text-nowrap">
+      <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Proyecto</th>
+                <th>Mz.</th>
+                <th>Subproyecto</th>
+             
+                <th>Precio lote</th>
+                <th>Adelanto</th>
+                
+                <th>Dias</th>
+           
+            </tr>
+        </thead>
+        <tbody>
+          
+            {% for venta in ventas %}
+            <tr>
 
-    <!-- Bootstrap Toasts with Placement -->
-    <div class="card mb-4">
-       
-        <div class="card-body">
-            <div class="row gx-3 gy-2 align-items-center">
-                <div class="col-md-3">
-                    <form method="get">
-                        <label class="form-label" for="selectPlacement">Proyecto</label>
-                        <select class="form-select placement-dropdown" id="proyecto" name="proyecto_id">
-                            {% for proyecto in proyectos %}
-                                <option value="{{ proyecto.id }}" {% if proyecto_seleccionado and proyecto.id == proyecto_seleccionado.id %}selected{% endif %}>{{ proyecto.nombre }}</option>
-                            {% endfor %}
-                        </select>
-                </div>
-                <div class="col-md-3">
-                    <label class="form-label" for="showToastPlacement">&nbsp;</label>
-                    <button id="showToastPlacement" type="submit" class="btn btn-primary d-block">Filtrar</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    
-    
-      <!--/ Bootstrap Toasts with Placement -->
-
-    
-        
-        <div class="card-body">
-
-            {% if subproyectos %}
-            <table id="users" class="table m-t-30 table-hover no-wrap contact-list" data-page-size="10">
-                <thead>
-                    <tr>
-                        <th>DNI</th>
-                        <th>NOMBRES</th>
-                        <th>APELLIDOS</th>
-                        <th>TELEFONO </th>
-                        <th>EMAIL</th>
-                        <th>DIRECCION</th>
-                        <th>TERRENOS SEPARADOS</th>
-                        <th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody style="font-size: 14px; font-weight: 400;">
-
-                    {% for subproyecto in subproyectos %}
-                    <tr>
-
-                        <td>{{ subproyecto.dni }}</td>
-                        <td>{{ subproyecto.nombres }}</td>
-                        <td>{{ subproyecto.apellidos }}</td>
-                        <td>{{ subproyecto.telefono }}</td>
-                        <td>{{ subproyecto.email }}</td>
-                        <td>{{ subproyecto.direccion }}</td>
-                        <td>{{ subproyecto.terrenos }}</td>
-                                                
-                        <td>
-                                    
-                            <a href="{% url 'proyectos:actualizar_subproyecto' subproyecto.pk %}" class="btn btn-sm btn-primary">
-                                <i class='bx bx-edit'></i> 
-                            </a>
-                            
-                            <a href="{% url 'proyectos:eliminar_subproyecto' subproyecto.pk %}" class="btn btn-sm btn-danger">
-                                <i class='bx bx-trash'></i> 
-                            </a>
-
-                        </td>
-                    </tr>
-                    {% endfor %}
-
-                </tbody>
-
+                 <td>{{ venta.fecha_creacion|date:"d/m/Y" }}</td>
+                {% if venta.estado == "pagado" %}
+                <td style="color: rgb(0, 0, 255)"><b>{{ venta.estado }}</b></td>
+                
                 {% else %}
-                <p>No hay reservas disponibles.</p>
-                {% endif %} 
+                <td style="color: rgb(237, 30, 11)"><b>{{ venta.estado }}</b></td>
+                {% endif %}
 
-            </table>
-        </div>
-
-    
+                
+                <td>{{ venta.cliente }}</td>
+                <td>{{ venta.proyecto }}</td>
+                <td>{{ venta.manzana }}</td>
+                <td>{{ venta.subproyecto }}</td>                    
+             
+                <td>{{ venta.precio_venta }}</td>
+                <td>{{ venta.adelanto }}</td>
+                
+                <td>{{ venta.fecha_separacion }}</td>
+                <td>
+                    <a href="{% url 'clientes:ver_venta' venta.id %}" class="btn btn-sm btn-primary">
+                        <i class='bx bx-detail'></i> 
+                    </a>
+                    <a href="{% url 'clientes:actualizar_venta' venta.id %}" class="btn btn-sm btn-primary">
+                        <i class='bx bx-edit'></i> 
+                    </a>
+                    
+                    <a href="{% url 'clientes:eliminar_venta' venta.id %}" class="btn btn-sm btn-danger">
+                        <i class='bx bx-trash'></i> 
+                    </a>
+                  
+                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
 </div>
 <!--/ Hoverable Table rows -->
-
-<!-- Agregar el botón de crear proyecto -->
-
 
 {% endblock menu %}
